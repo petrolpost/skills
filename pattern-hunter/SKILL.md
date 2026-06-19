@@ -1,20 +1,7 @@
 ---
 name: pattern-hunter
-description: >
-  分析 Agent 项目的规则系统，分层识别其中隐含的体系结构（业务体系 → Agent规则体系 → 子体系），
-  以可视化方式展示给用户，并按需将选定体系设计为可复用、可插拔的独立模块。
-  识别层次：
-  - 业务体系（Business System）：Agent 所服务的业务域与设计范式
-  - Agent 规则体系（Agent Rule System）：围绕某个 Agent 构建的规则集整体（包括治理输出与治理输入）
-  - 子体系（Sub-Systems）：功能、结构、治理等子体系
-  特殊检测：
-  - 自引用治理：项目规则体系是否在遵守自己定义的规则？
-  - 范式识别：规则系统背后是否有设计理念的转变或范式声明？
-  当用户提到以下内容时触发：
-  "分析我的 Agent 规则"、"提取规则体系"、"规则系统结构"、"Agent.md 分析"、
-  "harness 规则"、"规则模块化"、"可插拔规则"、"规则体系设计"、"帮我梳理规则"、
-  "analyze agent rules"、"rule system"、"modular rules"、"pluggable system"
-  也应在用户上传了 Agent 规则文件（md、txt、yaml）并询问结构/体系/模块相关问题时触发。
+description: |
+  分析 Agent 项目的规则系统，分层识别其中隐含的体系结构（业务体系 → Agent规则体系 → 子体系），以可视化方式展示给用户，并按需将选定体系设计为可复用、可插拔的独立模块。当用户提到"分析我的 Agent 规则"、"提取规则体系"、"规则系统结构"、"Agent.md 分析"、"harness 规则"、"规则模块化"、"可插拔规则"、"规则体系设计"、"帮我梳理规则"、"analyze agent rules"、"rule system"、"modular rules"、"pluggable system"时触发。也应在用户上传了 Agent 规则文件（md、txt、yaml）并询问结构/体系/模块相关问题时触发。
 ---
 
 # Rule System Analyst
@@ -80,7 +67,7 @@ find . -maxdepth 3 -name "Agent.md" -o -name "AGENTS.md" \
 
 ## Step 2: 分层识别体系
 
-对规则内容进行**全文语义扫描**，按三个层次识别体系：
+对规则内容进行**全文语义扫描**，按三个层次识别体系。详细的分类定义和信号词见 `references/system-taxonomy.md`。
 
 ### 第一层：业务体系（Business System）
 
@@ -93,35 +80,20 @@ find . -maxdepth 3 -name "Agent.md" -o -name "AGENTS.md" \
 #### 业务域识别
 
 回答三个问题：
-- 规则中描述的**业务场景**是什么？（客服、代码审查、数据分析、内容创作..）
-- 规则的**服务对象**是谁？（终端用户、开发者、运营人员..）
-- 规则的**业务目标**是什么？（提升响应速度、保证代码质量、降低风险..）
+- 规则中描述的**业务场景**是什么？
+- 规则的**服务对象**是谁？
+- 规则的**业务目标**是什么？
 
-**识别信号词：**
-```
-customer / support / ticket / order / shipping
-code review / PR / pull request / lint
-analytics / report / dashboard / metric
-content / article / blog / post
-business domain / use case / scenario
-```
+信号词和常见业务体系类型见 `references/system-taxonomy.md` §1.1。
 
-#### 设计范式识别（新增）
+#### 设计范式识别
 
 设计范式是规则系统的**哲学定位**，通常比业务场景更抽象。识别方法：
-
 - 规则中是否有**明确的范式声明**？（如 "Governance ≠ Control"、"Autonomy First"）
-- 是否有**对比/转变**的描述？（如"从 X 范式转向 Y 范式"、"不同于传统 Z"）
+- 是否有**对比/转变**的描述？（如"从 X 范式转向 Y 范式"）
 - 是否有**NOT** 声明？（如 "PGC IS NOT a workflow engine"）
 
-**识别信号词：**
-```
-paradigm shift / not control but / unlike traditional
-core tenet / philosophy / constitution / mindset
-IS / IS NOT / should NOT / must not
-principle / belief / assumption
-理念 / 范式 / 信条 / 哲学 / 定位
-```
+常见范式类型和转变检测方法见 `references/system-taxonomy.md` §1.2。
 
 **置信度量化依据：**
 - **显式声明**：规则中有明确的范式声明 → 基准 80%
@@ -161,7 +133,7 @@ Agent 规则体系是**围绕同一个 Agent 的规则集合整体**，描述了
 - 是否有**架构红线**？（禁止项、依赖限制、术语约束）
 - 是否有**知识引用链**？（philosophy → spec → runtime → contributing）
 
-#### 自引用检测（新增）
+#### 自引用检测
 
 检查"治理输出"和"治理输入"是否存在**自引用关系**——项目是否在用自己定义的规则体系来治理自己的开发？
 
@@ -174,6 +146,8 @@ Agent 规则体系是**围绕同一个 Agent 的规则集合整体**，描述了
 - ✅ 强自引用：项目是自身理念的最佳实践 → 体系成熟度高
 - ⚠️ 弱自引用：部分概念复用 → 理念尚未完全落地
 - ❌ 无反向引用：治理输出和治理输入完全独立 → 需要确认是否有意为之
+
+详细的识别要点和强度评估见 `references/system-taxonomy.md` §2.3。
 
 #### 输出格式
 
@@ -188,13 +162,13 @@ Agent 规则体系是**围绕同一个 Agent 的规则集合整体**，描述了
 
 在确定上层体系后，向下拆解为具体子体系。
 
-详见 `references/system-taxonomy.md`。
-
 **子体系识别的起点：文件引用关系图。**
 引用关系本身就是一个结构子体系（引用体系），它能帮助识别：
 - 知识的层次结构（philosophy → spec → runtime-mapping）
 - 规则的加载策略（always-on → on-demand）
 - 模块间的依赖边界
+
+所有子体系的详细分类、信号词和健康度检查见 `references/system-taxonomy.md` §3。
 
 ---
 
@@ -303,9 +277,9 @@ Agent 规则体系是**围绕同一个 Agent 的规则集合整体**，描述了
 
 ## Step 6: 设计可插拔模块（按需）
 
-当用户要求将体系设计为「可插拔/可复用」模块时，执行以下流程：
+当用户要求将体系设计为「可插拔/可复用」模块时，执行以下流程。
 
-详见 `references/pluggable-design.md`
+详见 `references/pluggable-design.md`。
 
 ### 快速判断输出形式
 | 场景 | 推荐输出形式 |
