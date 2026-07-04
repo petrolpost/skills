@@ -1,10 +1,9 @@
 ---
-name: SkillReviewer
+name: skill-reviewer
 description: |
   Reviews a Claude Skill for publication readiness — checks structure, security, description quality, spec compliance, and cross-skill conflicts. Use this skill when the user says: "review this skill", "is this skill ready to publish", "audit my skill", "check my SKILL.md", "score my skill", "is my skill up to date with the spec", "do my skills conflict", or "help me improve this skill". Also trigger when the user uploads or pastes a SKILL.md and asks for feedback or quality check. 也可用中文触发：「帮我检查这个skill」、「这个skill能发布吗」、「审查我的skill」、「我的skill有问题吗」。
 ---
-
-# SkillReviewer
+# skill-reviewer
 
 **CRITICAL RULE: Produce every section below in full. Do not summarize, collapse, or skip any section. Do not jump to the Health Score without completing all prior steps. Every table must be filled in with real findings — never leave cells empty or use placeholder text.**
 
@@ -24,15 +23,15 @@ Output language: match the user's language automatically.
 
 Read the SKILL.md. Then **MUST OUTPUT** this table with real values:
 
-| Field | Value |
-|-------|-------|
-| Skill name | |
-| Line count | |
-| YAML fields present | |
-| Non-standard YAML fields | |
-| Files in directory | |
-| Bundled references / scripts | |
-| Architecture type | Tool Wrapper / Router / Pipeline / Knowledge Base |
+| Field                        | Value                                             |
+| ---------------------------- | ------------------------------------------------- |
+| Skill name                   |                                                   |
+| Line count                   |                                                   |
+| YAML fields present          |                                                   |
+| Non-standard YAML fields     |                                                   |
+| Files in directory           |                                                   |
+| Bundled references / scripts |                                                   |
+| Architecture type            | Tool Wrapper / Router / Pipeline / Knowledge Base |
 
 **YAML validation**: list every frontmatter field. Flag anything not in (`name`, `description`, `compatibility`) as ❌ non-standard.
 
@@ -48,13 +47,13 @@ Read the SKILL.md. Then **MUST OUTPUT** this table with real values:
 
 **Prompt engineering patterns** (mark each ✅ present / ❌ absent, add one line of evidence):
 
-| Pattern | Status | Evidence |
-|---------|--------|----------|
-| Chain-of-Thought (step-by-step reasoning) | | |
-| Few-Shot Examples | | |
-| Persona / role definition | | |
-| Explicit output format specification | | |
-| Negative examples ("do not…") | | |
+| Pattern                                   | Status | Evidence |
+| ----------------------------------------- | ------ | -------- |
+| Chain-of-Thought (step-by-step reasoning) |        |          |
+| Few-Shot Examples                         |        |          |
+| Persona / role definition                 |        |          |
+| Explicit output format specification      |        |          |
+| Negative examples ("do not…")            |        |          |
 
 **Workflow summary**: 2–3 sentences describing execution flow.
 
@@ -64,15 +63,15 @@ Read the SKILL.md. Then **MUST OUTPUT** this table with real values:
 
 **MUST OUTPUT** — every row requires a real Severity and Finding:
 
-| Risk | Severity | Finding |
-|------|----------|---------|
-| Network calls (curl / wget / fetch / requests) | Low/Med/High | |
-| Code execution (exec / subprocess / os.system) | Low/Med/High | |
-| Package installs (pip / apt / npm) | Low/Med/High | |
-| Prompt injection ($ARGUMENTS unsanitized) | Low/Med/High | |
-| Over-permission (allowed-tools mismatch) | Low/Med/High | |
-| Read/write contradiction | Low/Med/High | |
-| Token bloat (>500 lines) | Low/Med/High | |
+| Risk                                           | Severity     | Finding |
+| ---------------------------------------------- | ------------ | ------- |
+| Network calls (curl / wget / fetch / requests) | Low/Med/High |         |
+| Code execution (exec / subprocess / os.system) | Low/Med/High |         |
+| Package installs (pip / apt / npm)             | Low/Med/High |         |
+| Prompt injection ($ARGUMENTS unsanitized)      | Low/Med/High |         |
+| Over-permission (allowed-tools mismatch)       | Low/Med/High |         |
+| Read/write contradiction                       | Low/Med/High |         |
+| Token bloat (>500 lines)                       | Low/Med/High |         |
 
 For any Med or High: add a **Mitigation:** line directly below that row.
 
@@ -102,16 +101,16 @@ Scoring guide in `references/scoring.md`.
 
 **MUST OUTPUT** — fill every Status and Finding cell:
 
-| Rule | Status | Finding |
-|------|--------|---------|
-| Only `name`, `description`, `compatibility` in YAML | ✅/❌ | |
-| `description` contains trigger phrases, not just function summary | ✅/❌ | |
-| SKILL.md body ≤ 500 lines | ✅/❌ | |
-| Large reference content in `references/`, not inline | ✅/❌ | |
-| All files referenced in body actually exist | ✅/❌ | |
-| No hardcoded absolute paths | ✅/❌ | |
-| Multi-line file creation uses heredoc, not `echo "\n"` | ✅/❌ | |
-| No `allowed-tools` field | ✅/❌ | |
+| Rule                                                                | Status | Finding |
+| ------------------------------------------------------------------- | ------ | ------- |
+| Only `name`, `description`, `compatibility` in YAML           | ✅/❌  |         |
+| `description` contains trigger phrases, not just function summary | ✅/❌  |         |
+| SKILL.md body ≤ 500 lines                                          | ✅/❌  |         |
+| Large reference content in `references/`, not inline              | ✅/❌  |         |
+| All files referenced in body actually exist                         | ✅/❌  |         |
+| No hardcoded absolute paths                                         | ✅/❌  |         |
+| Multi-line file creation uses heredoc, not `echo "\n"`            | ✅/❌  |         |
+| No `allowed-tools` field                                          | ✅/❌  |         |
 
 After the table: list every ❌ as a numbered action item with priority (High / Med / Low).
 

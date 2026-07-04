@@ -1,10 +1,9 @@
 ---
-name: SkillParser
+name: skill-parser
 description: |
   Reverse-engineers a Claude Skill to extract its embedded business logic, design decisions, user model, and reusable patterns — helping you learn from how others build Skills. Use this skill when the user says: "help me understand this skill", "what is this skill really doing", "reverse engineer this skill", "what can I learn from this skill", "why is it designed this way", "what patterns does this skill use", "break down this skill for me", or "analyze the logic behind this skill". Also trigger when the user pastes or uploads a SKILL.md and seems to want to understand or learn from it rather than fix it. 也可用中文触发：「帮我读懂这个skill」、「这个skill的设计逻辑是什么」、「我想学习这个skill的思路」、「拆解这个skill」。
 ---
-
-# SkillParser
+# skill-parser
 
 **CRITICAL RULE: Produce every section below in full. Do not summarize or skip. Your job is not to evaluate quality — it is to make implicit design decisions explicit. Every insight must be grounded in specific evidence from the Skill text.**
 
@@ -41,14 +40,15 @@ Do not restate the description field. Instead, **MUST OUTPUT**:
 For each step or phase in the Skill, **MUST OUTPUT** a row in this table:
 
 | Step | Name | Real purpose | Key constraint | Output |
-|------|------|-------------|----------------|--------|
-| | | | | |
+| ---- | ---- | ------------ | -------------- | ------ |
+|      |      |              |                |        |
 
 **Real purpose**: go beyond the step title. Why does this step exist at this position in the flow? What would break if it were skipped or reordered?
 
 **Key constraint**: the most important rule embedded in this step (explicit or implicit).
 
 After the table, identify:
+
 - **Decision gates**: steps where the flow can branch or terminate — what triggers each branch?
 - **Ordering logic**: why are steps in this sequence? Which dependencies force the order?
 
@@ -86,6 +86,7 @@ When NOT to use it: [what conditions make it a poor fit]
 ```
 
 Examples of patterns to look for (not exhaustive):
+
 - Gate-before-generate (judge first, produce output only if warranted)
 - Anchor document (single source of truth for facts)
 - Persona enforcement (explicit voice/tone rules with examples)
@@ -107,8 +108,8 @@ If context available, **MUST OUTPUT**:
 **Resources not used but should be**: what exists in the project that this Skill ignores but could benefit from?
 
 | Missing integration | What it is | What would improve |
-|--------------------|------------|-------------------|
-| | | |
+| ------------------- | ---------- | ------------------ |
+|                     |            |                    |
 
 **Data flow gaps**: does this Skill's output connect back into the project's data structures? If not, what's missing?
 
