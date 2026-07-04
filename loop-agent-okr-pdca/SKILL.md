@@ -66,6 +66,7 @@ description: Use this skill whenever the user wants to run a long, multi-step, s
 
 **无文件系统的环境(纯文字对话,没有代码执行能力):**
 - 状态只能维持在当前对话上下文里,每轮迭代都要把完整状态(Objective/KR/当前进度)显式写在回复中,不能"记在脑子里"含糊维护。
+- **Token 防爆**：每轮回复只输出**最新一轮的 PDCA 摘要**和**更新后的 OKR JSON**，无需重复打印前几轮的历史日志——历史日志由上下文窗口自然滚动淘汰。避免跑到 6-7 轮后上下文被大量重复历史状态塞满，导致推理能力下降。
 - 结束循环、或用户要求保存进度时,把状态内容整体输出为一段可复制的 JSON,并提示用户："请保存这段内容,下次对话开头把它贴回来即可从这里继续。"
 
 **日志文件的位置(与状态文件同目录，独立存放):**
@@ -107,6 +108,7 @@ description: Use this skill whenever the user wants to run a long, multi-step, s
 - **done** → 该 KR 标记完成，写回状态文件，进入下一个未完成的 KR。
 - **partial 且有进展** → 更新 `progress_note`，回到 Plan，针对剩余 gap 再来一轮。
 - **partial 但连续 `stagnation_limit` 轮无实质进展** → 触发**双环学习**：停下来，重新审视这条 KR 本身是否设定有问题（不可达/度量错了/其实已经在事实上完成了但判据写歪了），跟用户同步，必要时修订 KR 本身，而不是继续硬冲。
+  > **"实质进展"的机器判定标准**：通过 Check 阶段的 `progress_note` 或百分比是否有数字化提升来判定。若连续 `stagnation_limit` 轮的 `check_result` 描述及得分完全一致（如连续两轮都是 `partial(60%)`），直接判定为停滞——不要因为改了个变量名或挪了一行注释就认为"有进展"。
 - **blocked** → 记录阻塞原因，如果是需要用户决策/权限/信息的阻塞，直接升级给用户，不要自己瞎猜替用户做决定。
 
 每轮结束后，把这一轮的 Plan/Do/Check/Act 摘要以追加写入的方式写进 `<task-name>_iteration_log.jsonl`（格式见下方"iteration_log 单条记录格式"），同时更新 `okr_state.json` 里对应 KR 的 `status`/`progress_note`，再决定是否继续下一轮。
@@ -138,6 +140,7 @@ description: Use this skill whenever the user wants to run a long, multi-step, s
 
 - Phase 0 完成后，把 Objective/KR 简要展示给用户确认一次，不要默默开始跑几十轮再汇报。
 - 每次触发双环学习（修订 KR）或 blocked 升级时，必须显式告诉用户"为什么要改目标/为什么卡住了"，不要静默调整。
+- **修订 KR 的硬性确认（死命令）**：触发双环学习修订 KR 时，必须列出新旧 KR 的对比，并明确询问用户"是否同意降低/调整此项标准"。在获得用户明确的文本确认（如 `yes` / `同意`）前，**不得**自行按照新 KR 执行 [Plan] 阶段——防止 Agent 因为当前 KR 困难而偷懒把目标改简单。
 - 循环过程中的中间轮次可以简洁汇报（比如"第3轮：KR2 从40%推进到70%，还差xx"），不需要每轮都长篇大论。
 - 达到终止条件时，给一个整体总结：哪些 KR 完成了、花了几轮、有没有 KR 被重新定义过、当前最终状态是什么。
 
