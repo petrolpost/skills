@@ -1,0 +1,147 @@
+---
+name: loop-agent-okr-pdca
+description: Use this skill whenever the user wants to run a long, multi-step, self-correcting task as an autonomous loop — e.g. "keep working on X until it's done", "build me a loop agent for Y", "iterate on this until the tests pass / the metric hits target / the draft is polished", or any open-ended goal that can't be finished in one shot and needs repeated plan-execute-check-adjust cycles. Also trigger when the user explicitly mentions "OKR", "PDCA", "task decomposition", "self-regulating agent", or "loop agent" in the context of getting Claude to autonomously break down and drive a goal to completion. Do NOT use this for single-step tasks that finish in one turn — only for goals that plausibly need multiple iterations with checkpoints.
+---
+
+# Loop Agent: OKR + PDCA 双层任务分解与自动调控
+
+## 核心思路
+
+这个 Skill 把"长任务的自动执行"拆成两层：
+
+- **OKR 层**（跨迭代，管"要做成什么"）：把用户的目标写成一个 Objective + 2~5 条可判定的 Key Result。这一层几乎不变，只在双环学习触发时修订。
+- **PDCA 层**（每轮迭代，管"这一轮怎么推进"）：每次循环只做一件事——找出当前离 KR 目标最近的一个 gap，Plan → Do → Check → Act，把 gap 缩小一点，然后决定要不要继续下一轮。
+
+两层的关系：OKR 是静态的"北极星 + 度量尺"，PDCA 是动态的"每一步怎么走"。不要在每轮循环里重新讨论 Objective 是什么——那是双环学习触发时才做的事，平时只看 gap。
+
+## 何时不要用这个 Skill
+
+- 用户的请求一步就能完成（写个函数、回答一个问题）——不需要循环，直接做。
+- 用户已经给出完整、明确的步骤列表，只是要求按顺序执行——直接执行，不需要 OKR 包装。
+
+## 工作流程
+
+### Phase 0：Objective 与 KR 生成（只做一次，除非触发双环修订）
+
+**心智框架：用户代言人。** 这一步要带着"这真的是用户想要的吗"的怀疑视角去追问，而不是"怎么翻译成我方便执行的 KR"的视角。把模糊目标偷偷简化成执行者顺手的 KR（比如把"写一篇有说服力的文章"简化成"字数够了就算数"），是这一步最常见、也最隐蔽的失败模式——因为它不会在 Check 阶段报错，只会让最终交付物"技术上达标但没解决真问题"。
+
+把用户的目标转写成：
+
+```json
+{
+  "objective": "一句话描述最终想要的状态（定性，方向性）",
+  "key_results": [
+    {
+      "id": "KR1",
+      "description": "可客观判定完成与否的具体指标",
+      "success_criteria": "写清楚判定方法：数值阈值 / 通过条件 / 谁来判定",
+      "status": "not_started",
+      "progress_note": ""
+    }
+  ],
+  "constraints": {
+    "max_iterations": 8,
+    "stagnation_limit": 2
+  }
+}
+```
+
+（`iteration_log` 不在这个文件里，见下方"日志文件的位置"单独说明。）
+
+**KR 的硬性要求**：必须是 Claude 自己（或调用的工具）能客观判断"完成/未完成/进展了多少"的形式。禁止写"提升质量""让用户满意"这类无法判定的 KR——如果目标本身模糊，先跟用户确认一版可判定的 KR，再进入循环。
+
+跟用户过一遍这版 Objective/KR，确认后再进入循环（除非用户明确说"不用确认，直接开始"）。
+
+## 状态文件的位置与命名
+
+**先判断当前环境有没有可写文件系统(能否调用 bash/文件工具)**,再决定状态怎么存:
+
+**有文件系统的环境(如 Claude Code、Claude.ai 的电脑工具、Cowork 等):**
+- 遵循跨 Skill 通用约定，状态文件统一放在 **`.petrolpost/loop-agent-okr-pdca/`** 目录下（与其他 Skill 共用同一套顶层命名空间，避免各 Skill 各建一套目录），命名为 `<task-name>_okr_state.json`。
+  - 优先以当前项目/工作区根目录为基准：`<项目根目录>/.petrolpost/loop-agent-okr-pdca/<task-name>_okr_state.json`。
+  - 没有明确项目根目录时（如 Claude.ai 电脑工具里的一次性任务），退回当前工作目录：`/home/claude/.petrolpost/loop-agent-okr-pdca/<task-name>_okr_state.json`。
+  - 目录不存在时直接创建，不需要向用户确认。
+- **每次命中终止条件、触发双环学习修订、或用户主动要求查看进度时**,把状态文件复制一份到面向用户的输出位置(如 Claude.ai 环境的 `/mnt/user-data/outputs/`),再展示/交付给用户——`.petrolpost/` 是工作区内部约定目录，用户默认不会主动去翻，不能只把文件留在那里就算完成同步。
+- 循环中途(未终止)不需要每轮都同步到输出目录,避免刷屏;但文件本身必须真实落盘在 `.petrolpost/loop-agent-okr-pdca/` 下,不能只在对话里口头维护。
+
+**无文件系统的环境(纯文字对话,没有代码执行能力):**
+- 状态只能维持在当前对话上下文里,每轮迭代都要把完整状态(Objective/KR/当前进度)显式写在回复中,不能"记在脑子里"含糊维护。
+- 结束循环、或用户要求保存进度时,把状态内容整体输出为一段可复制的 JSON,并提示用户："请保存这段内容,下次对话开头把它贴回来即可从这里继续。"
+
+**日志文件的位置(与状态文件同目录，独立存放):**
+- `iteration_log` 不放进 `okr_state.json`，单独存成 `.petrolpost/loop-agent-okr-pdca/<task-name>_iteration_log.jsonl`（JSON Lines，每轮迭代追加一行，不是整体覆盖）。
+- 原因：`okr_state.json` 是覆盖式更新（每轮改字段、整体重写，体积恒定），而 `iteration_log` 是只增不减的历史记录，混在一起会导致每轮都要重写越来越长的数组，也会让 Plan/Check 阶段读取状态时被迫带上不需要的完整历史。
+- 读取粒度：Plan/Check 通常只需要最近一条记录的 `note`/`check_result`（可以直接读 `okr_state.json` 里的 `progress_note` 即可，不必读日志文件）；只有在判断"连续 `stagnation_limit` 轮无进展"或做终止总结时，才需要读取 `iteration_log.jsonl` 的最近若干行或全量。
+- 写入方式：每轮结束时用追加写入（append），不要读出全文件、拼接、再整体覆盖写回。
+
+把这个结构写入状态文件（例如 `okr_state.json`，具体位置见上文），后续每轮迭代读取和更新它。
+
+### Phase 1~4：每轮迭代的 PDCA
+
+每一轮从状态文件里挑出**当前最需要推进、且未完成**的一个 KR（通常按依赖顺序或用户给的优先级），只针对这一个 KR 的 gap 执行下面四步：
+
+**1. Plan（拆解 gap，不是重拆全部目标）** 与 **2. Do（执行）** 用同一种心智完成即可，不需要切换人设——这两步是连续的"提出方案→执行方案"，刻意切换反而增加不必要的成本。真正需要切换立场的是下面的 Check 和 Act。
+
+**1. Plan（拆解 gap，不是重拆全部目标）**
+- 对照该 KR 的 `success_criteria` 和当前 `progress_note`，找出差距。
+- 把差距拆成本轮要做的具体任务（1~5 个动作项即可，不要贪多）。
+- 任务要具体到"调什么工具/写什么文件/跑什么命令"级别，不要停留在"研究一下"这种模糊描述。
+
+**2. Do（执行）**
+- 实际执行 Plan 里的任务：写代码、调工具、检索资料等。
+- 记录实际产出和过程中遇到的障碍。
+
+**3. Check（对照 success_criteria 打分）**
+
+**心智框架：对抗性审核者，不是刚才做事的那个执行者。** 切换到 Check 阶段时，默认假设"还没做完"，主动去找不达标的证据，而不是去找"看起来还不错"的证据。这一步最大的风险是自评偏差——刚执行完任务的心智天然倾向于认可自己的产出，如果不刻意切换立场，"应该差不多了"会在没有真正验证的情况下被写成 `done`。
+
+- 客观核对这一轮的产出是否满足 KR 的 `success_criteria`。
+- 给出明确判定：`done` / `partial（附带百分比或具体差距）` / `blocked（附带原因）`。
+- 这一步不能自我感觉良好地"应该差不多了"，必须真的去验证（跑测试、量指标、逐条核对），能用工具验证的绝不用主观判断代替。
+
+**4. Act（决定下一步）**
+
+**心智框架：项目负责人做止损决策，不是执行者想"再试一次"。** 执行者心态天然倾向于觉得"再来一轮应该就行了"，容易拖延该止损或该升级给用户的判断。这一步要主动问自己："如果我是要为结果负责的人，现在该继续投入，还是该承认卡住了/目标设错了？"
+
+根据 Check 的结果四选一：
+- **done** → 该 KR 标记完成，写回状态文件，进入下一个未完成的 KR。
+- **partial 且有进展** → 更新 `progress_note`，回到 Plan，针对剩余 gap 再来一轮。
+- **partial 但连续 `stagnation_limit` 轮无实质进展** → 触发**双环学习**：停下来，重新审视这条 KR 本身是否设定有问题（不可达/度量错了/其实已经在事实上完成了但判据写歪了），跟用户同步，必要时修订 KR 本身，而不是继续硬冲。
+- **blocked** → 记录阻塞原因，如果是需要用户决策/权限/信息的阻塞，直接升级给用户，不要自己瞎猜替用户做决定。
+
+每轮结束后，把这一轮的 Plan/Do/Check/Act 摘要以追加写入的方式写进 `<task-name>_iteration_log.jsonl`（格式见下方"iteration_log 单条记录格式"），同时更新 `okr_state.json` 里对应 KR 的 `status`/`progress_note`，再决定是否继续下一轮。
+
+### 终止条件（任一触发即停止循环，向用户汇报）
+
+- 所有 KR 状态为 `done`。
+- 达到 `max_iterations`。
+- 某 KR 连续触发双环学习后，用户确认目标需要重新讨论。
+- 出现需要用户决策的 blocked 且无法自行解决。
+
+## iteration_log 单条记录格式
+
+写入 `<task-name>_iteration_log.jsonl` 时，每轮迭代对应文件里**一行**（一个完整的单行 JSON 对象，不要把所有轮次包成一个大数组），格式如下：
+
+```json
+{
+  "iteration": 3,
+  "kr_id": "KR2",
+  "plan": "本轮要做的 1~5 个具体任务",
+  "do_summary": "实际执行了什么，产出是什么",
+  "check_result": "done | partial(60%) | blocked",
+  "act_decision": "continue | mark_done | escalate | revise_okr",
+  "note": "供下一轮或人类回看的关键信息"
+}
+```
+
+## 与用户沟通的原则
+
+- Phase 0 完成后，把 Objective/KR 简要展示给用户确认一次，不要默默开始跑几十轮再汇报。
+- 每次触发双环学习（修订 KR）或 blocked 升级时，必须显式告诉用户"为什么要改目标/为什么卡住了"，不要静默调整。
+- 循环过程中的中间轮次可以简洁汇报（比如"第3轮：KR2 从40%推进到70%，还差xx"），不需要每轮都长篇大论。
+- 达到终止条件时，给一个整体总结：哪些 KR 完成了、花了几轮、有没有 KR 被重新定义过、当前最终状态是什么。
+
+## 状态文件补充说明
+
+- 不要把状态藏在脑子里口头维护——KR 一多、轮次一多就会记混，务必按上文"状态文件的位置与命名"真的写入 `.petrolpost/loop-agent-okr-pdca/` 或显式列出。
+- 跨会话续跑时，用户带回的状态文件字段结构必须和 Phase 0 生成的 schema 一致，如果字段对不上（比如用户手动改过），先跟用户确认差异再继续循环，不要静默按自己的理解覆盖。
