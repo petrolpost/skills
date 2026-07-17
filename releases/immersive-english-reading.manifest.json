@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "immersive-english-reading",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "2dcacd91aeb49fbf87cae6eba33ecd5897db93b6698d3f2014bdf330d5a19fd3",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "f0d64a724df125bc3e2667b00ca6b086d2ef42f17ba1f4547b5123a1d3b5a9fb",
+                      "size":  12374
+                  }
+              ],
+    "package":  "immersive-english-reading.skill",
+    "package_size":  5251,
+    "released_at":  "2026-07-18T00:26:01+08:00",
+    "skill_version":  null
+}
