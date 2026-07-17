@@ -1,0 +1,31 @@
+﻿{
+    "skill_name":  "TheoryEvolutionAuditor",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "118c5396b7867576c133bfbb5437e4502735ad5772969ace3b6b90142483d9a0",
+    "files":  [
+                  {
+                      "path":  "README.md",
+                      "hash":  "a756357f3b161b72fbe34fece0af4a690e763f249b1a4fb34995805563aa34c1",
+                      "size":  5922
+                  },
+                  {
+                      "path":  "references/observed-phases.md",
+                      "hash":  "ab2a8b0a4d8ccbe8938ba74ae720cda06e5b60fd0deae660b2101ccbff185c8f",
+                      "size":  1818
+                  },
+                  {
+                      "path":  "references/output-templates.md",
+                      "hash":  "52b323a8c535e461ee6b0691dfb3bf338fb7240dfa11aa7e4391625607fc3b6c",
+                      "size":  9256
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "53aa68c19962c1e8f91ea03649d31f979e6d7827ba7d189f25d2309f53cabafb",
+                      "size":  14944
+                  }
+              ],
+    "package":  "TheoryEvolutionAuditor.skill",
+    "package_size":  13725,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

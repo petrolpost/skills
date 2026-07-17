@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "attention-guardian",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "42430eb9c243d6cfe12fd800ee3eccf08ad2135686c0dceca3487e783b1a55ab",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "95269519c62f78aa4a83b95c0cac55b749261d262ba4087b3a4ff2c9d878b903",
+                      "size":  8813
+                  }
+              ],
+    "package":  "attention-guardian.skill",
+    "package_size":  4060,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "loop-agent-okr-pdca",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "d95aa683f0a752beee88cec275a0af6a05686eee03c2058d62ee84f3c18d9d3f",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "3491927807f47f366c3b3498f3003cfe17f577679a783c3273bf969dad464248",
+                      "size":  16201
+                  }
+              ],
+    "package":  "loop-agent-okr-pdca.skill",
+    "package_size":  7895,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

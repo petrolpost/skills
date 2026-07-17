@@ -1,0 +1,36 @@
+﻿{
+    "skill_name":  "skill-package",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "be2c273436bd07c2e574528cdf37e096a3dc21fb04ffe1e2f4a9aa818c1a63a7",
+    "files":  [
+                  {
+                      "path":  "README.md",
+                      "hash":  "cb53bf4a559740cbadcf91134f44d0d3a98b19696643a13b06b5c916dae96ab8",
+                      "size":  1531
+                  },
+                  {
+                      "path":  "references/manifest-format.md",
+                      "hash":  "b17383b70c73fe7792f73d5eabd0a198cef023d389c0d90be091d68e0bec4e36",
+                      "size":  2470
+                  },
+                  {
+                      "path":  "references/packaging-conventions.md",
+                      "hash":  "f2d1d9760a841a85d1f635736d4fc144cbc1761aa157f8cd279e66fbf25ca8f4",
+                      "size":  2315
+                  },
+                  {
+                      "path":  "scripts/package_skills.ps1",
+                      "hash":  "a3ec40e77e481578e62a4d4d34ae2a967ae37fda75ddebcca04b2d73b6240217",
+                      "size":  10967
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "534df147ba549171c11bab9a219bf5f1e76fe1f3fa8d9594611bf613d7fd1ad2",
+                      "size":  5851
+                  }
+              ],
+    "package":  "skill-package.skill",
+    "package_size":  9317,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

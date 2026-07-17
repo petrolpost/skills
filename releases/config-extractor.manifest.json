@@ -1,0 +1,41 @@
+﻿{
+    "skill_name":  "config-extractor",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "ba0d26c584fba4e4f56e753c9373201b31fed15ae8ab889e5eb54bf3ea12ac8e",
+    "files":  [
+                  {
+                      "path":  "assets/templates/config-toml.md",
+                      "hash":  "dcfec83446863be555735b238f1c002838577d4328bf79deb10bf32a8ec12c9e",
+                      "size":  4894
+                  },
+                  {
+                      "path":  "assets/templates/config-yaml.md",
+                      "hash":  "82cccc611e7a5b477c50545d2819acb47c5467375721690ef47abfafdff0169c",
+                      "size":  7102
+                  },
+                  {
+                      "path":  "README.md",
+                      "hash":  "d6d514d4cb1afd9b66c78269abef687e3f812a62d8f0a99879732b07c4b46113",
+                      "size":  4833
+                  },
+                  {
+                      "path":  "references/extraction-patterns.md",
+                      "hash":  "d4f5afa89ef1164f909cb5c4f799393af1aa6b21c711fbdc5085e932275ba941",
+                      "size":  8636
+                  },
+                  {
+                      "path":  "references/placeholder-format.md",
+                      "hash":  "85b1a2b16994c193b9b8543ad4b414daf6c0c82fad316e91168e89653a1b239e",
+                      "size":  5439
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "ad2bce53c91a610c12e106a69929b55b2e78fb5cc98a77d3e2dbd23c7dcaf712",
+                      "size":  14135
+                  }
+              ],
+    "package":  "config-extractor.skill",
+    "package_size":  17918,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

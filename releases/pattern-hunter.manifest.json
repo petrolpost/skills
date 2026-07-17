@@ -1,0 +1,26 @@
+﻿{
+    "skill_name":  "pattern-hunter",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "bda1255d92dce0096961aeb331320961b210f8a657c02aea4d7224f4ee7263ab",
+    "files":  [
+                  {
+                      "path":  "references/pluggable-design.md",
+                      "hash":  "2fa81a8302f7ac54d7302d81a6ff12816fd602f694723c7b04a9a3419be8766f",
+                      "size":  10193
+                  },
+                  {
+                      "path":  "references/system-taxonomy.md",
+                      "hash":  "405ba21a90b079b1d8c0d872679e060d5f1011e59dac9660bbdeab325324238d",
+                      "size":  16904
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "f1dc33c8ceff3dde2cd011568f7048b6f4e74ec3c61ae1f9d256f12b0958812d",
+                      "size":  16089
+                  }
+              ],
+    "package":  "pattern-hunter.skill",
+    "package_size":  18738,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "skillreviewer",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "56978062892339d0c2f587c29cc6dbeee187383bbf3e205467c37d95593e5ac8",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "01008b4d0afb8d4394e21821a57dc62b305f21f8d389885ace6785facf961a75",
+                      "size":  7126
+                  }
+              ],
+    "package":  "skillreviewer.skill",
+    "package_size":  2998,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

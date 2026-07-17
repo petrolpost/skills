@@ -1,0 +1,31 @@
+﻿{
+    "skill_name":  "requirements-architecture",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "cdd91fbc7a931cf8d9c965cc30f0c35f09559f0cfd33f0897de54f8c7c970b5a",
+    "files":  [
+                  {
+                      "path":  "references/classification-rubric.md",
+                      "hash":  "838b0aae6e705d50aec4e8e3cac91fade489369645aa818a1a4f6b244f23fb21",
+                      "size":  7258
+                  },
+                  {
+                      "path":  "references/id-conventions.md",
+                      "hash":  "e21b4f92d812f9ae97a02155088aa104cf6543828dea060d5d6407815873c56a",
+                      "size":  5071
+                  },
+                  {
+                      "path":  "scripts/check_consistency.sh",
+                      "hash":  "953b9c4835b184751e5222dd427b75e214d7fd9c333e3c0954889bb9606c8095",
+                      "size":  4418
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "acca89ff4b871dcb1fad2dccddfe71da21489edc842ef4b253158f147a0b4458",
+                      "size":  10146
+                  }
+              ],
+    "package":  "requirements-architecture.skill",
+    "package_size":  13223,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

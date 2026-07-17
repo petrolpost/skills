@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "skillparser",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "6b52c6c1e50689a457a67d2615d46f9287a4e867b0f3edbc7244e0b5286ae2ce",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "6420a27d1bdaef613fec88fa249cd10bd17dee0eb4bfd2e2d4540642cd466f2b",
+                      "size":  5846
+                  }
+              ],
+    "package":  "skillparser.skill",
+    "package_size":  2818,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}

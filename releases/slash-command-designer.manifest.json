@@ -1,0 +1,41 @@
+﻿{
+    "skill_name":  "slash-command-designer",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "ae5d52b6a9a154fa6573ba803d1cbe721c856fde0e9e6f46559153d2cb3abf14",
+    "files":  [
+                  {
+                      "path":  "assets/templates/command-spec.md",
+                      "hash":  "4d4f9bcec9bbb1a8b6efd07f920c81f46d78738deae435c0a62149677d4b1bd8",
+                      "size":  1660
+                  },
+                  {
+                      "path":  "assets/templates/design-doc.md",
+                      "hash":  "22aecfb1a3bb8b8bf23192d3fd35c23c621045027b2317a2ccd09b281c841956",
+                      "size":  6187
+                  },
+                  {
+                      "path":  "README.md",
+                      "hash":  "c7d8e069bd9377b9249a56fcdf87afe1b93a11dec095cf5ed66ba46ea9c7fa93",
+                      "size":  4805
+                  },
+                  {
+                      "path":  "references/claude-code-commands.md",
+                      "hash":  "4c0cdb802596e4c898ae29d5ee8d088cccad5750facd3f0ec29b6b1e466463ce",
+                      "size":  4856
+                  },
+                  {
+                      "path":  "references/command-schema.md",
+                      "hash":  "ad8dd11f1dc3dc5d3187365789afed732585f9cefa36f7a0439995959b745c2e",
+                      "size":  5138
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "c0aa2e850077127bb57678bad37b78adffb2cecd7abf3eefe6d544f5ceb5b018",
+                      "size":  9423
+                  }
+              ],
+    "package":  "slash-command-designer.skill",
+    "package_size":  15239,
+    "released_at":  "2026-07-17T17:24:46+08:00",
+    "skill_version":  null
+}
