@@ -7,9 +7,9 @@
 决策记录不是"边聊边问清楚"，而是**两阶段**的：
 
 ```
-对话进行时 → 轻量标记(不打断)  →  .petrolpost/agent-decisions/staged-signals.yaml
+对话进行时 → 轻量标记(不打断)  →  .petrelpost/docs/decisions/staged-signals.yaml
                                             │
-用户要求梳理时 → 全量精读+补全  →  .petrolpost/agent-decisions/decisions.yaml
+用户要求梳理时 → 全量精读+补全  →  .petrelpost/docs/decisions/decisions.yaml
                                             │
                                     渲染  →  DECISION_LOG.md
 ```
@@ -45,10 +45,10 @@
 
 ## 文件结构
 
-所有输出统一写入项目根目录下的 `.petrolpost/agent-decisions/`：
+所有输出统一写入项目根目录下的 `.petrelpost/docs/decisions/`：
 
 ```
-.petrolpost/agent-decisions/
+.petrelpost/docs/decisions/
 ├── config.yaml            # 开关配置(如 auto_sense_enabled)
 ├── decisions.yaml        # 源真值:已确认/待补全的正式决策记录
 ├── staged-signals.yaml   # 自动感知产生的轻量标记(待处理)

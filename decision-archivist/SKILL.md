@@ -8,14 +8,23 @@ description: |
 
 追踪 Agent 设计过程中思想/逻辑/方案的变更决策,防止版本间逻辑断层与方案冲突。
 
+## 与生态总纲的关系
+
+本 Skill 接入 `.petrelpost/` 命名空间生态,遵循 [`SkillConventions.md`](../../.petrelpost/docs/meta/SkillConventions.md) 的硬规则。以下是本 Skill 对总纲要求的对齐声明:
+
+- **命名空间(硬规则1)**:所有持久化内容统一写入 `.petrelpost/docs/decisions/`(见下方"存储结构")。Entry-point marker 使用 `petrelpost:decision-archivist:start/end` 前缀,写入 `AGENTS.md` 时只改写自己名下的区块。
+- **Canonical Owner(硬规则2)**:**Decision 的状态字段(`status`、`supersedes`、`superseded_by` 等)的权威来源是本 Skill。** 其他 Skill(包括 Rest)如需引用某条决策的状态,只能引用/快照,不能直接改写 `decisions.yaml`;需要变更某条决策状态时,应等待用户通过本 Skill 的全量梳理流程更新,而不是直接改文件。
+- **Rest 接入判断(硬规则3)**:**接入 Rest。** 理由:`staged-signals.yaml` 中的积压标记、`decisions.yaml` 中标注 `待补全: true` 的字段、以及检测出的"⚠️ 潜在冲突",三者都属于"会随时间堆积/悬而未决"的状态,符合 Rest 的判断标准。具体登记方式待 Rest 体系落地后,按硬规则 4 的最小学习闭环接入(目前 `.petrelpost/docs/maintenance/` 尚未创建,处于"概念设计完成,尚未实现"阶段,暂无法登记,待 Rest 上线后补齐)。
+- **自动行为留痕(硬规则5)**:本条主要约束 Rest 或跨 Skill 的自动检查/维护动作。模式一(自动感知)写入的是本 Skill 自己的权威存储(`staged-signals.yaml`),本身即是记录动作,不需要额外的 `runs/` 留痕。
+
 ## 核心理念:标记与精读分离
 
 决策记录不是"边聊边问清楚",而是**两阶段**的:
 
 ```
-对话进行时 → 轻量标记(不打断)  →  .petrolpost/agent-decisions/staged-signals.yaml
+对话进行时 → 轻量标记(不打断)  →  .petrelpost/docs/decisions/staged-signals.yaml
                                             │
-用户要求梳理时 → 全量精读+补全  →  .petrolpost/agent-decisions/decisions.yaml
+用户要求梳理时 → 全量精读+补全  →  .petrelpost/docs/decisions/decisions.yaml
                                             │
                                     渲染  →  DECISION_LOG.md
 ```
@@ -30,10 +39,10 @@ description: |
 
 ## 存储结构
 
-所有输出统一写入项目根目录下的 `.petrolpost/agent-decisions/`:
+所有输出统一写入项目根目录下的 `.petrelpost/docs/decisions/`:
 
 ```
-.petrolpost/agent-decisions/
+.petrelpost/docs/decisions/
 ├── config.yaml            # 开关配置(如自动感知是否开启),缺省时按默认值创建
 ├── decisions.yaml        # 源真值:已确认/待补全的正式决策记录(结构化)
 ├── staged-signals.yaml   # 自动感知产生的轻量标记,尚未纳入正式记录
@@ -48,7 +57,7 @@ description: |
 
 ## Step 0: 读取配置(每次被触发时都先做)
 
-读取 `.petrolpost/agent-decisions/config.yaml`:
+读取 `.petrelpost/docs/decisions/config.yaml`:
 
 ```yaml
 auto_sense_enabled: true   # 是否开启"模式一:自动感知"。默认为 true。
@@ -169,7 +178,7 @@ auto_sense_enabled: true   # 是否开启"模式一:自动感知"。默认为 tr
 - 待补全项:K 条 —— [逐条列出决策ID + 缺失的要素]
 - ⚠️ 潜在冲突:J 处 —— [逐条列出冲突的两条决策ID + 冲突点简述]
 
-完整记录见 `.petrolpost/agent-decisions/DECISION_LOG.md`
+完整记录见 `.petrelpost/docs/decisions/DECISION_LOG.md`
 ```
 
 若存在待补全项或冲突,主动询问用户是否现在处理,而不是把这个决定也留给用户去想起来问。
