@@ -34,6 +34,16 @@ decisions:
       summary: "事件驱动在当前消息中间件下无法保证高并发场景的响应时延,轮询虽然吞吐略低但延迟可控"
       待补全: false
 
+    evidence:                           # 支撑该 Decision 的证据来源与性质
+      - type: explicit_statement       # 用户明确陈述
+        source: "对话第42轮"
+        excerpt: "原文中直接支持该 Decision 的短摘录"
+      - type: acceptance               # 用户接受此前提出的方案
+        source: "对话第43轮"
+        excerpt: "原文中的接受/确认表达"
+      # type 可选: explicit_statement | acceptance | rejection | contextual | analysis
+      # evidence 只记录材料中实际存在的依据;没有依据时不创建条目
+
     related_elements:                  # 关联的项目元素
       - type: module                   # module | file | concept | decision | skill
         ref: "task-queue-processor"
@@ -56,7 +66,15 @@ decisions:
 ### 字段填写原则
 
 - `待补全: true/false` 出现在任何字段级别,凡是无法从材料中找到依据的字段,一律标注 `待补全: true` 并置值为 `null`,不得编造
-- `confidence: inferred` 用于第 3 节"隐式变更"的场景,提醒后续核实
+- `evidence` 只记录实际存在于材料中的依据,不得为了让 Decision 看起来完整而补造证据
+- `evidence.type` 表示依据的性质,而不是简单的可信度排序:
+  - `explicit_statement`: 用户明确陈述了该 Decision 或其理由
+  - `acceptance`: 用户接受了此前提出的方案/判断
+  - `rejection`: 用户明确否决/放弃了此前方案/判断
+  - `contextual`: 通过其他历史材料对该 Decision 提供上下文支持,不等同于用户直接陈述
+  - `analysis`: 由 Analyzer 等能力产生的分析依据,必须保留其分析性质,不得伪装成用户原始陈述
+- `evidence` 与 `rationale` 不等价。`evidence` 回答“凭什么认为这条 Decision 成立/如何知道”,`rationale` 回答“为什么选择这个方案而不是其他方案”
+- `confidence` 继续表示 Decision 本身的形成方式;不要用它替代 evidence provenance
 - `related_elements` 尽量给出可检索的引用而非模糊描述,方便冲突检测阶段做重叠匹配
 
 ## 3. `DECISION_LOG.md` 渲染格式(输出示例)
