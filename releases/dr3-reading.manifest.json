@@ -1,0 +1,66 @@
+﻿{
+  "skill_name": "dr3-reading",
+  "hash_algorithm": "sha256",
+  "content_hash": "b45d6fb6352fab19ba1aa06cf84a860a0b3bbd8a082e3e39d13637c5dc5df7d2",
+  "files": [
+    {
+      "path": "README.md",
+      "hash": "9936f626bd5754603f583b082a5337ca755beaeb9307fabfc991eca91705d3c3",
+      "size": 8191
+    },
+    {
+      "path": "references/functions/critic.md",
+      "hash": "14edb0c44ef97e7dd089a33cef40167378e25e1f1ac74f4f111f11bbe217b40f",
+      "size": 10365
+    },
+    {
+      "path": "references/functions/evaluator.md",
+      "hash": "21c6deb16bccc5562e505a15d9cfabe223ec3b69b7bef6e57318f3a909866157",
+      "size": 14970
+    },
+    {
+      "path": "references/functions/immersion_reader.md",
+      "hash": "42f72233be0518e4f63987375aaa636e1a2bcfe77d76cc9757fc22a6bb6a89d0",
+      "size": 9650
+    },
+    {
+      "path": "references/functions/importer.md",
+      "hash": "ebb4096a363f598ef533b3b373c7397b2be6714ef4aa5a2d5e224ead60b25083",
+      "size": 9338
+    },
+    {
+      "path": "references/functions/note_generator.md",
+      "hash": "2665fbba50f6ee4bef44cf35625f58c1515272664a73f5c0b7173a4fea7bb96e",
+      "size": 11289
+    },
+    {
+      "path": "references/functions/reconstructor.md",
+      "hash": "1a78692fb854a8b93dbf584d836f529a6f9ec55700ca0482f9a65c7d9f169013",
+      "size": 17007
+    },
+    {
+      "path": "references/functions/structured_extractor.md",
+      "hash": "60378c583359e53ac28362fe3f02120bdc6d6a66af64486dd0259ac164d1e1ed",
+      "size": 9490
+    },
+    {
+      "path": "references/functions/synthesis.md",
+      "hash": "2d46e1cb4f970525a97d91df5ba482d948d12e83609401f3116cb1d5e371c013",
+      "size": 10269
+    },
+    {
+      "path": "references/protocol.md",
+      "hash": "bba44f5ca608e05ea0a57899c6c2a69dda4419d452b691dff0d6575879bbd6b0",
+      "size": 6221
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "94601b0851d422b7baf6351e86012c5e81c7ec12f410b32ade076dbc7cad4ff1",
+      "size": 8089
+    }
+  ],
+  "package": "dr3-reading.skill",
+  "package_size": 51435,
+  "released_at": "2026-08-28T20:11:13+08:00",
+  "skill_version": null
+}
