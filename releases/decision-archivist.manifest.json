@@ -1,36 +1,41 @@
 ﻿{
-    "skill_name":  "decision-archivist",
-    "hash_algorithm":  "sha256",
-    "content_hash":  "71490688dcb6cf93a4d4aa0f2c3b8e4aaf600ad05b3eeedb32d01f607093d978",
-    "files":  [
-                  {
-                      "path":  "README.md",
-                      "hash":  "e0da595538439a04f7c3952027f5ae9304f536ad6f65c7ee3f900b7f2e7cb000",
-                      "size":  4378
-                  },
-                  {
-                      "path":  "references/conflict-detection.md",
-                      "hash":  "c84d6731a6f10ac3d3b81c958de6d512b5fb94e5c3768cf016425eb08aa48e78",
-                      "size":  2697
-                  },
-                  {
-                      "path":  "references/record-schema.md",
-                      "hash":  "0dd70a35dd7f0e361d3de9fee31537015a5e8c79969a46fa814ff5ee17ff9b7c",
-                      "size":  4312
-                  },
-                  {
-                      "path":  "references/signal-taxonomy.md",
-                      "hash":  "9c58c7afb532520fe47e5d5ab7ab000074ea3570fa3879b16e7d6675b5ab2cf2",
-                      "size":  2453
-                  },
-                  {
-                      "path":  "SKILL.md",
-                      "hash":  "d47de44ed0b05bd4a74ba143fe3a106b5fe3019646aed23cd637e9ad90bc3480",
-                      "size":  10643
-                  }
-              ],
-    "package":  "decision-archivist.skill",
-    "package_size":  12963,
-    "released_at":  "2026-07-17T17:24:46+08:00",
-    "skill_version":  null
+  "skill_name": "decision-archivist",
+  "hash_algorithm": "sha256",
+  "content_hash": "2f1dac1301b30529f3c58bd21c9a1fa27999d1a7e68bbdc4be8a54c603005c61",
+  "files": [
+    {
+      "path": "README.md",
+      "hash": "36f291878a3c20e3c9262f675ef9774ab639bb341646e6e5ead745fae4cccf85",
+      "size": 5504
+    },
+    {
+      "path": "references/capability-triangle-experiment.md",
+      "hash": "729d06a79b7f4b38f4b8816fbac6d3add9cf9f26cacf009cab36e08b3d4e63bc",
+      "size": 1990
+    },
+    {
+      "path": "references/conflict-detection.md",
+      "hash": "c84d6731a6f10ac3d3b81c958de6d512b5fb94e5c3768cf016425eb08aa48e78",
+      "size": 2697
+    },
+    {
+      "path": "references/record-schema.md",
+      "hash": "77055dbb1e5ca86945f7735e7510cc9c4719792a85391e9a2982e550059dd436",
+      "size": 5830
+    },
+    {
+      "path": "references/signal-taxonomy.md",
+      "hash": "9c58c7afb532520fe47e5d5ab7ab000074ea3570fa3879b16e7d6675b5ab2cf2",
+      "size": 2453
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "e24d95f91e70fb9b0441076442dcf197f50ccba6fe4d63b6479769facb461a64",
+      "size": 12270
+    }
+  ],
+  "package": "decision-archivist.skill",
+  "package_size": 16528,
+  "released_at": "2026-08-28T22:00:56+08:00",
+  "skill_version": null
 }

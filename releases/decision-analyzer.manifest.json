@@ -1,0 +1,16 @@
+﻿{
+  "skill_name": "decision-analyzer",
+  "hash_algorithm": "sha256",
+  "content_hash": "a4f714ee10f834aa721d06b2b1f1d36ba7a03456ad3ee8e26852e84ee4e28e99",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "hash": "04d8a1abc3a9fc548baa7752793b1bcb273cd23aca346ac2cd88d45cc68b8168",
+      "size": 1346
+    }
+  ],
+  "package": "decision-analyzer.skill",
+  "package_size": 948,
+  "released_at": "2026-08-28T22:00:56+08:00",
+  "skill_version": null
+}

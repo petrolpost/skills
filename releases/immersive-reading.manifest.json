@@ -1,0 +1,31 @@
+﻿{
+  "skill_name": "immersive-reading",
+  "hash_algorithm": "sha256",
+  "content_hash": "9f33f110c472df3e6c633a07a55d68289351aaff414ec175d403e3d9749fd900",
+  "files": [
+    {
+      "path": "references/comment-modes.md",
+      "hash": "8a77fc361c9c28c08a2204bed4587c74b9879bfaf3342b7b06b4b32d7470afa3",
+      "size": 2114
+    },
+    {
+      "path": "references/deep-read-template.md",
+      "hash": "aec9af7e867b480bafafa6263313b61d9a6b7a493c591dc75d3ce8380069aa63",
+      "size": 4460
+    },
+    {
+      "path": "references/scoring-rubric.md",
+      "hash": "2ce056491f478a84da96920f2b2109cc5b8479c554b884a1d21764c96e17c63a",
+      "size": 4846
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "48a6d3ca29f53938bc6e9767fb1ad25915cb98df5aa4df618fbee36cf4c3b120",
+      "size": 19529
+    }
+  ],
+  "package": "immersive-reading.skill",
+  "package_size": 15544,
+  "released_at": "2026-08-28T22:00:56+08:00",
+  "skill_version": null
+}

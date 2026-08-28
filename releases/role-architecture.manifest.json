@@ -1,0 +1,46 @@
+﻿{
+  "skill_name": "role-architecture",
+  "hash_algorithm": "sha256",
+  "content_hash": "8d509e85f7a71bac83ff13d8a307ca114cbfee21d032f45d314d5d7c1a3f089a",
+  "files": [
+    {
+      "path": "README.md",
+      "hash": "1aa952712f6681058db68085218dfe5809d599cee98ab2c2161154cf9985d651",
+      "size": 13828
+    },
+    {
+      "path": "references/entry-point-block.md",
+      "hash": "e5170de99a03c9aaeb469c0fde04de1ee642ec82629e93f69206e7abe545fea8",
+      "size": 2038
+    },
+    {
+      "path": "references/overview-template.md",
+      "hash": "3542d2e070ae0b83dc95e2afeb75b008e891dd33941089a47075acd2e9b24f56",
+      "size": 3304
+    },
+    {
+      "path": "references/presets.md",
+      "hash": "e17c2379d75a8c63a67b1dc79fe9a07f409039e37525ddea46a566ee7aa3b456",
+      "size": 10251
+    },
+    {
+      "path": "references/role-template.md",
+      "hash": "d40943ff560b460c3e513431bfd47eb22c94688d782403c9d6f0a5cb6ee7e8b1",
+      "size": 1886
+    },
+    {
+      "path": "references/task-template.md",
+      "hash": "2f8ca01a95b296f515b0e48e9e3a34081226d94c84cd5f90f8f83b0adfe4be75",
+      "size": 1879
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "aa9496e906938078bc7687354e2a7ac1aa08ea38784a08a2b079bf31000ecea6",
+      "size": 13085
+    }
+  ],
+  "package": "role-architecture.skill",
+  "package_size": 15340,
+  "released_at": "2026-08-28T22:00:56+08:00",
+  "skill_version": null
+}

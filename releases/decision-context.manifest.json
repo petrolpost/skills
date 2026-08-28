@@ -1,0 +1,16 @@
+﻿{
+  "skill_name": "decision-context",
+  "hash_algorithm": "sha256",
+  "content_hash": "e43bc2038f95641fb71cc8019c96363f66b772a091d459677794e59549bfef5f",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "hash": "a1dd13054ba7aae4b9978fced33517554d9278415f24e7690d93fbe193b45b27",
+      "size": 1378
+    }
+  ],
+  "package": "decision-context.skill",
+  "package_size": 952,
+  "released_at": "2026-08-28T22:00:56+08:00",
+  "skill_version": null
+}
