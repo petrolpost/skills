@@ -1,0 +1,26 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.2",
+  "structure": {
+    "id": "DS-01",
+    "subject": "",
+    "scope": {
+      "type": "local",
+      "paragraphs": []
+    },
+    "origin": "explicit",
+    "status": "author_asserted",
+    "structure": {
+      "elements": [],
+      "relations": [],
+      "constraints": []
+    },
+    "evidence": [],
+    "interpretation": {
+      "suggested_kind": ""
+    }
+  },
+  "allowed_origin": ["explicit", "reconstructed", "inferred"],
+  "allowed_scope": ["local", "section", "article"],
+  "allowed_status": ["author_asserted", "model_reconstructed"]
+}
