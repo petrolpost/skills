@@ -1,0 +1,33 @@
+{
+  "raw_content": {
+    "status": "completed",
+    "run_at": "2026-09-03T00:00:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "importer", "version": "dr3-reading/1.0" },
+    "preview": "Harvard Business Review article, 4426 words, article"
+  },
+  "structured_data": {
+    "status": "completed",
+    "run_at": "2026-09-03T00:01:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "structured_extractor", "version": "dr3-reading/1.0" },
+    "preview": "high depth, 6 claims (3 core), 7 data points, 5 assumptions, 8 evidence links"
+  },
+  "datafication": {
+    "status": "completed",
+    "run_at": "2026-09-03T00:03:00+08:00",
+    "stale": false,
+    "stale_soft": false,
+    "blocking": false,
+    "reason": "",
+    "produced_by": { "module": "datafication", "version": "dr3-reading/1.1" },
+    "preview": "6 structures: decision_rule, enumeration, framework, comparison; scope: article/section/local"
+  },
+  "synthesis_pkg": {
+    "status": "completed",
+    "run_at": "2026-09-03T00:02:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "synthesis", "version": "dr3-reading/1.0" },
+    "preview": "structure_first fusion, 6 claims, 5 assumptions, 8 evidence chains, enhanced: false"
+  }
+}

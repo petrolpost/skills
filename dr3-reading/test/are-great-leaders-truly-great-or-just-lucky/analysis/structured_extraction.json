@@ -1,0 +1,325 @@
+{
+  "module": "structured_extractor",
+  "slug": "are-great-leaders-truly-great-or-just-lucky",
+  "extraction_depth": "high",
+  "purpose": {
+    "core_purpose": "重新审视'伟大领导者是否真正重要'这一经典辩论，提出评估领导者实际影响力的系统性框架",
+    "target_audience": "企业高管、董事会成员、管理学者、对领导力理论感兴趣的读者",
+    "problem_addressed": "个体领导者对组织成功的实际影响有多大？何时领导者真正重要？",
+    "intended_contribution": "引入'哈姆雷特测试'（Hamlet Test）作为评估领导者不可替代性的新方法，识别领导者产生实际影响的五个条件"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "个体领导者的实际影响力被系统性高估",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C1.1",
+          "claim": "领导者平均仅解释企业利润变异的15-30%",
+          "strength": "strong",
+          "supporting_evidence": ["D1"]
+        },
+        {
+          "id": "C1.2",
+          "claim": "企业成功受年份、行业、公司等多重因素影响",
+          "strength": "strong",
+          "supporting_evidence": ["D1", "D2"]
+        },
+        {
+          "id": "C1.3",
+          "claim": "高管薪酬与其实际贡献不成比例",
+          "strength": "moderate",
+          "supporting_evidence": []
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "哈姆雷特测试是评估领导者不可替代性的有效工具",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C2.1",
+          "claim": "大多数商业领导者无法通过哈姆雷特测试",
+          "strength": "strong",
+          "supporting_evidence": []
+        },
+        {
+          "id": "C2.2",
+          "claim": "少数领导者确实具有不可替代性（如Resnick家族）",
+          "strength": "strong",
+          "supporting_evidence": ["D4", "D5"]
+        },
+        {
+          "id": "C2.3",
+          "claim": "领导者通过塑造独特方式而非发明创造来体现价值",
+          "strength": "moderate",
+          "supporting_evidence": []
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "claim": "领导者在特定条件下才能产生决定性影响",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C3.1",
+          "claim": "五个领导者产生重大影响的条件",
+          "strength": "strong",
+          "supporting_evidence": []
+        },
+        {
+          "id": "C3.2",
+          "claim": "时机识别与把握能力是关键因素",
+          "strength": "strong",
+          "supporting_evidence": ["D7"]
+        },
+        {
+          "id": "C3.3",
+          "claim": "领导者能力具有情境依赖性",
+          "strength": "moderate",
+          "supporting_evidence": []
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "claim": "领导者的成功存在多种模式，不存在单一公式",
+      "strength": "moderate",
+      "sub_claims": [
+        {
+          "id": "C4.1",
+          "claim": "魅力型领导并非唯一有效模式",
+          "strength": "moderate",
+          "supporting_evidence": []
+        },
+        {
+          "id": "C4.2",
+          "claim": "讨论领导力、表达能力等也是有效领导方式",
+          "strength": "moderate",
+          "supporting_evidence": []
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "创始人对制度的持久影响具有双面性",
+      "strength": "moderate",
+      "sub_claims": [
+        {
+          "id": "C5.1",
+          "claim": "创始人可以建立持久的好制度或坏制度",
+          "strength": "moderate",
+          "supporting_evidence": []
+        },
+        {
+          "id": "C5.2",
+          "claim": "创始人影响跨越商业、政治、体育等多个领域",
+          "strength": "moderate",
+          "supporting_evidence": []
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "claim": "更换领导者通常是次优决策",
+      "strength": "moderate",
+      "sub_claims": [
+        {
+          "id": "C6.1",
+          "claim": "企业困境往往由多重因素造成",
+          "strength": "moderate",
+          "supporting_evidence": []
+        },
+        {
+          "id": "C6.2",
+          "claim": "体育教练研究证明解雇教练通常不能带来持久改善",
+          "strength": "moderate",
+          "supporting_evidence": ["D6"]
+        }
+      ]
+    }
+  ],
+  "methods": {
+    "reasoning_type": "mixed",
+    "argument_structure": "thesis-antithesis",
+    "key_frameworks": [
+      "Hamlet Test（哈姆雷特测试）",
+      "Analysis of Variance（方差分析）",
+      "Natural Experiments（自然实验法）"
+    ],
+    "logical_chain": [
+      "提出经典辩论（伟大领导者理论 vs 环境决定论）",
+      "引入哈姆雷特测试作为新评估工具",
+      "用统计数据证明领导者平均影响力有限",
+      "识别领导者产生实际影响的条件",
+      "讨论实际应用与启示"
+    ]
+  },
+  "data_points": [
+    {
+      "id": "D1",
+      "metric": "领导者对利润变异的平均贡献",
+      "value": "15-30%",
+      "context": "方差分析研究结果",
+      "source_paragraph": 54
+    },
+    {
+      "id": "D2",
+      "metric": "年份对利润变异的贡献",
+      "value": "约2%",
+      "context": "对比1930年大萧条时期",
+      "source_paragraph": 52
+    },
+    {
+      "id": "D3",
+      "metric": "博茨瓦纳独立时大学毕业生数",
+      "value": "22人",
+      "context": "论证Seretse Khama的不可替代性",
+      "source_paragraph": 36
+    },
+    {
+      "id": "D4",
+      "metric": "美国石榴种植者数量（2002年）",
+      "value": "22人",
+      "context": "论证Resnick家族的独特性",
+      "source_paragraph": 42
+    },
+    {
+      "id": "D5",
+      "metric": "Resnick家族占美国石榴产量比例",
+      "value": "50%",
+      "context": "论证其不可替代性",
+      "source_paragraph": 42
+    },
+    {
+      "id": "D6",
+      "metric": "UCLA解雇教练导致的债务",
+      "value": "1.5亿美元",
+      "context": "论证频繁更换教练的代价",
+      "source_paragraph": 110
+    },
+    {
+      "id": "D7",
+      "metric": "互联网使用量增长倍数（12个月内）",
+      "value": "2.3倍",
+      "context": "Bezos把握时机的证据",
+      "source_paragraph": 74
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "type": "explicit",
+      "assumption": "领导者的重要性可以通过比较'有他vs无他'来评估",
+      "supports_claims": ["C2"]
+    },
+    {
+      "id": "A2",
+      "type": "explicit",
+      "assumption": "企业利润变异可以分解为多个独立因素",
+      "supports_claims": ["C1"]
+    },
+    {
+      "id": "A3",
+      "type": "implicit",
+      "assumption": "历史比较（如莎士比亚vs同时代剧作家）适用于商业领导者评估",
+      "supports_claims": ["C2"]
+    },
+    {
+      "id": "A4",
+      "type": "implicit",
+      "assumption": "体育教练研究的发现可以推广到商业领导者",
+      "supports_claims": ["C6"]
+    },
+    {
+      "id": "A5",
+      "type": "implicit",
+      "assumption": "领导者的'伟大'主要体现在其不可替代性上",
+      "supports_claims": ["C2"]
+    }
+  ],
+  "evidence_map": [
+    {
+      "claim_id": "C1",
+      "evidence": [
+        {
+          "paragraph": 54,
+          "quote": "On the average, individual leaders account for between 15 to 30% of the variation",
+          "relevance": "核心数据支撑"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "evidence": [
+        {
+          "paragraph": 34,
+          "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not",
+          "relevance": "哈姆雷特测试应用实例"
+        },
+        {
+          "paragraph": 42,
+          "quote": "They were uniquely qualified to set up the pomegranate juice industry",
+          "relevance": "通过测试的商业案例"
+        }
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "evidence": [
+        {
+          "paragraph": 64,
+          "quote": "those are five things that affect when a leader can make a difference",
+          "relevance": "五条件总结"
+        },
+        {
+          "paragraph": 58,
+          "quote": "you got to get the right time",
+          "relevance": "时机重要性"
+        }
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "evidence": [
+        {
+          "paragraph": 69,
+          "quote": "there is no magic formula despite what business schools do",
+          "relevance": "领导力模式多样性"
+        }
+      ]
+    },
+    {
+      "claim_id": "C5",
+      "evidence": [
+        {
+          "paragraph": 78,
+          "quote": "Founders create institutions that then are likely to carry on",
+          "relevance": "创始人影响持久性"
+        }
+      ]
+    },
+    {
+      "claim_id": "C6",
+      "evidence": [
+        {
+          "paragraph": 110,
+          "quote": "firing the coach is a bad decision and just does not result in a permanent improvement",
+          "relevance": "更换领导者的局限性"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "total_claims": 6,
+    "total_core_claims": 3,
+    "total_sub_claims": 13,
+    "total_data_points": 7,
+    "total_assumptions": 5,
+    "total_evidence_links": 8,
+    "avg_evidence_per_claim": 1.3
+  }
+}

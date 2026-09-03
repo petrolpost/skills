@@ -1,0 +1,131 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.1",
+  "slug": "are-great-leaders-truly-great-or-just-lucky",
+  "discovery_depth": "high",
+  "applicable": true,
+  "structures": [
+    {
+      "id": "DS-01",
+      "type": "decision_rule",
+      "name": "Hamlet Test（哈姆雷特测试）",
+      "scope": {"type": "article"},
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "领导者不可替代性评估",
+      "structure": {
+        "input": "某领导者及其成就",
+        "core_question": "是否只有此人能达成该成就？",
+        "rules": [
+          "能识别所有合理的替代人选",
+          "评估替代人选的能力",
+          "若无替代者 → 通过测试（uniquely qualified）",
+          "若有替代者 → 未通过测试"
+        ]
+      }
+    },
+    {
+      "id": "DS-02",
+      "type": "enumeration",
+      "name": "领导者产生重大影响的五个条件",
+      "scope": {"type": "section", "paragraphs": [58, 64]},
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "领导者何时真正重要",
+      "structure": {
+        "items": [
+          {"order": 1, "name": "唯一合格者", "description": "任务要求使只有一个人有资格执行"},
+          {"order": 2, "name": "时机窗口", "description": "存在一个有限的时间窗口可以行动"},
+          {"order": 3, "name": "识别并把握时机", "description": "能识别时机并主动抓住"},
+          {"order": 4, "name": "无可匹敌的追随者", "description": "领导者身边没有同等资质的竞争者"},
+          {"order": 5, "name": "逆民意行动能力", "description": "能让群体做其不愿做的事"}
+        ]
+      }
+    },
+    {
+      "id": "DS-03",
+      "type": "framework",
+      "name": "企业利润变异的四个影响因素",
+      "scope": {"type": "local", "paragraphs": [52, 54]},
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "企业利润变异来源分解",
+      "structure": {
+        "factors": [
+          {"name": "Year", "impact": "~2%", "description": "宏观经济周期"},
+          {"name": "Industry", "impact": "未量化", "description": "行业特性"},
+          {"name": "Company", "impact": "未量化", "description": "公司特有因素"},
+          {"name": "CEO", "impact": "15-30%", "description": "个体领导者贡献"}
+        ]
+      }
+    },
+    {
+      "id": "DS-04",
+      "type": "comparison",
+      "name": "CEO自由度分类",
+      "scope": {"type": "section", "paragraphs": [94, 100]},
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "职业选择决策框架",
+      "structure": {
+        "dimensions": ["潜在回报", "风险", "成功关键"],
+        "categories": [
+          {"name": "高自由度行业", "examples": ["T恤", "电脑", "香水", "肥皂"], "traits": {"reward": "可能非常富有", "risk": "可能被解雇", "key": "识别趋势/时机"}},
+          {"name": "低自由度行业", "examples": ["高炉", "铁路", "公共事业"], "traits": {"reward": "中等收入", "risk": "不会被解雇", "key": "稳定执行"}}
+        ]
+      }
+    },
+    {
+      "id": "DS-05",
+      "type": "enumeration",
+      "name": "领导力有效模式",
+      "scope": {"type": "local", "paragraphs": [68, 70]},
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "有效领导的多种实现路径",
+      "structure": {
+        "items": [
+          {"name": "魅力型", "representative": "Hitler", "mechanism": "通过个人魅力影响他人"},
+          {"name": "恐怖型", "representative": "Pinochet", "mechanism": "通过恐惧控制下属"},
+          {"name": "讨论引导型", "representative": "Kennedy", "mechanism": "通过组织讨论做决策"},
+          {"name": "表达型", "representative": "Churchill", "mechanism": "通过卓越表达说服"}
+        ]
+      }
+    },
+    {
+      "id": "DS-06",
+      "type": "enumeration",
+      "name": "领导者创造价值的方式",
+      "scope": {"type": "local", "paragraphs": [44, 48]},
+      "origin": "reconstructed",
+      "status": "author_asserted",
+      "subject": "领导者贡献的两种类型",
+      "structure": {
+        "items": [
+          {"name": "不可替代型", "description": "没有此人则结果不会发生", "example": "Resnick家族（石榴汁产业）"},
+          {"name": "塑造型", "description": "创新会发生，但此人塑造了独特方式", "example": "Bezos（Amazon）、Zuckerberg（Facebook）"}
+        ]
+      }
+    }
+  ],
+  "relations": [
+    {"from": "DS-01", "relation": "applies_to", "to": "DS-02", "origin": "explicit"},
+    {"from": "DS-01", "relation": "informs", "to": "DS-06", "origin": "explicit"}
+  ],
+  "conceptualization": {
+    "detected": false,
+    "scope": null,
+    "coherence": null
+  },
+  "rejected_candidates": [
+    {"name": "时机把握的三种模式", "reason": "叙事中的补充说明，非明确分类体系"},
+    {"name": "创始人影响的好坏二分", "reason": "举例说明，非结构化分类"},
+    {"name": "足球教练研究的跨领域应用", "reason": "研究方法迁移，非可复用的知识结构"}
+  ],
+  "stats": {
+    "structures": 6,
+    "explicit": 4,
+    "reconstructed": 2,
+    "inferred": 0
+  }
+}
