@@ -1,116 +1,192 @@
 {
   "module": "datafication",
-  "version": "dr3-reading/1.1",
+  "version": "dr3-reading/1.2",
   "slug": "are-great-leaders-truly-great-or-just-lucky",
   "discovery_depth": "high",
   "applicable": true,
   "structures": [
     {
       "id": "DS-01",
-      "type": "decision_rule",
-      "name": "Hamlet Test（哈姆雷特测试）",
       "scope": {"type": "article"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "领导者不可替代性评估",
       "structure": {
-        "input": "某领导者及其成就",
-        "core_question": "是否只有此人能达成该成就？",
-        "rules": [
-          "能识别所有合理的替代人选",
-          "评估替代人选的能力",
-          "若无替代者 → 通过测试（uniquely qualified）",
-          "若有替代者 → 未通过测试"
+        "elements": [
+          {"name": "input", "type": "input", "description": "某领导者及其成就"},
+          {"name": "question", "type": "question", "description": "是否只有此人能达成该成就？"},
+          {"name": "alternatives", "type": "set", "description": "所有合理的替代人选"},
+          {"name": "assessment", "type": "process", "description": "替代人选的能力评估"},
+          {"name": "outcome", "type": "result", "description": "通过/未通过测试"}
+        ],
+        "relations": [
+          {"from": "input", "to": "question", "type": "triggers"},
+          {"from": "question", "to": "alternatives", "type": "requires"},
+          {"from": "alternatives", "to": "assessment", "type": "enables"},
+          {"from": "assessment", "to": "outcome", "type": "produces"}
+        ],
+        "constraints": [
+          "必须能识别所有合理的替代人选",
+          "替代人选的评估必须基于客观能力"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 32, "quote": "I call it the Hamlet Test because you can ask, was Shakespeare the only person who could have written that great play, Hamlet?", "role": "definition"},
+        {"paragraph": 34, "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not pass the Hamlet Test", "role": "application"}
+      ],
+      "interpretation": {"suggested_kind": "decision_rule"}
     },
     {
       "id": "DS-02",
-      "type": "enumeration",
-      "name": "领导者产生重大影响的五个条件",
       "scope": {"type": "section", "paragraphs": [58, 64]},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "领导者何时真正重要",
       "structure": {
-        "items": [
-          {"order": 1, "name": "唯一合格者", "description": "任务要求使只有一个人有资格执行"},
-          {"order": 2, "name": "时机窗口", "description": "存在一个有限的时间窗口可以行动"},
-          {"order": 3, "name": "识别并把握时机", "description": "能识别时机并主动抓住"},
-          {"order": 4, "name": "无可匹敌的追随者", "description": "领导者身边没有同等资质的竞争者"},
-          {"order": 5, "name": "逆民意行动能力", "description": "能让群体做其不愿做的事"}
+        "elements": [
+          {"name": "condition_1", "type": "condition", "description": "唯一合格者（任务要求使只有一个人有资格执行）"},
+          {"name": "condition_2", "type": "condition", "description": "时机窗口（存在一个有限的时间窗口可以行动）"},
+          {"name": "condition_3", "type": "condition", "description": "识别并把握时机（能识别时机并主动抓住）"},
+          {"name": "condition_4", "type": "condition", "description": "无可匹敌的追随者（领导者身边没有同等资质的竞争者）"},
+          {"name": "condition_5", "type": "condition", "description": "逆民意行动能力（能让群体做其不愿做的事）"}
+        ],
+        "relations": [
+          {"from": "condition_1", "to": "condition_4", "type": "complementary"},
+          {"from": "condition_2", "to": "condition_3", "type": "requires"}
+        ],
+        "constraints": [
+          "五个条件是独立的，满足任一即可产生重大影响",
+          "条件之间存在逻辑关联但非严格依赖"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 64, "quote": "those are five things that affect when a leader can make a difference", "role": "boundary"},
+        {"paragraph": 58, "quote": "A second consideration is time and place", "role": "condition_2"},
+        {"paragraph": 60, "quote": "some people recognize the right time and seize it", "role": "condition_3"},
+        {"paragraph": 63, "quote": "A leader can make a difference if the leader does not have followers almost equally qualified to do it", "role": "condition_4"},
+        {"paragraph": 63, "quote": "a leader can make a difference if a leader can get a country to do something that they do not want to do", "role": "condition_5"}
+      ],
+      "interpretation": {"suggested_kind": "enumeration"}
     },
     {
       "id": "DS-03",
-      "type": "framework",
-      "name": "企业利润变异的四个影响因素",
       "scope": {"type": "local", "paragraphs": [52, 54]},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "企业利润变异来源分解",
       "structure": {
-        "factors": [
-          {"name": "Year", "impact": "~2%", "description": "宏观经济周期"},
-          {"name": "Industry", "impact": "未量化", "description": "行业特性"},
-          {"name": "Company", "impact": "未量化", "description": "公司特有因素"},
-          {"name": "CEO", "impact": "15-30%", "description": "个体领导者贡献"}
+        "elements": [
+          {"name": "factor_year", "type": "factor", "description": "年份（Year）— 影响力 ~2%"},
+          {"name": "factor_industry", "type": "factor", "description": "行业（Industry）— 未量化"},
+          {"name": "factor_company", "type": "factor", "description": "公司（Company）— 未量化"},
+          {"name": "factor_ceo", "type": "factor", "description": "CEO（Leader）— 影响力 15-30%"}
+        ],
+        "relations": [
+          {"from": "factor_year", "to": "total_profit_variation", "type": "contributes"},
+          {"from": "factor_industry", "to": "total_profit_variation", "type": "contributes"},
+          {"from": "factor_company", "to": "total_profit_variation", "type": "contributes"},
+          {"from": "factor_ceo", "to": "total_profit_variation", "type": "contributes"}
+        ],
+        "constraints": [
+          "四个因素相互独立",
+          "各因素影响力可叠加"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 52, "quote": "there are four things that affect the profits of companies", "role": "definition"},
+        {"paragraph": 52, "quote": "On the average, the year accounts were only about 2% of variation", "role": "data_point"},
+        {"paragraph": 54, "quote": "On the average, individual leaders account for between 15 to 30% of the variation", "role": "data_point"}
+      ],
+      "interpretation": {"suggested_kind": "framework"}
     },
     {
       "id": "DS-04",
-      "type": "comparison",
-      "name": "CEO自由度分类",
       "scope": {"type": "section", "paragraphs": [94, 100]},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "职业选择决策框架",
       "structure": {
-        "dimensions": ["潜在回报", "风险", "成功关键"],
-        "categories": [
-          {"name": "高自由度行业", "examples": ["T恤", "电脑", "香水", "肥皂"], "traits": {"reward": "可能非常富有", "risk": "可能被解雇", "key": "识别趋势/时机"}},
-          {"name": "低自由度行业", "examples": ["高炉", "铁路", "公共事业"], "traits": {"reward": "中等收入", "risk": "不会被解雇", "key": "稳定执行"}}
+        "elements": [
+          {"name": "high_discretion", "type": "category", "description": "高自由度行业", "attributes": {"examples": ["T恤", "电脑", "香水", "肥皂"], "reward": "可能非常富有", "risk": "可能被解雇", "key": "识别趋势/时机"}},
+          {"name": "low_discretion", "type": "category", "description": "低自由度行业", "attributes": {"examples": ["高炉", "铁路", "公共事业"], "reward": "中等收入", "risk": "不会被解雇", "key": "稳定执行"}}
+        ],
+        "relations": [
+          {"from": "high_discretion", "to": "low_discretion", "type": "contrast"},
+          {"from": "high_discretion", "to": "risk", "type": "has_attribute", "attributes": {"level": "high"}},
+          {"from": "low_discretion", "to": "risk", "type": "has_attribute", "attributes": {"level": "low"}}
+        ],
+        "constraints": [
+          "行业分类基于 CEO 决策自由度",
+          "不存在中间状态"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 94, "quote": "you pick an industry in which the CEO has what's called high discretion", "role": "definition"},
+        {"paragraph": 98, "quote": "you go into a business where the CEO has low discretion", "role": "definition"}
+      ],
+      "interpretation": {"suggested_kind": "comparison"}
     },
     {
       "id": "DS-05",
-      "type": "enumeration",
-      "name": "领导力有效模式",
       "scope": {"type": "local", "paragraphs": [68, 70]},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "有效领导的多种实现路径",
       "structure": {
-        "items": [
-          {"name": "魅力型", "representative": "Hitler", "mechanism": "通过个人魅力影响他人"},
-          {"name": "恐怖型", "representative": "Pinochet", "mechanism": "通过恐惧控制下属"},
-          {"name": "讨论引导型", "representative": "Kennedy", "mechanism": "通过组织讨论做决策"},
-          {"name": "表达型", "representative": "Churchill", "mechanism": "通过卓越表达说服"}
+        "elements": [
+          {"name": "mode_charismatic", "type": "mode", "description": "魅力型（Charismatic）— 代表人物：Hitler", "attributes": {"mechanism": "通过个人魅力影响他人"}},
+          {"name": "mode_terror", "type": "mode", "description": "恐怖型（Terror-based）— 代表人物：Pinochet", "attributes": {"mechanism": "通过恐惧控制下属"}},
+          {"name": "mode_discussion", "type": "mode", "description": "讨论引导型（Discussion Leader）— 代表人物：Kennedy", "attributes": {"mechanism": "通过组织讨论做决策"}},
+          {"name": "mode_expressive", "type": "mode", "description": "表达型（Expressive）— 代表人物：Churchill", "attributes": {"mechanism": "通过卓越表达说服"}}
+        ],
+        "relations": [
+          {"from": "mode_charismatic", "to": "mode_terror", "type": "opposite"},
+          {"from": "mode_discussion", "to": "mode_expressive", "type": "opposite"}
+        ],
+        "constraints": [
+          "四种模式是独立的，不存在单一'正确'模式",
+          "商学院倾向于教授魅力型，但实际有效模式多样"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 68, "quote": "it's commonly taught that a leader needs to be charismatic", "role": "mode_1"},
+        {"paragraph": 69, "quote": "You can be an effective leader by terrorizing your subordinates", "role": "mode_2"},
+        {"paragraph": 69, "quote": "you can be successful, not being charismatic, but being a good discussion leader", "role": "mode_3"},
+        {"paragraph": 70, "quote": "You can be an effective leader by expressing yourself well as Winston Churchill did", "role": "mode_4"}
+      ],
+      "interpretation": {"suggested_kind": "enumeration"}
     },
     {
       "id": "DS-06",
-      "type": "enumeration",
-      "name": "领导者创造价值的方式",
       "scope": {"type": "local", "paragraphs": [44, 48]},
       "origin": "reconstructed",
       "status": "author_asserted",
       "subject": "领导者贡献的两种类型",
       "structure": {
-        "items": [
-          {"name": "不可替代型", "description": "没有此人则结果不会发生", "example": "Resnick家族（石榴汁产业）"},
-          {"name": "塑造型", "description": "创新会发生，但此人塑造了独特方式", "example": "Bezos（Amazon）、Zuckerberg（Facebook）"}
+        "elements": [
+          {"name": "type_irreplaceable", "type": "type", "description": "不可替代型（没有此人则结果不会发生）", "attributes": {"example": "Resnick家族（石榴汁产业）"}},
+          {"name": "type_shaper", "type": "type", "description": "塑造型（创新会发生，但此人塑造了独特方式）", "attributes": {"example": "Bezos（Amazon）、Zuckerberg（Facebook）"}}
+        ],
+        "relations": [
+          {"from": "type_irreplaceable", "to": "type_shaper", "type": "opposite"},
+          {"from": "Hamlet_Test.pass", "to": "type_irreplaceable", "type": "maps_to"},
+          {"from": "Hamlet_Test.fail", "to": "type_shaper", "type": "maps_to"}
+        ],
+        "constraints": [
+          "两种类型覆盖所有领导者",
+          "类型判定基于'有他vs无他'的比较"
         ]
-      }
+      },
+      "evidence": [
+        {"paragraph": 44, "quote": "someone, the Resnick family and pomegranates, who created something, an outcome that probably would not have happened without them", "role": "type_1"},
+        {"paragraph": 44, "quote": "leaders like Bezos or other tech titans like Steve Jobs, Bill Gates, where the innovation would've happened, but they shaped the outcome", "role": "type_2"}
+      ],
+      "interpretation": {"suggested_kind": "enumeration"}
     }
   ],
   "relations": [
     {"from": "DS-01", "relation": "applies_to", "to": "DS-02", "origin": "explicit"},
-    {"from": "DS-01", "relation": "informs", "to": "DS-06", "origin": "explicit"}
+    {"from": "DS-01", "relation": "determines", "to": "DS-06", "origin": "explicit"}
   ],
   "conceptualization": {
     "detected": false,

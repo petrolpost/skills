@@ -1,32 +1,35 @@
 # Datafication：Are Great Leaders Truly Great—or Just Lucky?
 
 > 发现摘要：6 个可数据化结构（4 个显式、2 个忠实重构），无 article-level 概念体系
+> Schema 版本：dr3-reading/1.2（通用 elements/relations/constraints 结构）
 
 ## 发现的结构
 
 ### DS-01: Hamlet Test（哈姆雷特测试）
 
-**类型**：decision_rule
-**作用**：评估领导者不可替代性的决策工具
 **scope**: article（贯穿全文）
 **origin**: explicit
 **status**: author_asserted
+**interpretation.suggested_kind**: decision_rule
 
-**结构**：
+**elements**:
+- input: 某领导者及其成就
+- question: 是否只有此人能达成该成就？
+- alternatives: 所有合理的替代人选
+- assessment: 替代人选的能力评估
+- outcome: 通过/未通过测试
 
-```
-输入：某领导者及其成就
-  ↓
-核心问题：是否只有此人能达成该成就？
-  ↓
-判定规则：
-  ├─ 能识别所有合理的替代人选
-  ├─ 评估替代人选的能力
-  └─ 若无替代者 ≈ 通过测试（uniquely qualified）
-  └─ 若有替代者 ≈ 未通过测试
-```
+**relations**:
+- input → question（触发评估）
+- question → alternatives（需要识别替代者）
+- alternatives → assessment（评估能力）
+- assessment → outcome（得出结论）
 
-**原文证据**：
+**constraints**:
+- 必须能识别所有合理的替代人选
+- 替代人选的评估必须基于客观能力
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -37,23 +40,27 @@
 
 ### DS-02: 领导者产生重大影响的五个条件
 
-**类型**：enumeration
-**作用**：识别领导者何时真正重要的判断清单
 **scope**: section（P58-64）
 **origin**: explicit
 **status**: author_asserted
+**interpretation.suggested_kind**: enumeration
 
-**结构**：
+**elements**:
+- condition_1: 唯一合格者（任务要求使只有一个人有资格执行）
+- condition_2: 时机窗口（存在一个有限的时间窗口可以行动）
+- condition_3: 识别并把握时机（能识别时机并主动抓住）
+- condition_4: 无可匹敌的追随者（领导者身边没有同等资质的竞争者）
+- condition_5: 逆民意行动能力（能让群体做其不愿做的事）
 
-| 序号 | 条件 | 描述 |
-|------|------|------|
-| 1 | 唯一合格者 | 任务要求使只有一个人有资格执行 |
-| 2 | 时机窗口 | 存在一个有限的时间窗口可以行动 |
-| 3 | 识别并把握时机 | 能识别时机并主动抓住 |
-| 4 | 无可匹敌的追随者 | 领导者身边没有同等资质的竞争者 |
-| 5 | 逆民意行动能力 | 能让群体做其不愿做的事 |
+**relations**:
+- condition_1 ⊥ condition_4（互补：唯一合格者 vs 无可匹敌的追随者）
+- condition_2 → condition_3（时机窗口需要被识别和把握）
 
-**原文证据**：
+**constraints**:
+- 五个条件是独立的，满足任一即可产生重大影响
+- 条件之间存在逻辑关联但非严格依赖
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -67,22 +74,26 @@
 
 ### DS-03: 企业利润变异的四个影响因素
 
-**类型**：framework
-**作用**：分解企业利润变异的来源
 **scope**: local（P52-54）
 **origin**: explicit
 **status**: author_asserted
+**interpretation.suggested_kind**: framework
 
-**结构**：
+**elements**:
+- factor_year: 年份（Year）— 影响力 ~2%
+- factor_industry: 行业（Industry）— 未量化
+- factor_company: 公司（Company）— 未量化
+- factor_ceo: CEO（Leader）— 影响力 15-30%
 
-| 因素 | 影响力 | 说明 |
-|------|--------|------|
-| 年份（Year） | ~2% | 宏观经济周期（如1930年大萧条） |
-| 行业（Industry） | 未量化 | 行业特性（如T恤业盈利，公共事业受管制） |
-| 公司（Company） | 未量化 | 公司特有因素（如P&G持续150年优秀管理） |
-| CEO（Leader） | 15-30% | 个体领导者的贡献 |
+**relations**:
+- factor_year + factor_industry + factor_company + factor_ceo = total_profit_variation
+- factor_ceo ⊂ total_profit_variation（CEO 贡献是总变异的一部分）
 
-**原文证据**：
+**constraints**:
+- 四个因素相互独立
+- 各因素影响力可叠加
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -94,23 +105,29 @@
 
 ### DS-04: CEO 自由度分类（高自由度 vs 低自由度行业）
 
-**类型**：comparison
-**作用**：职业选择决策框架
 **scope**: section（P94-100）
 **origin**: explicit
 **status**: author_asserted
+**interpretation.suggested_kind**: comparison
 
-**结构**：
+**elements**:
+- high_discretion: 高自由度行业
+  - examples: T恤、电脑、香水、肥皂
+  - traits: 可能非常富有、可能被解雇、识别趋势/时机
+- low_discretion: 低自由度行业
+  - examples: 高炉、铁路、公共事业
+  - traits: 中等收入、不会被解雇、稳定执行
 
-| 维度 | 高自由度行业 | 低自由度行业 |
-|------|-------------|-------------|
-| 定义 | CEO 拥有大量决策权 | CEO 决策空间受限 |
-| 代表行业 | T恤、电脑、香水、肥皂 | 高炉、铁路、公共事业 |
-| 潜在回报 | 可能非常富有 | 中等收入 |
-| 风险 | 可能被解雇 | 不会被解雇 |
-| 成功关键 | 识别趋势/时机 | 稳定执行 |
+**relations**:
+- high_discretion ↔ low_discretion（对比关系）
+- high_discretion.risk > low_discretion.risk
+- high_discretion.reward > low_discretion.reward
 
-**原文证据**：
+**constraints**:
+- 行业分类基于 CEO 决策自由度
+- 不存在中间状态
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -121,22 +138,26 @@
 
 ### DS-05: 领导力有效模式
 
-**类型**：enumeration
-**作用**：有效领导的多种实现路径
 **scope**: local（P68-70）
 **origin**: explicit
 **status**: author_asserted
+**interpretation.suggested_kind**: enumeration
 
-**结构**：
+**elements**:
+- mode_charismatic: 魅力型（Charismatic）— 代表人物：Hitler
+- mode_terror: 恐怖型（Terror-based）— 代表人物：Pinochet
+- mode_discussion: 讨论引导型（Discussion Leader）— 代表人物：Kennedy
+- mode_expressive: 表达型（Expressive）— 代表人物：Churchill
 
-| 模式 | 代表人物 | 核心机制 |
-|------|---------|---------|
-| 魅力型（Charismatic） | Hitler | 通过个人魅力影响他人 |
-| 恐怖型（Terror-based） | Pinochet | 通过恐惧控制下属 |
-| 讨论引导型（Discussion Leader） | Kennedy | 通过组织讨论做决策 |
-| 表达型（Expressive） | Churchill | 通过卓越表达说服 |
+**relations**:
+- mode_charismatic ⊥ mode_terror（对立：魅力 vs 恐惧）
+- mode_discussion ⊥ mode_expressive（对立：讨论 vs 表达）
 
-**原文证据**：
+**constraints**:
+- 四种模式是独立的，不存在单一"正确"模式
+- 商学院倾向于教授魅力型，但实际有效模式多样
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -149,20 +170,27 @@
 
 ### DS-06: 领导者创造价值的方式
 
-**类型**：enumeration
-**作用**：区分领导者贡献的两种类型
 **scope**: local（P44-48）
 **origin**: reconstructed
 **status**: author_asserted（由对话内容忠实重构）
+**interpretation.suggested_kind**: enumeration
 
-**结构**：
+**elements**:
+- type_irreplaceable: 不可替代型（没有此人则结果不会发生）
+  - example: Resnick家族（石榴汁产业）
+- type_shaper: 塑造型（创新会发生，但此人塑造了独特方式）
+  - example: Bezos（Amazon）、Zuckerberg（Facebook）
 
-| 类型 | 描述 | 示例 |
-|------|------|------|
-| 不可替代型 | 没有此人则结果不会发生 | Resnick家族（石榴汁产业） |
-| 塑造型 | 创新会发生，但此人塑造了独特方式 | Bezos（Amazon）、Zuckerberg（Facebook） |
+**relations**:
+- type_irreplaceable ⊥ type_shaper（对立：不可替代 vs 可替代但独特）
+- Hamlet_Test.pass → type_irreplaceable
+- Hamlet_Test.fail → type_shaper
 
-**原文证据**：
+**constraints**:
+- 两种类型覆盖所有领导者
+- 类型判定基于"有他vs无他"的比较
+
+**原文证据**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -176,11 +204,11 @@
 | 从 | 关系 | 到 | origin |
 |---|------|---|--------|
 | DS-01 | applies_to | DS-02 | explicit |
-| DS-01 | informs | DS-06 | explicit |
+| DS-01 | determines | DS-06 | explicit |
 
 **说明**：
 - DS-01（哈姆雷特测试）是 DS-02（五个条件）的评估工具之一
-- DS-01 的测试结果区分了 DS-06 的两种价值创造类型
+- DS-01 的测试结果（通过/未通过）决定了 DS-06 的类型分类
 
 ---
 
