@@ -1,6 +1,6 @@
 # DR3 深度阅读（dr3-reading）
 
-将英文专业文章转化为**属于你的、中文、高价值、可追溯**的深度笔记。
+将英文专业文章转化为**属于你的、中文、高价值、可追溯**的深度笔记，并可按需发现文章中的可数据化知识结构。
 
 > 源自 InsightWeaver DR3 v0.4 的「平台期 + 依赖矩阵」模型。无运行时依赖、无固定本机路径，任何工作目录开箱即用，产出高度兼容 Obsidian。
 
@@ -8,180 +8,138 @@
 
 ## 它解决什么问题
 
-用 AI 读英文文章，通常有两种失败模式：
-
-| 常见做法 | 问题 |
-|---|---|
-| AI 三句话摘要 | 太浅——观点有了，证据链没有，一周后只剩模糊印象 |
-| AI 全文翻译 | 太直——语言转换了，认知没有转换，读完仍是"看过"而非"读懂" |
-
-dr3-reading 不做翻译，也不做摘要。它走一条完整链路：
+用 AI 读英文文章，常见失败模式是“太浅”的摘要和“太直”的全文翻译。dr3-reading 不做简单翻译，也不把所有内容强行结构化，而是通过：
 
 ```
-结构化理解 → 沉浸式阅读 → 批判反思 → 人机协作重构 → 笔记沉淀 → 质量评估
+结构化理解 → 可选知识结构发现 → 沉浸式阅读 → 批判反思 → 人机协作重构 → 笔记沉淀 → 质量评估
 ```
 
-每条洞见标注原文证据，每次执行写入状态留痕，重构方案必须经你确认——笔记是"和 AI 一起想出来的"，不是"AI 替你总结的"。
+每条洞见和知识结构尽可能保留原文证据，每次执行写入状态留痕，重构方案必须经用户确认。
 
 ---
 
-## 适用 / 不适用
+## Datafication：把文章中的结构性知识显式化
 
-**适用**：
-- HBR、Strategy+Business、麦肯锡季刊、学术期刊、高质量商业博客等**英文专业文章**
-- 需要长期沉淀进个人知识库（尤其 Obsidian）的深度笔记
-- 希望对文章观点做批判性检验，而非单向接收
-- 跨多次会话的断点续读：处理到一半，下次接着来
+新增的 `datafication` 是一个**可选的 A 阶段分支**。
 
-**不适用**：
-- 简单翻译（直接让 AI 翻即可）
-- 快速摘要（杀鸡用牛刀）
-- 非文章类内容（视频、播客转写稿、书籍整本）
+它回答的不是“文章有什么数据”，而是：
+
+> **文章中是否存在具有独立结构性、边界性和复用价值的知识单元？如果存在，能否忠实地把它显式化？**
+
+可能发现的结构包括：
+
+- Process：流程、步骤、生命周期
+- Classification：分类体系
+- Criteria：判断或评价标准
+- Decision Rule：条件—行动规则
+- Framework：框架、模型、矩阵
+- Comparison：系统比较
+- Scale：等级、成熟度、阶段尺度
+- Enumeration：具有共同语义边界的列举
+- Relationship：作者明确表达的关系
+
+### 重要边界
+
+- 不是所有文章都有可数据化结构。
+- 文章整体没有概念系统，也可能存在局部可数据化结构。
+- Datafication 是 **discover, don't impose**：不为了填 schema 而制造结构。
+- 标题、普通列表、叙事顺序不会自动被当成结构。
+- 每个结构必须有 scope 和 evidence。
+- `author_asserted` 只表示“作者表达了该结构”，不表示 DR3 认可其正确性。
+- Datafication 不自动建立 ontology；它可以成为后续 Concept System / Ontology / Alignment 工作的上游输入。
 
 ---
 
 ## 工作流总览
 
-8 个功能分属 4 个阶段（Stage），按依赖矩阵组合执行，**不强制全流程**：
+9 个功能分属 4 个阶段。Datafication 是 A 阶段可选分支，不改变核心链路：
 
 | Stage | 功能 | 作用 | 定位 |
 |---|---|---|---|
-| A 素材构建 | `importer` | 抓取、清洗、9 字段元数据、去重 | 唯一强制项 |
-| A | `structured_extractor` | 四维度抽取：目的 / 主张 / 方法 / 数据 + 隐含假设 + 证据映射 | 核心链路 |
-| A | `immersion_reader` | 3 种沉浸风格 × 3 个视角（中立 / 作者 / 怀疑者） | 可选增强 |
-| B 分析产出 | `synthesis` | 融合抽取结果与沉浸笔记，生成综合分析包 | 核心链路 |
-| B | `critic` | 3 种批判模式（red_team / socratic / collaborative）× 3 档深度 | 可选增强 |
-| C 人机重构 | `reconstructor` | 3 种框架（SCQA / Pyramid / Narrative_Arc）生成方案，**等你确认** | 核心链路（HIL） |
-| C | `note_generator` | 3 种模板生成 Obsidian 笔记 | 核心链路 |
-| D 进化评估 | `evaluator` | 5 项指标质量评估 + 三层进化建议 | 可选 |
+| A 素材构建 | `importer` | 抓取、清洗、元数据、去重 | 唯一强制项 |
+| A | `structured_extractor` | Purpose / Claims / Methods / Data + 假设 + 证据 | 核心链路 |
+| A | `datafication` | 发现并结构化局部或整体知识结构 | 可选增强 |
+| A | `immersion_reader` | 沉浸式阅读 | 可选增强 |
+| B 分析产出 | `synthesis` | 综合分析 | 核心链路 |
+| B | `critic` | 批判分析 | 可选增强 |
+| C 人机重构 | `reconstructor` | 重构方案，等用户确认 | 核心链路（HIL） |
+| C | `note_generator` | Obsidian 笔记 | 核心链路 |
+| D 进化评估 | `evaluator` | 质量评估 + 进化建议 | 可选 |
 
 **核心链路**：`importer → structured_extractor → synthesis → reconstructor → note_generator`
+
+**Datafication 分支**：`importer → datafication →（可选增强 synthesis）`
 
 ---
 
 ## 快速开始
 
-### 1. 安装
-
-- **TRAE**：下载 [dr3-reading.skill](releases/dr3-reading.skill)（ZIP 格式），在技能市场导入
-- **手动**：解压到你的 skills 目录，确保 `SKILL.md` 位于 `dr3-reading/` 根下
-
-### 2. 第一篇文章
-
-直接把文章 URL 丢给 AI：
+导入文章后，功能菜单会显示：
 
 ```
-帮我深度阅读这篇文章：https://hbr.org/2025/01/xxxx
-```
+📰 {title}
 
-importer 自动执行，然后展示功能菜单：
-
-```
-📰 Why Strategy Unsticks
-
-A 素材构建   x importer   · ext 结构抽取   · imm 沉浸重建 [可选]
+A 素材构建   x importer   · ext 结构抽取   · df 数据化 [可选]   · imm 沉浸阅读 [可选]
 B 分析产出   L synthesis（锁定：需 structured_data）
 C 人机重构   L reconstructor   L note_generator
 D 进化评估   L evaluator
-
-回复功能名或编号执行；也可以说"继续"、"完整流程"、"只批判"等。
 ```
 
-### 3. 三种推进方式
+可以直接说：
 
-| 你说 | AI 做 |
-|---|---|
-| `完整流程` | 8 个功能依次执行，到 reconstructor 停下等你确认方案 |
-| `继续` | 按核心链路执行下一个可执行功能 |
-| `快速流程` | 跳过可选项，只走核心链路 |
-
-重构方案确认是唯一强制的人工卡点——AI 呈现 2-3 个候选方案、各自如何回应批判发现、推荐理由，你拍板后才生成笔记。
-
----
-
-## 自然语言指令速查
-
-| 你说 | 动作 |
-|---|---|
-| 给出文章 URL / 本地路径 | 执行 importer，展示功能菜单 |
-| `继续` / `下一步` | 执行下一个可执行功能 |
-| `完整流程` / `深度阅读这篇` | 全流程（重构处停下等确认） |
-| `快速流程` | 核心链路直达笔记 |
-| `只批判` / `换 red_team 模式重跑` | 执行 / 重跑 critic |
-| `确认` / `选方案 A` | 确认重构方案 |
-| `强制生成笔记` | 过期数据下放行 note_generator（笔记写入新鲜度水印） |
-| `状态` / `看板` / `进度` | 重新展示功能菜单 |
-| `评估一下` | 执行 evaluator |
-
----
-
-## 状态系统与断点续读
-
-每篇文章有独立的 `state.json`，功能菜单的每个符号实时反映可执行性：
-
-| 符号 | 含义 |
-|---|---|
-| `·` | 可执行 |
-| `~` | 可执行（软依赖缺失，产出会标注"未增强"） |
-| `x` | 已完成 |
-| `!` | 已过期（上游重跑过） |
-| `L` | 锁定（依赖缺失或过期） |
-| `F` | 失败（可重试） |
-
-**级联失效**：重跑任一功能，下游自动标记过期。已确认的重构方案不会被静默覆盖——保留确认记录、追加过期标记、交你裁决。会话中断后，AI 读取状态即可无缝续读。
-
-**数据新鲜度**：唯一允许的强制放行是"基于过期重构生成笔记"，此时笔记开头必须写入水印，声明数据已过期。过期就是过期，不装新鲜。
+- `数据化`：执行 datafication
+- `找出可以数据化的内容`：执行 datafication
+- `继续`：只沿核心链路推进，不自动加入 datafication
+- `完整流程 + 数据化`：在完整流程中加入 datafication
 
 ---
 
 ## 输出结构
 
-所有产出写入当前工作目录的 `.petrelpost/`（相对路径，环境无关）：
-
 ```
-.petrelpost/
-├── articles/
-│   ├── _index.md                  # 已处理文章索引（去重 + 总览）
-│   └── [slug]/
-│       ├── state.json             # 状态表（执行判定唯一依据）
-│       ├── trace.jsonl            # 执行轨迹（追加式审计日志）
-│       ├── original/              # 清洗后原文 + 元数据
-│       ├── analysis/              # 结构化抽取结果
-│       ├── immersion/             # 沉浸阅读笔记
-│       ├── synthesis/             # 综合分析包
-│       ├── critique/              # 批判报告
-│       ├── reconstruction/        # 重构方案（draft → confirmed）
-│       ├── outputs/[slug].md      # 最终笔记
-│       └── optimization_report.md # 质量评估报告
-└── outputs/[slug].md              # 全局导出副本（Obsidian 直接索引）
+.petrelpost/articles/[slug]/
+├── state.json
+├── trace.jsonl
+├── original/
+├── analysis/
+├── datafication/
+│   ├── datafication.md
+│   └── datafication.json
+├── immersion/
+├── synthesis/
+├── critique/
+├── reconstruction/
+└── outputs/[slug].md
 ```
 
-笔记为标准 Obsidian 格式：YAML frontmatter、kebab-case 标签、中文概念双链、行动项复选框。把 `.petrelpost/outputs/` 指向 Obsidian 库即可直接使用。
+`datafication.json` 是机器可解析结果；`datafication.md` 用于人工检查。两者都必须保留结构对象的 provenance、scope 和 evidence。
 
 ---
 
-## 可调参数（各功能默认值见对应模板）
+## 状态系统
 
-| 功能 | 参数 | 选项 |
-|---|---|---|
-| structured_extractor | extraction_depth | standard / high |
-| immersion_reader | style × persona | 3 风格 × 3 视角 |
-| critic | critique_mode × depth | red_team / socratic / collaborative × 3 档 |
-| reconstructor | framework | SCQA / Pyramid / Narrative_Arc / 自定义 |
-| note_generator | template | deep_with_evidence / concise / flashcard |
-| note_generator | evidence_link_style | quote_with_source / footnote / inline |
+每篇文章有独立的 `state.json`。Datafication 使用 `raw_content` 作为硬依赖，`structured_data` 作为软增强：
 
-参数默认值内置于模板；你明确指定时覆盖默认，并记入 trace 留痕。
+- 只有 raw_content：`~`，可以执行但未使用 structured_extractor 增强
+- raw_content + 有效 structured_data：`·`
+- datafication 已完成：`x`
+- importer 重跑：datafication → `!`
+- structured_extractor 重跑：datafication → `stale_soft=true`，不阻塞
+- datafication 重跑：synthesis 只产生软过期，不改变核心链路的硬状态
+
+这保证 Datafication 是**可选知识产出，而不是阅读流程的强制步骤**。
 
 ---
 
 ## 设计理念
 
 1. **深度理解而非翻译**——目标是认知增量，不是语言转换
-2. **强可追溯性**——每条洞见有证据链，每次执行有 trace；笔记经得起半年后回看追问
-3. **Human-in-the-Loop**——重构方案必须人工确认；已确认结果不静默覆盖；无"默认同意"
-4. **按需执行**——依赖矩阵提示可执行性，不强制全流程；熟悉领域可以走快速链路
-5. **风险可见**——允许在过期数据上强制推进，但产出物必须声明，决策权在你
+2. **发现而非强加**——Datafication 只发现文章已有结构，不为了结构数量而制造结构
+3. **局部优先**——没有整体概念系统也可以提取局部结构
+4. **强可追溯性**——结构对象和洞见都尽可能回指原文
+5. **不预设本体**——作者表达的结构可以被保存、比较和质疑，不自动被当成正确 ontology
+6. **Human-in-the-Loop**——重构方案必须人工确认
+7. **按需执行**——依赖矩阵提示可执行性，不强制全流程
 
 ---
 
@@ -189,11 +147,20 @@ D 进化评估   L evaluator
 
 ```
 dr3-reading/
-├── SKILL.md              # 总纲：依赖矩阵、状态机、指令映射
-├── README.md             # 本文件
+├── SKILL.md
+├── README.md
 └── references/
-    ├── protocol.md       # state / trace 协议 + 级联失效规则
-    └── functions/        # 8 个功能模板（执行时按需加载）
+    ├── protocol.md
+    └── functions/
+        ├── importer.md
+        ├── structured_extractor.md
+        ├── datafication.md
+        ├── immersion_reader.md
+        ├── synthesis.md
+        ├── critic.md
+        ├── reconstructor.md
+        ├── note_generator.md
+        └── evaluator.md
 ```
 
-版本：dr3-reading/1.0 · 源自 InsightWeaver DR3 v0.4
+版本：dr3-reading/1.1 · 源自 InsightWeaver DR3 v0.4
