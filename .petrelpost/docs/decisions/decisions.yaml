@@ -95,25 +95,25 @@ decisions:
     source: "datafication-test-result / Mimo 2.5 测试"
 
   - id: DEC-20260905-04
-    status: pending
+    status: confirmed
     created_at: "2026-09-05"
     from_signal: null
     trigger:
-      summary: "新的销售与营销文章测试发现：即使实施 claim-level provenance，模型仍可能从两个有证据支持的 elements 推导未经证实的 relation，并进一步赋予 causes/enables/leads_to 等语义强度。"
-      source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
+      summary: "Relation Audit 发现 Experiment 3 生成的 11 条 relation 均缺乏独立文本支持；随后 Experiment 4 在关闭 relation generation 的条件下，Structure、Elements、Scope、Importance、Origin 与 Rejected candidates 均保持不变。"
+      source: "datafication-test-result / Experiment 3 Relation Audit + Experiment 4 No Relation Generation"
     change:
-      from: "claim-level provenance 被认为足以约束结构内部关系"
-      to: null
+      from: "将 Relation 作为 Structure 构建过程中的默认生成结果"
+      to: "Relation 不是 Datafication Structure 的必需组成部分；仅当原文对关系本身提供独立且足够强的证据时才建立 Relation"
     rationale:
-      summary: "测试显示 Evidence(A) 与 Evidence(B) 并不等于 Evidence(A → B)。需要进一步判断结构存在的证据、element 的证据、relation 的证据以及 relation semantic strength 的证据是否应独立验证。"
-      待补全: true
+      summary: "Experiment 3 的 11 条 relation 经独立 relation-level audit 后全部删除，而 Experiment 4 直接关闭 relation generation 后，4 个 structures、16 个 elements、section scope、1 central + 3 supporting importance、4 explicit origins 以及 5 个 rejected candidates 均保持不变。这表明 relation generation 并非 Structure Discovery 的必要中间步骤，并支持将 relation 从结构发现的必需输出中分离出来。"
+      待补全: false
     evidence:
       - type: analysis
-        source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
-        excerpt: "模型将 multi-channel buyer journey 与 separate data systems 建立 creates_need_for 关系，但证据未明确支持该因果/功能关系。"
+        source: "datafication-test-result / Experiment 3 Relation Audit"
+        excerpt: "Relation 审查完成 — 11 条 relation 全部删除；原因包括 endpoint-only evidence、关系语义强度不受支持、关系方向错误以及将独立描述拼接为 relation。"
       - type: analysis
-        source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
-        excerpt: "模型将 fragmented customer journey 与 supplier switching 建立 leads_to 关系，而原文实际明确关联的是 inconsistent information across teams。"
+        source: "datafication-test-result / Experiment 4 No Relation Generation"
+        excerpt: "关闭 relation generation 后，Structures 4→4、Elements 16→16、Scope 全部 section→全部 section、Importance 1 central + 3 supporting→不变、Origin 4 explicit→不变、Rejected 5→5。"
     related_elements:
       - type: skill
         ref: "dr3-reading"
@@ -122,9 +122,11 @@ decisions:
       - type: decision
         ref: DEC-20260905-03
     planned_follow_ups:
-      - action: "继续测试 relation-level semantic restraint，再决定是否修改 Datafication 规范"
+      - action: "保持当前 1.4 canonical specification 不立即修改；观察后续实验是否需要形成 1.5 规范变更"
+        status: open
+      - action: "继续验证：对于原文明确表达关系的文章，是否需要独立的 Relation Extraction 阶段，以及其证据阈值如何定义"
         status: open
     supersedes: null
     superseded_by: null
-    confidence: explicit
-    source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
+    confidence: inferred
+    source: "datafication-test-result / Experiment 3 Relation Audit + Experiment 4 No Relation Generation"
