@@ -48,34 +48,36 @@
 
 ---
 
-## DEC-20260905-04 · Relation-level Over-inference（待解决）
+## DEC-20260905-04 · Relation 不再是 Structure 的必需组成部分
 
-**状态**: 待确认
+**状态**: 已确认
 
-**发现**: 新文章测试表明，claim-level provenance 仍不能完全阻止模型从两个有证据支持的 elements 推导未经证实的 relation。
+**变更**: 将 Relation 作为 Structure 构建过程中的默认生成结果 → Relation 不是 Datafication Structure 的必需组成部分；仅当原文对关系本身提供独立且足够强的证据时才建立 Relation
 
-**典型问题**:
+**触发**: Experiment 3 的 relation-level audit 将生成的 11 条 relation 全部判定为缺乏独立文本支持；Experiment 4 关闭 relation generation 后，Structure 与 Element 等核心 Datafication 结果保持不变。
+
+**理由**: Experiment 3 的 11 条 relation 经独立审查后全部删除，而 Experiment 4 直接关闭 relation generation 后，4 个 structures、16 个 elements、section scope、1 central + 3 supporting importance、4 explicit origins 以及 5 个 rejected candidates 均保持不变。这表明 relation generation 并非 Structure Discovery 的必要中间步骤，并支持将 relation 从结构发现的必需输出中分离出来。
+
+**证据链**:
 
 ```text
-Evidence(A) ✓
-Evidence(B) ✓
-
-≠
-
-Evidence(A → B)
+Experiment 3
+    ↓
+11 relations generated
+    ↓
+Relation Audit
+    ↓
+11/11 rejected
+    ↓
+Experiment 4: no relation generation
+    ↓
+Structure / Elements unchanged
+    ↓
+Relation is optional
 ```
-
-模型可能进一步把共现或相邻叙述升级成 `causes`、`enables`、`leads_to`、`requires` 等关系。
-
-**当前判断**: 需要区分：
-
-1. structure evidence
-2. element evidence
-3. relation evidence
-4. relation semantic-strength evidence
-
-但**暂不修改 Datafication 规范**，继续测试后再决定具体方案。
 
 **关联**: `dr3-reading` · `datafication` · `DEC-20260905-03`
 
-**后续**: 继续测试 relation-level semantic restraint。
+**后续**:
+- [ ] 保持当前 1.4 canonical specification 不立即修改；观察后续实验是否需要形成 1.5 规范变更
+- [ ] 继续验证：对于原文明确表达关系的文章，是否需要独立的 Relation Extraction 阶段，以及其证据阈值如何定义
