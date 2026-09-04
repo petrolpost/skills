@@ -65,28 +65,7 @@ structure:
       evidence:
         - paragraphs: [76]
           quote: "The pressure to achieve self-mastery and constantly improve could create a sense of continual failure"
-  relations:
-    - from: E1-1
-      relation: enables
-      to: E1-2
-      origin: explicit
-      evidence:
-        - paragraphs: [44]
-          quote: "By carefully recording their successes and lapses, diary-writers could compare the achievements of their past, current and future selves"
-    - from: E1-2
-      relation: produces
-      to: E1-3
-      origin: explicit
-      evidence:
-        - paragraphs: [45]
-          quote: "He often compared himself with his elder brother Thomas... as well as his classmates"
-    - from: E1-1
-      relation: can_lead_to
-      to: E1-4
-      origin: explicit
-      evidence:
-        - paragraphs: [76]
-          quote: "The pressure to achieve self-mastery and constantly improve could create a sense of continual failure"
+  relations: []
   constraints:
     - statement: "监控功能的最终目标是自我掌控"
       origin: explicit
@@ -156,21 +135,7 @@ structure:
       evidence:
         - paragraphs: [29]
           quote: "A printed diary held out the promise of total control over time, place and the self"
-  relations:
-    - from: E2-1
-      relation: transformed_into
-      to: E2-4
-      origin: explicit
-      evidence:
-        - paragraphs: [25, 29]
-          quote: "the switch from... reflecting on past actions... A printed diary held out the promise of total control"
-    - from: E2-3
-      relation: enabled
-      to: E2-2
-      origin: reconstructed
-      evidence:
-        - paragraphs: [27, 29]
-          quote: "combining the functions... Letts offered 55 different versions"
+  relations: []
   constraints:
     - statement: "印刷日记的创新在于从反思转向规划"
       origin: explicit
@@ -239,28 +204,7 @@ structure:
       evidence:
         - paragraphs: [53]
           quote: "the diary was seen as a didactic legacy, one of the links in a family history's chain"
-  relations:
-    - from: E3-1
-      relation: manifests_through
-      to: E3-2
-      origin: explicit
-      evidence:
-        - paragraphs: [53]
-          quote: "diaries were texts on the threshold of public and private. Shared reading of diaries was a common habit within marriages"
-    - from: E3-1
-      relation: managed_by
-      to: E3-3
-      origin: explicit
-      evidence:
-        - paragraphs: [64]
-          quote: "the use of secret code by some diarists to record particularly sensitive information in itself anticipates an audience for the un-coded content"
-    - from: E3-2
-      relation: understood_as
-      to: E3-4
-      origin: explicit
-      evidence:
-        - paragraphs: [53]
-          quote: "Shared reading... the diary was seen as a didactic legacy"
+  relations: []
   constraints:
     - statement: "私密日记不一定是秘密文本"
       origin: explicit
@@ -329,28 +273,7 @@ structure:
       evidence:
         - paragraphs: [71]
           quote: "Such anxieties prompted an intensified awareness of the finiteness of time and the need to use one's time wisely"
-  relations:
-    - from: E4-1
-      relation: enabled_by
-      to: E4-2
-      origin: explicit
-      evidence:
-        - paragraphs: [67]
-          quote: "people were more aware of the passing of time... Wrist watches and clocks allowed the middle classes to schedule their days with precision"
-    - from: E4-2
-      relation: formalized_by
-      to: E4-3
-      origin: explicit
-      evidence:
-        - paragraphs: [67]
-          quote: "schedule their days with precision... the Definition of Time Act proclaimed a standardised national time"
-    - from: E4-1
-      relation: produces
-      to: E4-4
-      origin: explicit
-      evidence:
-        - paragraphs: [71]
-          quote: "more aware of the passing of time... Such anxieties prompted an intensified awareness of the finiteness of time"
+  relations: []
   constraints:
     - statement: "管理良好的家庭必须配备时钟和日历"
       origin: explicit

@@ -14,6 +14,6 @@
     "blocking": false,
     "reason": "",
     "produced_by": { "module": "datafication", "version": "dr3-reading/1.4" },
-    "preview": "4 structures (4 explicit, 0 reconstructed, 0 inferred); scope: section: 4; importance: central: 1, supporting: 3; rejected: 5"
+    "preview": "4 structures (4 explicit, 0 reconstructed, 0 inferred); 0 relations (11 reviewed, 11 deleted); rejected: 5"
   }
 }
