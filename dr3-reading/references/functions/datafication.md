@@ -1,7 +1,7 @@
 # datafication 功能模板
 
 module: datafication
-version: dr3-reading/1.3
+version: dr3-reading/1.4
 stage: A
 requires: [raw_content.completed]
 enhanced_by: [structured_data]
@@ -126,54 +126,93 @@ Datafication 的主要产物是 **structure instance**，而不是预先规定�
 
 `status: author_asserted` 只表示“作者表达了该结构”，**不表示 DR3 认可其正确性**。
 
-### Step 7: 关系与约束的独立 provenance
+### Step 7: 结构性断言的证据一致性（1.4 核心）
 
-**Structure 的 provenance 不足以证明其内部每个 relation / constraint 都来自作者。** 因此每一条关系和约束必须独立标记 `origin` 和 `evidence`。
+**每一个被写入 Datafication 的结构性断言，都必须被相应证据支持到相同的语义强度。** 有证据引用本身不够；必须检查 evidence 是否真正支持所写的 claim。
+
+把两个问题分开：
+
+1. **Evidence exists**：原文中确实有相关文字。
+2. **Evidence supports claim**：该文字足以支持当前写下的关系、约束或属性。
+
+只有第二种才允许保留该 claim。
+
+#### 语义强度原则
+
+不要把弱证据升级为强断言：
+
+```text
+作者说 A、B 都影响 X
+  ✓ A affects X
+  ✓ B affects X
+  ✗ A independent_of B
+  ✗ A additive_with B
+  ✗ A causes B
+```
+
+```text
+作者展示两个端点 A、B
+  ✓ A 和 B 是文章讨论的两个状态
+  ✗ A、B 是唯一状态
+  ✗ A 与 B 之间不存在中间状态
+```
+
+```text
+作者列出 A、B、C 三类
+  ✓ A、B、C 是列出的类别
+  ✗ A、B、C 互斥
+  ✗ A、B、C 穷尽所有可能
+```
+
+#### Claim-level provenance
+
+每个 relation / constraint 必须拥有自己的 `origin` 与 `evidence`；如果 element 本身包含作者没有明确表达的属性，同样必须有证据。
 
 ```yaml
 relations:
   - from: A
-    relation: "related_to"
-    to: B
-    origin: explicit | reconstructed | inferred
+    relation: affects
+    to: X
+    origin: explicit
     evidence:
       - paragraphs: [12]
         quote: "..."
 
 constraints:
-  - statement: "..."
-    origin: explicit | reconstructed | inferred
+  - statement: "A and B are mutually exclusive"
+    origin: explicit
     evidence:
-      - paragraphs: [13, 14]
+      - paragraphs: [13]
         quote: "..."
 ```
 
-规则：
+**验证问题：** 对每一个 relation、constraint 以及带有实质语义的 element 属性，问：
 
-1. `explicit`：原文直接表达该关系/约束，或使用等价但明确的语言表达。
-2. `reconstructed`：关系/约束需要跨多个明确相关段落组合，但组合过程不增加新的语义。
-3. `inferred`：需要模型做实质性逻辑推断、领域假设或因果补全。
-4. `inference_policy=restricted` 时，不创建 `inferred` relation / constraint；如果某个结构的核心依赖此类推断，则整个候选应被拒绝。
-5. **弱证据不能升级为强关系。** “同时讨论 A 和 B”不能自动变成 `requires`、`causes`、`independent_of`、`additive` 等关系。
-6. “作者列出了 A、B、C”不意味着 A/B/C 相互独立、可加和、互斥或存在其他未声明的逻辑关系。
-7. 不要因为结构需要完整而补充作者没有表达的中间状态、边界条件或排他性。
-8. 如果关系只能安全地描述为弱关系，使用描述性关系（如 `associated_with` / `discussed_with`）或不建立关系。
+> 如果只给另一个读者看这里引用的 evidence，他能否从这段文字本身合理地得到我写下的这个 claim，而无需加入领域常识或额外假设？
+
+若答案是否定的：
+
+- 降低 claim 的语义强度，或者
+- 标记为 `reconstructed`（只有确实可以忠实重构时），或者
+- 在 `inference_policy=restricted` 下删除该 claim。
+
+**不得通过把错误 claim 标成 `explicit` 来规避验证。**
 
 特别禁止的自动升级：
 
 - `co-mentioned` → `requires`
 - `co-mentioned` → `causes`
 - `co-mentioned` → `independent_of`
-- `two categories shown` → `mutually_exclusive`
-- `two endpoints shown` → `no_intermediate_state`
 - `multiple factors affect outcome` → `independent_factors`
 - `multiple factors affect outcome` → `additive_effects`
-
-除非原文明确支持这些关系。
+- `two categories shown` → `mutually_exclusive`
+- `two endpoints shown` → `no_intermediate_state`
+- `listed categories` → `exhaustive_categories`
+- `sequence in exposition` → `causal_sequence`
 
 ### Step 8: 结构之间的关系
 
-只有原文存在足够证据时才建立 Datafication object 之间的关系。对象间关系同样必须有 provenance：
+只有原文存在足够证据时才建立 Datafication object 之间的关系。对象间关系同样必须通过 claim-level provenance 检查。
 
 ```yaml
 relations:
@@ -216,7 +255,7 @@ rejected_candidates:
 
 ### Step 11: 持久化
 
-写入 `.petrelpost/articles/[slug]/datafication/datafication.md` 和 `datafication.json`，包含发现摘要、结构对象、scope / importance、origin / status、elements / relations / constraints、每条 relation / constraint 的 provenance 与 evidence、显式关系和重要拒绝候选。
+写入 `.petrelpost/articles/[slug]/datafication/datafication.md` 和 `datafication.json`，包含发现摘要、结构对象、scope / importance、origin / status、elements / relations / constraints、每条结构性断言的 provenance 与 evidence、显式关系和重要拒绝候选。
 
 ### Step 12: 更新 state + trace
 
@@ -231,18 +270,20 @@ Datafication 是非阻塞功能。完成后重新展示功能菜单，不自动�
 5. 不因为存在两个以上结构，就推断存在 concept system。
 6. 不将模型推断的关系写成作者明确表达的关系。
 7. 每个 structure、relation、constraint 都必须能够回到原文的证据范围。
-8. 如果结构化后没有明显的查询、比较、复用价值，则宁可不抽取。
-9. 不为了填满预定义类型而寻找结构。
-10. 不因为结构是文章核心就扩大其 scope。
-11. **结构数量不是质量目标；结构精确性和复用价值优先。**
+8. **Evidence 的存在不等于 Evidence 支持 Claim；必须检查语义强度是否匹配。**
+9. 如果结构化后没有明显的查询、比较、复用价值，则宁可不抽取。
+10. 不为了填满预定义类型而寻找结构。
+11. 不因为结构是文章核心就扩大其 scope。
 12. **宁可把一个关系留成未知，也不要用领域常识补齐它。**
+13. **宁可降低关系强度，也不要让证据承担它没有表达的语义。**
+14. **结构数量不是质量目标；结构精确性和复用价值优先。**
 
 **宁缺毋滥。**
 
 ## Prompt 指令体
 
 ```
-你是 dr3-reading 的 datafication 功能，版本 1.3。
+你是 dr3-reading 的 datafication 功能，版本 1.4。
 
 任务：从文章中发现真实存在的、具有独立结构性并具有复用价值的知识结构，将其显式化。
 
@@ -258,19 +299,41 @@ Datafication 是非阻塞功能。完成后重新展示功能菜单，不自动�
 1. 阅读完整原文
 2. 发现候选结构，允许结构只存在于局部
 3. 用原文验证候选
-4. 判断每个结构的最小 scope，并单独判断其 article importance
+4. 判断每个结构的最小 scope，并单独判断 article importance
 5. 用最小充分的 elements / relations / constraints 描述结构
 6. 为每个 structure 保留原文证据
 7. 标记 structure origin：explicit / reconstructed / inferred
-8. 对每一条 relation 和 constraint 单独标记 origin 和 evidence
-9. 可选地给出 suggested_kind，但它只是解释性标签，不限制结构发现
-10. 仅在原文有证据时建立结构间关系，并为关系标记 provenance
-11. scope 只表示结构覆盖范围；重要性另用 importance.role 表示
-12. 可选地描述是否存在 article-level conceptualization，但不要把它宣称为 ontology
-13. 记录重要的拒绝候选
-14. 持久化 JSON + Markdown + state + trace
+8. 对每一条 relation 和 constraint 单独进行 claim-level provenance 验证
+9. 对每一个带有实质语义的 element 属性也进行证据验证
+10. 可选地给出 suggested_kind，但它只是解释性标签，不限制结构发现
+11. 仅在原文有足够证据时建立结构间关系，并为关系标记 provenance
+12. scope 只表示结构覆盖范围；重要性另用 importance.role 表示
+13. 可选地描述是否存在 article-level conceptualization，但不要把它宣称为 ontology
+14. 记录重要的拒绝候选
+15. 持久化 JSON + Markdown + state + trace
 
-可以参考以下结构模式帮助注意力，但它们不是穷举，也不是必须寻找：
+核心验证规则：
+
+Evidence exists ≠ Evidence supports claim。
+
+对于每一个 relation、constraint 以及带有实质语义的 element 属性，问：
+“如果只给另一个读者看这里引用的 evidence，他能否从这段文字本身合理地得到我写下的这个 claim，而无需加入领域常识或额外假设？”
+
+如果不能：
+- 降低 claim 的语义强度，或
+- 只有在可以忠实重构时标记 reconstructed，或
+- 在 inference_policy=restricted 下删除 claim。
+
+不得通过把错误 claim 标成 explicit 来规避验证。
+
+特别注意：
+- “A、B 都影响 X”不能推出 A 与 B independent / additive / causal
+- 展示两个端点不能推出只有两个状态或不存在中间状态
+- 列出几个类别不能推出互斥或穷尽
+- 叙述顺序不能自动推出因果顺序
+- 同时出现不能自动变成 requires / causes
+
+可以参考以下结构模式帮助注意力，但它们不是穷举，也不是必须寻找的类型：
 - sequence / stages
 - classification / grouping
 - criteria
@@ -282,20 +345,12 @@ Datafication 是非阻塞功能。完成后重新展示功能菜单，不自动�
 - explicit relationship
 - model / other reusable structure
 
-关系规则尤其严格：
-- “同时出现”不能自动变成 requires / causes / independent_of / additive
-- 两个端点不能自动推出不存在中间状态
-- 多个因素影响结果不能自动推出因素独立或效果可加
-- 两个类别不能自动推出互斥
-- 如果只能安全地描述为弱关系，就使用弱关系或不建立关系
-- inference_policy=restricted 时，不创建主要依赖推断的 relation / constraint
-
 重要限制：
 - 不是所有文章都有可数据化结构
 - 一篇文章没有概念系统，也可能存在一个或多个局部结构
 - 不要把标题、普通列表、叙事顺序自动解释为结构
 - 不要用领域常识补齐作者没有表达的关系
-- 每个结构、关系、约束都必须有证据
+- 每个结构、关系、约束都必须有证据，而且证据的语义强度必须足以支持该 claim
 - status=author_asserted 只表示“作者表达了该结构”，不表示 DR3 认可其正确性
 - 不要为了填充类型而结构化
 - 宁缺毋滥
