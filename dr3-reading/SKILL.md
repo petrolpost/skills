@@ -156,4 +156,4 @@ D 进化评估   L evaluator
 | `references/functions/note_generator.md` | Obsidian 笔记生成 |
 | `references/functions/evaluator.md` | 质量评估与进化建议 |
 
-版本：dr3-reading/1.1 · 源自 InsightWeaver DR3 v0.4
+版本：dr3-reading/1.4 · 源自 InsightWeaver DR3 v0.4
