@@ -1,13 +1,14 @@
 # Datafication：Are Great Leaders Truly Great—or Just Lucky?
 
-> 发现摘要：6 个可数据化结构（4 个显式、2 个忠实重构），无 article-level 概念体系
-> Schema 版本：dr3-reading/1.2（通用 elements/relations/constraints 结构）
+> 发现摘要：5 个可数据化结构（4 个显式、1 个忠实重构），无 article-level 概念体系
+> Schema 版本：dr3-reading/1.3（通用 elements/relations/constraints + importance.role）
 
 ## 发现的结构
 
 ### DS-01: Hamlet Test（哈姆雷特测试）
 
-**scope**: article（贯穿全文）
+**scope**: local（P30-42）
+**importance.role**: central
 **origin**: explicit
 **status**: author_asserted
 **interpretation.suggested_kind**: decision_rule
@@ -20,16 +21,20 @@
 - outcome: 通过/未通过测试
 
 **relations**:
-- input → question（触发评估）
-- question → alternatives（需要识别替代者）
-- alternatives → assessment（评估能力）
-- assessment → outcome（得出结论）
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| input | triggers | question | explicit | P30: "if you're going to assess a leader's greatness, you need to identify" |
+| question | requires | alternatives | explicit | P30: "evaluate all the plausible alternatives" |
+| alternatives | enables | assessment | explicit | P32: "We've got their plays, we can judge their plays" |
+| assessment | produces | outcome | explicit | P34: "Shakespeare passes the Hamlet Test, but Jeff Bezos does not" |
 
 **constraints**:
-- 必须能识别所有合理的替代人选
-- 替代人选的评估必须基于客观能力
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 必须能识别所有合理的替代人选 | explicit | P30: "evaluate all the plausible alternatives" |
+| 替代人选的评估必须基于客观能力 | explicit | P32: "we can judge their plays" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -41,6 +46,7 @@
 ### DS-02: 领导者产生重大影响的五个条件
 
 **scope**: section（P58-64）
+**importance.role**: central
 **origin**: explicit
 **status**: author_asserted
 **interpretation.suggested_kind**: enumeration
@@ -53,14 +59,17 @@
 - condition_5: 逆民意行动能力（能让群体做其不愿做的事）
 
 **relations**:
-- condition_1 ⊥ condition_4（互补：唯一合格者 vs 无可匹敌的追随者）
-- condition_2 → condition_3（时机窗口需要被识别和把握）
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| condition_1 | complementary | condition_4 | explicit | P64: "if the leader does not have followers almost equally qualified" |
+| condition_2 | requires | condition_3 | explicit | P60: "some people recognize the right time and seize it" |
 
 **constraints**:
-- 五个条件是独立的，满足任一即可产生重大影响
-- 条件之间存在逻辑关联但非严格依赖
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 五个条件是独立的，满足任一即可产生重大影响 | explicit | P64: "those are five things that affect when a leader can make a difference" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -75,9 +84,10 @@
 ### DS-03: 企业利润变异的四个影响因素
 
 **scope**: local（P52-54）
+**importance.role**: supporting
 **origin**: explicit
 **status**: author_asserted
-**interpretation.suggested_kind**: framework
+**interpretation.suggested_kind**: factor_decomposition
 
 **elements**:
 - factor_year: 年份（Year）— 影响力 ~2%
@@ -86,14 +96,19 @@
 - factor_ceo: CEO（Leader）— 影响力 15-30%
 
 **relations**:
-- factor_year + factor_industry + factor_company + factor_ceo = total_profit_variation
-- factor_ceo ⊂ total_profit_variation（CEO 贡献是总变异的一部分）
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| factor_year | contributes_to | total_profit_variation | explicit | P52: "the year accounts were only about 2% of variation" |
+| factor_industry | contributes_to | total_profit_variation | explicit | P52: "the other three factors are the CEO and the industry" |
+| factor_company | contributes_to | total_profit_variation | explicit | P52: "the third thing is the individual company" |
+| factor_ceo | contributes_to | total_profit_variation | explicit | P54: "individual leaders account for between 15 to 30% of the variation" |
 
 **constraints**:
-- 四个因素相互独立
-- 各因素影响力可叠加
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 四个因素相互独立 | explicit | P52: "there are four things that affect the profits of companies" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -106,6 +121,7 @@
 ### DS-04: CEO 自由度分类（高自由度 vs 低自由度行业）
 
 **scope**: section（P94-100）
+**importance.role**: supporting
 **origin**: explicit
 **status**: author_asserted
 **interpretation.suggested_kind**: comparison
@@ -119,15 +135,18 @@
   - traits: 中等收入、不会被解雇、稳定执行
 
 **relations**:
-- high_discretion ↔ low_discretion（对比关系）
-- high_discretion.risk > low_discretion.risk
-- high_discretion.reward > low_discretion.reward
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| high_discretion | contrast | low_discretion | explicit | P94 vs P98: 对比两种选择 |
+| high_discretion | has_attribute | risk_high | explicit | P96: "if you get the wrong perfume, you may get fired" |
+| low_discretion | has_attribute | risk_low | explicit | P98: "CEOs of blast furnace companies, they don't get fired" |
 
 **constraints**:
-- 行业分类基于 CEO 决策自由度
-- 不存在中间状态
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 行业分类基于 CEO 决策自由度 | explicit | P94: "what's called high discretion... having a lot of decision-making power" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -139,6 +158,7 @@
 ### DS-05: 领导力有效模式
 
 **scope**: local（P68-70）
+**importance.role**: supporting
 **origin**: explicit
 **status**: author_asserted
 **interpretation.suggested_kind**: enumeration
@@ -150,14 +170,17 @@
 - mode_expressive: 表达型（Expressive）— 代表人物：Churchill
 
 **relations**:
-- mode_charismatic ⊥ mode_terror（对立：魅力 vs 恐惧）
-- mode_discussion ⊥ mode_expressive（对立：讨论 vs 表达）
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| mode_charismatic | contrast | mode_terror | explicit | P68-69: 魅力 vs 恐惧 |
+| mode_discussion | contrast | mode_expressive | explicit | P69-70: 讨论 vs 表达 |
 
 **constraints**:
-- 四种模式是独立的，不存在单一"正确"模式
-- 商学院倾向于教授魅力型，但实际有效模式多样
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 四种模式是独立的，不存在单一"正确"模式 | explicit | P70: "there is no magic formula" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -171,8 +194,9 @@
 ### DS-06: 领导者创造价值的方式
 
 **scope**: local（P44-48）
+**importance.role**: supporting
 **origin**: reconstructed
-**status**: author_asserted（由对话内容忠实重构）
+**status**: author_asserted
 **interpretation.suggested_kind**: enumeration
 
 **elements**:
@@ -182,15 +206,18 @@
   - example: Bezos（Amazon）、Zuckerberg（Facebook）
 
 **relations**:
-- type_irreplaceable ⊥ type_shaper（对立：不可替代 vs 可替代但独特）
-- Hamlet_Test.pass → type_irreplaceable
-- Hamlet_Test.fail → type_shaper
+| from | relation | to | origin | evidence |
+|------|----------|-----|--------|----------|
+| type_irreplaceable | contrast | type_shaper | explicit | P44: 对比两种创造方式 |
+| Hamlet_Test.pass | maps_to | type_irreplaceable | explicit | P42: "They... were uniquely qualified" |
+| Hamlet_Test.fail | maps_to | type_shaper | explicit | P46: "there were multiple people who could have done it, but they would've done it in different ways" |
 
 **constraints**:
-- 两种类型覆盖所有领导者
-- 类型判定基于"有他vs无他"的比较
+| statement | origin | evidence |
+|-----------|--------|----------|
+| 两种类型覆盖所有领导者 | explicit | P44: 区分"唯一创造者"和"塑造者" |
 
-**原文证据**:
+**evidence**:
 
 | 段落 | 引文 | 角色 |
 |------|------|------|
@@ -201,10 +228,10 @@
 
 ## 结构间关系
 
-| 从 | 关系 | 到 | origin |
-|---|------|---|--------|
-| DS-01 | applies_to | DS-02 | explicit |
-| DS-01 | determines | DS-06 | explicit |
+| 从 | 关系 | 到 | origin | evidence |
+|---|------|---|--------|----------|
+| DS-01 | applies_to | DS-02 | explicit | P30: Hamlet Test 用于评估领导者 |
+| DS-01 | determines | DS-06 | explicit | P34: 测试结果决定领导者类型 |
 
 **说明**：
 - DS-01（哈姆雷特测试）是 DS-02（五个条件）的评估工具之一

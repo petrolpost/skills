@@ -1,13 +1,14 @@
 {
   "module": "datafication",
-  "version": "dr3-reading/1.2",
+  "version": "dr3-reading/1.3",
   "slug": "are-great-leaders-truly-great-or-just-lucky",
   "discovery_depth": "high",
   "applicable": true,
   "structures": [
     {
       "id": "DS-01",
-      "scope": {"type": "article"},
+      "scope": {"type": "local", "paragraphs": [30, 42]},
+      "importance": {"role": "central"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "领导者不可替代性评估",
@@ -20,25 +21,26 @@
           {"name": "outcome", "type": "result", "description": "通过/未通过测试"}
         ],
         "relations": [
-          {"from": "input", "to": "question", "type": "triggers"},
-          {"from": "question", "to": "alternatives", "type": "requires"},
-          {"from": "alternatives", "to": "assessment", "type": "enables"},
-          {"from": "assessment", "to": "outcome", "type": "produces"}
+          {"from": "input", "relation": "triggers", "to": "question", "origin": "explicit", "evidence": [{"paragraphs": [30], "quote": "if you're going to assess a leader's greatness, you need to identify"}]},
+          {"from": "question", "relation": "requires", "to": "alternatives", "origin": "explicit", "evidence": [{"paragraphs": [30], "quote": "evaluate all the plausible alternatives"}]},
+          {"from": "alternatives", "relation": "enables", "to": "assessment", "origin": "explicit", "evidence": [{"paragraphs": [32], "quote": "We've got their plays, we can judge their plays"}]},
+          {"from": "assessment", "relation": "produces", "to": "outcome", "origin": "explicit", "evidence": [{"paragraphs": [34], "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not"}]}
         ],
         "constraints": [
-          "必须能识别所有合理的替代人选",
-          "替代人选的评估必须基于客观能力"
+          {"statement": "必须能识别所有合理的替代人选", "origin": "explicit", "evidence": [{"paragraphs": [30], "quote": "evaluate all the plausible alternatives"}]},
+          {"statement": "替代人选的评估必须基于客观能力", "origin": "explicit", "evidence": [{"paragraphs": [32], "quote": "we can judge their plays"}]}
         ]
       },
       "evidence": [
-        {"paragraph": 32, "quote": "I call it the Hamlet Test because you can ask, was Shakespeare the only person who could have written that great play, Hamlet?", "role": "definition"},
-        {"paragraph": 34, "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not pass the Hamlet Test", "role": "application"}
+        {"paragraphs": [32], "quote": "I call it the Hamlet Test because you can ask, was Shakespeare the only person who could have written that great play, Hamlet?", "role": "definition"},
+        {"paragraphs": [34], "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not pass the Hamlet Test", "role": "application"}
       ],
       "interpretation": {"suggested_kind": "decision_rule"}
     },
     {
       "id": "DS-02",
       "scope": {"type": "section", "paragraphs": [58, 64]},
+      "importance": {"role": "central"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "领导者何时真正重要",
@@ -51,26 +53,26 @@
           {"name": "condition_5", "type": "condition", "description": "逆民意行动能力（能让群体做其不愿做的事）"}
         ],
         "relations": [
-          {"from": "condition_1", "to": "condition_4", "type": "complementary"},
-          {"from": "condition_2", "to": "condition_3", "type": "requires"}
+          {"from": "condition_1", "relation": "complementary", "to": "condition_4", "origin": "explicit", "evidence": [{"paragraphs": [63], "quote": "if the leader does not have followers almost equally qualified to do it"}]},
+          {"from": "condition_2", "relation": "requires", "to": "condition_3", "origin": "explicit", "evidence": [{"paragraphs": [60], "quote": "some people recognize the right time and seize it"}]}
         ],
         "constraints": [
-          "五个条件是独立的，满足任一即可产生重大影响",
-          "条件之间存在逻辑关联但非严格依赖"
+          {"statement": "五个条件是独立的，满足任一即可产生重大影响", "origin": "explicit", "evidence": [{"paragraphs": [64], "quote": "those are five things that affect when a leader can make a difference"}]}
         ]
       },
       "evidence": [
-        {"paragraph": 64, "quote": "those are five things that affect when a leader can make a difference", "role": "boundary"},
-        {"paragraph": 58, "quote": "A second consideration is time and place", "role": "condition_2"},
-        {"paragraph": 60, "quote": "some people recognize the right time and seize it", "role": "condition_3"},
-        {"paragraph": 63, "quote": "A leader can make a difference if the leader does not have followers almost equally qualified to do it", "role": "condition_4"},
-        {"paragraph": 63, "quote": "a leader can make a difference if a leader can get a country to do something that they do not want to do", "role": "condition_5"}
+        {"paragraphs": [64], "quote": "those are five things that affect when a leader can make a difference", "role": "boundary"},
+        {"paragraphs": [58], "quote": "A second consideration is time and place", "role": "condition_2"},
+        {"paragraphs": [60], "quote": "some people recognize the right time and seize it", "role": "condition_3"},
+        {"paragraphs": [63], "quote": "A leader can make a difference if the leader does not have followers almost equally qualified to do it", "role": "condition_4"},
+        {"paragraphs": [63], "quote": "a leader can make a difference if a leader can get a country to do something that they do not want to do", "role": "condition_5"}
       ],
       "interpretation": {"suggested_kind": "enumeration"}
     },
     {
       "id": "DS-03",
       "scope": {"type": "local", "paragraphs": [52, 54]},
+      "importance": {"role": "supporting"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "企业利润变异来源分解",
@@ -82,26 +84,26 @@
           {"name": "factor_ceo", "type": "factor", "description": "CEO（Leader）— 影响力 15-30%"}
         ],
         "relations": [
-          {"from": "factor_year", "to": "total_profit_variation", "type": "contributes"},
-          {"from": "factor_industry", "to": "total_profit_variation", "type": "contributes"},
-          {"from": "factor_company", "to": "total_profit_variation", "type": "contributes"},
-          {"from": "factor_ceo", "to": "total_profit_variation", "type": "contributes"}
+          {"from": "factor_year", "relation": "contributes_to", "to": "total_profit_variation", "origin": "explicit", "evidence": [{"paragraphs": [52], "quote": "the year accounts were only about 2% of variation"}]},
+          {"from": "factor_industry", "relation": "contributes_to", "to": "total_profit_variation", "origin": "explicit", "evidence": [{"paragraphs": [52], "quote": "the other three factors are the CEO and the industry"}]},
+          {"from": "factor_company", "relation": "contributes_to", "to": "total_profit_variation", "origin": "explicit", "evidence": [{"paragraphs": [52], "quote": "the third thing is the individual company"}]},
+          {"from": "factor_ceo", "relation": "contributes_to", "to": "total_profit_variation", "origin": "explicit", "evidence": [{"paragraphs": [54], "quote": "individual leaders account for between 15 to 30% of the variation"}]}
         ],
         "constraints": [
-          "四个因素相互独立",
-          "各因素影响力可叠加"
+          {"statement": "四个因素相互独立", "origin": "explicit", "evidence": [{"paragraphs": [52], "quote": "there are four things that affect the profits of companies"}]}
         ]
       },
       "evidence": [
-        {"paragraph": 52, "quote": "there are four things that affect the profits of companies", "role": "definition"},
-        {"paragraph": 52, "quote": "On the average, the year accounts were only about 2% of variation", "role": "data_point"},
-        {"paragraph": 54, "quote": "On the average, individual leaders account for between 15 to 30% of the variation", "role": "data_point"}
+        {"paragraphs": [52], "quote": "there are four things that affect the profits of companies", "role": "definition"},
+        {"paragraphs": [52], "quote": "On the average, the year accounts were only about 2% of variation", "role": "data_point"},
+        {"paragraphs": [54], "quote": "On the average, individual leaders account for between 15 to 30% of the variation", "role": "data_point"}
       ],
-      "interpretation": {"suggested_kind": "framework"}
+      "interpretation": {"suggested_kind": "factor_decomposition"}
     },
     {
       "id": "DS-04",
       "scope": {"type": "section", "paragraphs": [94, 100]},
+      "importance": {"role": "supporting"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "职业选择决策框架",
@@ -111,24 +113,24 @@
           {"name": "low_discretion", "type": "category", "description": "低自由度行业", "attributes": {"examples": ["高炉", "铁路", "公共事业"], "reward": "中等收入", "risk": "不会被解雇", "key": "稳定执行"}}
         ],
         "relations": [
-          {"from": "high_discretion", "to": "low_discretion", "type": "contrast"},
-          {"from": "high_discretion", "to": "risk", "type": "has_attribute", "attributes": {"level": "high"}},
-          {"from": "low_discretion", "to": "risk", "type": "has_attribute", "attributes": {"level": "low"}}
+          {"from": "high_discretion", "relation": "contrast", "to": "low_discretion", "origin": "explicit", "evidence": [{"paragraphs": [94, 98], "quote": "high discretion... low discretion"}]},
+          {"from": "high_discretion", "relation": "has_attribute", "to": "risk_high", "origin": "explicit", "evidence": [{"paragraphs": [96], "quote": "if you get the wrong perfume, you may get fired"}]},
+          {"from": "low_discretion", "relation": "has_attribute", "to": "risk_low", "origin": "explicit", "evidence": [{"paragraphs": [98], "quote": "CEOs of blast furnace companies, they don't get fired"}]}
         ],
         "constraints": [
-          "行业分类基于 CEO 决策自由度",
-          "不存在中间状态"
+          {"statement": "行业分类基于 CEO 决策自由度", "origin": "explicit", "evidence": [{"paragraphs": [94], "quote": "what's called high discretion... having a lot of decision-making power"}]}
         ]
       },
       "evidence": [
-        {"paragraph": 94, "quote": "you pick an industry in which the CEO has what's called high discretion", "role": "definition"},
-        {"paragraph": 98, "quote": "you go into a business where the CEO has low discretion", "role": "definition"}
+        {"paragraphs": [94], "quote": "you pick an industry in which the CEO has what's called high discretion", "role": "definition"},
+        {"paragraphs": [98], "quote": "you go into a business where the CEO has low discretion", "role": "definition"}
       ],
       "interpretation": {"suggested_kind": "comparison"}
     },
     {
       "id": "DS-05",
       "scope": {"type": "local", "paragraphs": [68, 70]},
+      "importance": {"role": "supporting"},
       "origin": "explicit",
       "status": "author_asserted",
       "subject": "有效领导的多种实现路径",
@@ -140,53 +142,25 @@
           {"name": "mode_expressive", "type": "mode", "description": "表达型（Expressive）— 代表人物：Churchill", "attributes": {"mechanism": "通过卓越表达说服"}}
         ],
         "relations": [
-          {"from": "mode_charismatic", "to": "mode_terror", "type": "opposite"},
-          {"from": "mode_discussion", "to": "mode_expressive", "type": "opposite"}
+          {"from": "mode_charismatic", "relation": "contrast", "to": "mode_terror", "origin": "explicit", "evidence": [{"paragraphs": [68, 69], "quote": "charismatic... terrorizing your subordinates"}]},
+          {"from": "mode_discussion", "relation": "contrast", "to": "mode_expressive", "origin": "explicit", "evidence": [{"paragraphs": [69, 70], "quote": "discussion leader... expressing yourself well"}]}
         ],
         "constraints": [
-          "四种模式是独立的，不存在单一'正确'模式",
-          "商学院倾向于教授魅力型，但实际有效模式多样"
+          {"statement": "四种模式是独立的，不存在单一"正确"模式", "origin": "explicit", "evidence": [{"paragraphs": [70], "quote": "there is no magic formula"}]}
         ]
       },
       "evidence": [
-        {"paragraph": 68, "quote": "it's commonly taught that a leader needs to be charismatic", "role": "mode_1"},
-        {"paragraph": 69, "quote": "You can be an effective leader by terrorizing your subordinates", "role": "mode_2"},
-        {"paragraph": 69, "quote": "you can be successful, not being charismatic, but being a good discussion leader", "role": "mode_3"},
-        {"paragraph": 70, "quote": "You can be an effective leader by expressing yourself well as Winston Churchill did", "role": "mode_4"}
-      ],
-      "interpretation": {"suggested_kind": "enumeration"}
-    },
-    {
-      "id": "DS-06",
-      "scope": {"type": "local", "paragraphs": [44, 48]},
-      "origin": "reconstructed",
-      "status": "author_asserted",
-      "subject": "领导者贡献的两种类型",
-      "structure": {
-        "elements": [
-          {"name": "type_irreplaceable", "type": "type", "description": "不可替代型（没有此人则结果不会发生）", "attributes": {"example": "Resnick家族（石榴汁产业）"}},
-          {"name": "type_shaper", "type": "type", "description": "塑造型（创新会发生，但此人塑造了独特方式）", "attributes": {"example": "Bezos（Amazon）、Zuckerberg（Facebook）"}}
-        ],
-        "relations": [
-          {"from": "type_irreplaceable", "to": "type_shaper", "type": "opposite"},
-          {"from": "Hamlet_Test.pass", "to": "type_irreplaceable", "type": "maps_to"},
-          {"from": "Hamlet_Test.fail", "to": "type_shaper", "type": "maps_to"}
-        ],
-        "constraints": [
-          "两种类型覆盖所有领导者",
-          "类型判定基于'有他vs无他'的比较"
-        ]
-      },
-      "evidence": [
-        {"paragraph": 44, "quote": "someone, the Resnick family and pomegranates, who created something, an outcome that probably would not have happened without them", "role": "type_1"},
-        {"paragraph": 44, "quote": "leaders like Bezos or other tech titans like Steve Jobs, Bill Gates, where the innovation would've happened, but they shaped the outcome", "role": "type_2"}
+        {"paragraphs": [68], "quote": "it's commonly taught that a leader needs to be charismatic", "role": "mode_1"},
+        {"paragraphs": [69], "quote": "You can be an effective leader by terrorizing your subordinates", "role": "mode_2"},
+        {"paragraphs": [69], "quote": "you can be successful, not being charismatic, but being a good discussion leader", "role": "mode_3"},
+        {"paragraphs": [70], "quote": "You can be an effective leader by expressing yourself well as Winston Churchill did", "role": "mode_4"}
       ],
       "interpretation": {"suggested_kind": "enumeration"}
     }
   ],
   "relations": [
-    {"from": "DS-01", "relation": "applies_to", "to": "DS-02", "origin": "explicit"},
-    {"from": "DS-01", "relation": "determines", "to": "DS-06", "origin": "explicit"}
+    {"from": "DS-01", "relation": "applies_to", "to": "DS-02", "origin": "explicit", "evidence": [{"paragraphs": [30], "quote": "if you're going to assess a leader's greatness"}]},
+    {"from": "DS-01", "relation": "determines", "to": "DS-06", "origin": "explicit", "evidence": [{"paragraphs": [34], "quote": "Shakespeare passes the Hamlet Test, but Jeff Bezos does not"}]}
   ],
   "conceptualization": {
     "detected": false,
@@ -194,14 +168,14 @@
     "coherence": null
   },
   "rejected_candidates": [
-    {"name": "时机把握的三种模式", "reason": "叙事中的补充说明，非明确分类体系"},
-    {"name": "创始人影响的好坏二分", "reason": "举例说明，非结构化分类"},
-    {"name": "足球教练研究的跨领域应用", "reason": "研究方法迁移，非可复用的知识结构"}
+    {"name": "时机把握的三种模式", "reason": "叙事中的补充说明，非明确分类体系", "evidence": "P73-74"},
+    {"name": "创始人影响的好坏二分", "reason": "举例说明，非结构化分类", "evidence": "P78"},
+    {"name": "足球教练研究的跨领域应用", "reason": "研究方法迁移，非可复用的知识结构", "evidence": "P82-84"}
   ],
   "stats": {
-    "structures": 6,
+    "structures": 5,
     "explicit": 4,
-    "reconstructed": 2,
+    "reconstructed": 1,
     "inferred": 0
   }
 }
