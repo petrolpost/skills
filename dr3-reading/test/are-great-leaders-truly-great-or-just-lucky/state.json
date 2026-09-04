@@ -15,12 +15,12 @@
   },
   "datafication": {
     "status": "completed",
-    "run_at": "2026-09-03T00:04:00+08:00",
+    "run_at": "2026-09-03T00:05:00+08:00",
     "stale": false,
     "stale_soft": false,
     "blocking": false,
     "reason": "",
-    "produced_by": { "module": "datafication", "version": "dr3-reading/1.3" },
-    "preview": "5 structures (elements/relations/constraints with independent provenance); scope: local/section; importance: 2 central, 3 supporting"
+    "produced_by": { "module": "datafication", "version": "dr3-reading/1.4" },
+    "preview": "5 structures (claim-level provenance validated); 2 claims downgraded, 2 relations removed; scope: local/section; importance: 2 central, 3 supporting"
   }
 }
