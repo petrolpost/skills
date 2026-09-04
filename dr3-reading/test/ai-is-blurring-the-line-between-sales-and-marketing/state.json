@@ -1,0 +1,26 @@
+{
+  "raw_content": {
+    "status": "completed",
+    "run_at": "2026-09-03T00:12:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "importer", "version": "dr3-reading/1.0" },
+    "preview": "Harvard Business Review article, 1847 words, article"
+  },
+  "structured_data": {
+    "status": "completed",
+    "run_at": "2026-09-04T14:12:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "structured_extractor", "version": "dr3-reading/1.0" },
+    "preview": "high depth, 7 claims (6 strong, 1 moderate), 7 data points, 4 assumptions, 17 evidence links"
+  },
+  "datafication": {
+    "status": "completed",
+    "run_at": "2026-09-05T00:20:00+08:00",
+    "stale": false,
+    "stale_soft": false,
+    "blocking": false,
+    "reason": "",
+    "produced_by": { "module": "datafication", "version": "dr3-reading/1.4" },
+    "preview": "4 structures (2 explicit, 2 reconstructed); scope: local: 2, section: 1, article: 1; importance: central: 2, supporting: 2"
+  }
+}

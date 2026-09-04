@@ -1,0 +1,313 @@
+{
+  "module": "structured_extractor",
+  "slug": "ai-is-blurring-the-line-between-sales-and-marketing",
+  "extraction_depth": "high",
+  "purpose": {
+    "core_purpose": "论证 Agentic AI 如何打破营销与销售的传统界限，推动企业建立闭环 Go-to-Market 模型",
+    "target_audience": "商业领袖、CMO、CSO、数字化转型负责人",
+    "problem_addressed": "为什么大多数企业仍然分别在营销和销售中部署 AI，而不是跨系统整合？",
+    "intended_contribution": "提出闭环 Go-to-Market 模型框架，展示领先企业的实践案例与量化成果"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Agentic AI 正在打破营销与销售的传统界限",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C1.1",
+          "claim": "客户不区分营销和销售触点，每个触点都被体验为单一关系的一部分",
+          "strength": "strong",
+          "supporting_evidence": ["E1"]
+        },
+        {
+          "id": "C1.2",
+          "claim": "大多数企业仍然分别在营销和销售中部署 AI，错失整合机会",
+          "strength": "strong",
+          "supporting_evidence": ["E2"]
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "客户期望跨渠道一致的体验",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C2.1",
+          "claim": "买家旅程不再线性，客户跨多个触点研究、评估和决策",
+          "strength": "strong",
+          "supporting_evidence": ["E3"]
+        },
+        {
+          "id": "C2.2",
+          "claim": "B2B 买家在典型旅程中跨 10 个互动渠道，是十年前的两倍",
+          "strength": "strong",
+          "supporting_evidence": ["E4"]
+        },
+        {
+          "id": "C2.3",
+          "claim": "跨渠道一致性是竞争的最低要求，整合是差异化因素",
+          "strength": "strong",
+          "supporting_evidence": ["E5"]
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "claim": "AI 加速了营销与销售的融合",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C3.1",
+          "claim": "AI 最一致的收入增长集中在营销和销售领域",
+          "strength": "strong",
+          "supporting_evidence": ["E6"]
+        },
+        {
+          "id": "C3.2",
+          "claim": "7% 的组织报告 AI 带来超过 10% 的收入增长",
+          "strength": "moderate",
+          "supporting_evidence": ["E7"]
+        },
+        {
+          "id": "C3.3",
+          "claim": "活动从跨团队顺序执行转变为持续循环",
+          "strength": "strong",
+          "supporting_evidence": ["E8"]
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "claim": "领先企业正在适应这种变化",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C4.1",
+          "claim": "周期时间压缩，活动创建和外展开发从数周缩短到数分钟",
+          "strength": "strong",
+          "supporting_evidence": ["E9"]
+        },
+        {
+          "id": "C4.2",
+          "claim": "案例 1：Fortune 500 科技公司 AI 增强卖家发送 5 倍消息，准备时间从 1.5 小时降至 10-15 分钟",
+          "strength": "strong",
+          "supporting_evidence": ["E10"]
+        },
+        {
+          "id": "C4.3",
+          "claim": "案例 2：全球求职平台预计 AI 销售模式带来 3000-6000 万美元增量年收入",
+          "strength": "strong",
+          "supporting_evidence": ["E11"]
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "新角色 go-to-market engineer 正在涌现",
+      "strength": "moderate",
+      "sub_claims": [
+        {
+          "id": "C5.1",
+          "claim": "go-to-market engineer 负责设计和管理跨职能的 agentic 工作流",
+          "strength": "moderate",
+          "supporting_evidence": ["E12"]
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "claim": "执行收敛时，所有权需要明确",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C6.1",
+          "claim": "当 AI 代理直接与客户交互时，风险最高",
+          "strength": "strong",
+          "supporting_evidence": ["E13"]
+        },
+        {
+          "id": "C6.2",
+          "claim": "没有共享标准和明确所有权，AI 会扩大不一致性",
+          "strength": "strong",
+          "supporting_evidence": ["E14"]
+        }
+      ]
+    },
+    {
+      "id": "C7",
+      "claim": "闭环模型是领先企业的选择",
+      "strength": "strong",
+      "sub_claims": [
+        {
+          "id": "C7.1",
+          "claim": "领先企业将营销和销售重新设计为单一系统",
+          "strength": "strong",
+          "supporting_evidence": ["E15"]
+        },
+        {
+          "id": "C7.2",
+          "claim": "成功需要两个转变：技术（共享数据基础）和组织（共享激励和指标）",
+          "strength": "strong",
+          "supporting_evidence": ["E16"]
+        },
+        {
+          "id": "C7.3",
+          "claim": "客户体验发生根本变化：交互变得持续，上下文向前传递",
+          "strength": "strong",
+          "supporting_evidence": ["E17"]
+        }
+      ]
+    }
+  ],
+  "methods": {
+    "reasoning_type": "inductive",
+    "argument_structure": "problem-solution",
+    "key_frameworks": ["闭环 Go-to-Market 模型", "Agentic AI 工作流"],
+    "logical_chain": [
+      "客户不区分营销和销售 → 现有组织结构导致体验碎片化",
+      "AI 加速融合 → 但大多数企业分别部署，错失机会",
+      "领先企业整合 → 量化成果（5x 消息、$30-60M 增量收入）",
+      "需要两个转变（技术+组织）→ 闭环模型是解决方案"
+    ]
+  },
+  "data_points": [
+    {
+      "id": "D1",
+      "metric": "多渠道使用率",
+      "value": "80%+",
+      "context": "消费者使用多渠道研究或购买产品",
+      "source_paragraph": 3
+    },
+    {
+      "id": "D2",
+      "metric": "B2B 互动渠道数",
+      "value": "10 个",
+      "context": "典型旅程中跨 10 个互动渠道，是十年前的两倍",
+      "source_paragraph": 3
+    },
+    {
+      "id": "D3",
+      "metric": "AI 收入增长",
+      "value": "7% 报告 >10%",
+      "context": "使用 AI 的组织中，7% 报告收入增长超过 10%",
+      "source_paragraph": 5
+    },
+    {
+      "id": "D4",
+      "metric": "消息发送量",
+      "value": "5x",
+      "context": "AI 增强卖家发送 5 倍消息",
+      "source_paragraph": 8
+    },
+    {
+      "id": "D5",
+      "metric": "准备时间",
+      "value": "1.5h → 10-15min",
+      "context": "AI 增强卖家准备时间从 1.5 小时降至 10-15 分钟",
+      "source_paragraph": 8
+    },
+    {
+      "id": "D6",
+      "metric": "增量年收入",
+      "value": "$30-60M",
+      "context": "全球求职平台预计 AI 销售模式带来 3000-6000 万美元增量年收入",
+      "source_paragraph": 9
+    },
+    {
+      "id": "D7",
+      "metric": "总提升",
+      "value": "$400-700M",
+      "context": "来自 agent-enabled 用例的总提升",
+      "source_paragraph": 9
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "type": "explicit",
+      "assumption": "客户不区分营销和销售触点",
+      "supports_claims": ["C1"]
+    },
+    {
+      "id": "A2",
+      "type": "explicit",
+      "assumption": "跨渠道一致性是竞争的最低要求",
+      "supports_claims": ["C2"]
+    },
+    {
+      "id": "A3",
+      "type": "implicit",
+      "assumption": "AI 技术已经成熟到可以跨职能整合",
+      "supports_claims": ["C3"]
+    },
+    {
+      "id": "A4",
+      "type": "implicit",
+      "assumption": "组织愿意改变现有的激励和指标体系",
+      "supports_claims": ["C7"]
+    }
+  ],
+  "evidence_map": [
+    {
+      "claim_id": "C1",
+      "evidence": [
+        {"paragraph": 1, "quote": "Customers do not distinguish between the two", "relevance": "直接说明客户视角"},
+        {"paragraph": 1, "quote": "Every touchpoint...is experienced as a part of a single relationship", "relevance": "解释客户体验的单一性"},
+        {"paragraph": 1, "quote": "still approaching AI transformation function by function", "relevance": "说明当前部署问题"}
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "evidence": [
+        {"paragraph": 3, "quote": "Buying journeys no longer follow a linear path", "relevance": "说明买家旅程变化"},
+        {"paragraph": 3, "quote": "B2B buyers now engage across ten interaction channels", "relevance": "量化渠道增长"},
+        {"paragraph": 4, "quote": "Omnichannel execution has become the minimum required to compete", "relevance": "说明竞争门槛"}
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "evidence": [
+        {"paragraph": 5, "quote": "most consistent revenue gains from AI are concentrated in marketing and sales", "relevance": "说明 AI 收益集中领域"},
+        {"paragraph": 5, "quote": "7% report revenue increases exceeding 10%", "relevance": "量化 AI 收入增长"},
+        {"paragraph": 6, "quote": "Activities that once moved sequentially...increasingly operate in continuous loops", "relevance": "说明执行模式变化"}
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "evidence": [
+        {"paragraph": 7, "quote": "campaign creation and outreach development shrink from weeks to minutes", "relevance": "量化周期时间压缩"},
+        {"paragraph": 8, "quote": "AI-augmented sellers were sending five times the number of messages", "relevance": "案例 1 量化成果"},
+        {"paragraph": 9, "quote": "expects its AI-enabled sales model to generate $30–60 million", "relevance": "案例 2 量化成果"}
+      ]
+    },
+    {
+      "claim_id": "C5",
+      "evidence": [
+        {"paragraph": 10, "quote": "responsible for designing and managing agentic workflows", "relevance": "说明新角色职责"}
+      ]
+    },
+    {
+      "claim_id": "C6",
+      "evidence": [
+        {"paragraph": 11, "quote": "The stakes are highest when AI agents interact directly with customers", "relevance": "说明风险点"},
+        {"paragraph": 11, "quote": "Without shared standards...AI can scale inconsistency", "relevance": "说明无整合的风险"}
+      ]
+    },
+    {
+      "claim_id": "C7",
+      "evidence": [
+        {"paragraph": 13, "quote": "redesigning marketing and sales as a single system", "relevance": "说明领先企业做法"},
+        {"paragraph": 14, "quote": "Success requires two shifts", "relevance": "说明成功要素"},
+        {"paragraph": 15, "quote": "Interactions become continuous rather than fragmented", "relevance": "说明闭环模型效果"}
+      ]
+    }
+  ],
+  "stats": {
+    "total_claims": 7,
+    "total_data_points": 7,
+    "total_assumptions": 4,
+    "avg_evidence_per_claim": 2.4
+  }
+}
