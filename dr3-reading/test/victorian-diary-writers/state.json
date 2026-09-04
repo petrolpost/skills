@@ -1,0 +1,19 @@
+{
+  "raw_content": {
+    "status": "completed",
+    "run_at": "2026-09-05T00:48:00+08:00",
+    "stale": false,
+    "produced_by": { "module": "importer", "version": "dr3-reading/1.0" },
+    "preview": "Aeon Essays article, 3700 words, essay"
+  },
+  "datafication": {
+    "status": "completed",
+    "run_at": "2026-09-05T00:50:00+08:00",
+    "stale": false,
+    "stale_soft": false,
+    "blocking": false,
+    "reason": "",
+    "produced_by": { "module": "datafication", "version": "dr3-reading/1.4" },
+    "preview": "4 structures (4 explicit, 0 reconstructed, 0 inferred); scope: section: 4; importance: central: 1, supporting: 3; rejected: 5"
+  }
+}
