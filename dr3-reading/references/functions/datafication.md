@@ -1,7 +1,7 @@
 # datafication 功能模板
 
 module: datafication
-version: dr3-reading/1.1
+version: dr3-reading/1.4
 stage: A
 requires: [raw_content.completed]
 enhanced_by: [structured_data]
@@ -271,6 +271,57 @@ conceptualization:
 8. 如果结构化后没有明显的查询、比较、复用价值，则宁可不抽取。
 
 **宁缺毋滥。** 本功能宁可漏掉一个候选，也不要为了提高结构数量而制造结构。
+
+---
+
+## 语义强度原则（v1.4 新增）
+
+v1.4 版本要求明确区分断言的语义强度，防止将推断结果误标为作者明确表达。
+
+### 原则
+
+**语义强度决定标记**：结构内的断言必须按语义强度分级，不将推断当断言。
+
+- **事实型（fact）**：作者明确陈述的数据或事实
+- **推断型（inference）**：作者暗示但未直接陈述的含义
+- **解释型（interpretation）**：对作者意图或文本含义的解读
+- **假设型（assumption）**：为理解文本而假设的前提
+
+### 反推断污染
+
+**反推断污染**：结构中的 claim 不得将模型推断的结论写成作者明确表达的观点。
+
+- 在 evidence.annotations 中标注每个断言的语义强度
+- 推断型和解释型断言必须标注 `inferred: true`
+- 不得将推断结论用作结构的核心断言（只能作为补充）
+
+---
+
+## Claim-level Provenance（v1.4 新增）
+
+### 核心要求
+
+每个 claim 必须有可追溯的证据来源，且必须区分"作者明确表达"与"模型推断"。
+
+### Evidence 完整性规则
+
+**断言必须有证据**：每个 claim 必须有对应的 evidence，证据必须来自原文，且不能主要依靠模型常识补全。
+
+**证据必须可追溯**：evidence 必须包含具体的锚点信息（paragraph + quote），不能只给抽象描述。
+
+**不能用推断代替证据**：如果 claim 本身是推断型，那么它不应使用 `author_explicit` 作为 semantic_strength。
+
+### 结构验证链（Step 7）
+
+**结构性断言必须有证据支持**：结构中的每个核心断言必须有对应的 evidence 条目，且 evidence 不能主要依靠模型推断。
+
+**证据一致性验证**：结构内所有断言的 semantic_strength 必须与对应 evidence 的 semantic_strength 一致。
+
+**结论**：
+
+- 如果结构内的主要断言都有直接的原文证据支持，则 status 保持 `author_asserted`
+- 如果结构内的主要断言中，有超过一半是推断型的（inferred: true），则 status 必须改为 `reconstructed` 或 `partially_supported`
+- 如果证据链断裂严重（关键 claim 缺少 evidence 或 evidence 来源不明），则 status 必须降级
 
 ---
 
