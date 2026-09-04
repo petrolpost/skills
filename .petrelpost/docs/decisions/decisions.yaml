@@ -1,0 +1,130 @@
+decisions:
+  - id: DEC-20260905-01
+    status: confirmed
+    created_at: "2026-09-05"
+    from_signal: null
+    trigger:
+      summary: "Datafication 设计讨论发现：并非所有文章都具有完整概念系统，但文章仍可能包含局部可数据化结构；同时，Datafication 不应预设文章必须落入固定结构类型。"
+      source: "Datafication 设计讨论"
+    change:
+      from: "以预定义结构类型作为主要发现入口"
+      to: "以结构发现为主要入口；结构类型仅作为事后描述/建议标签"
+    rationale:
+      summary: "预定义类型可能把发现任务变成类型匹配，并限制模型发现未预设结构。Datafication 应首先忠实发现文章中真实存在、具有独立结构性和复用价值的结构；文章整体可以没有概念系统，也可以只有局部结构。"
+      待补全: false
+    evidence:
+      - type: explicit_statement
+        source: "Datafication 设计讨论"
+        excerpt: "有些文章没有概念系统，但可能存在局部的可数据化结构。"
+      - type: explicit_statement
+        source: "Datafication 设计讨论"
+        excerpt: "不是所有的文章都是这样。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "datafication"
+    planned_follow_ups: []
+    supersedes: null
+    superseded_by: null
+    confidence: explicit
+    source: "Datafication 设计讨论"
+
+  - id: DEC-20260905-02
+    status: confirmed
+    created_at: "2026-09-05"
+    from_signal: null
+    trigger:
+      summary: "Datafication 需要区分结构化作者表述与建立正确世界模型；Ontology 不应被默认理解为对世界或作者观点的正确性裁定。"
+      source: "Datafication / Ontology 设计讨论"
+    change:
+      from: "将 Datafication 的结构化结果理解为本体化、正确的概念系统"
+      to: "将 Datafication 视为对文章表达结构的忠实还原；仅在文章确实形成概念系统时描述其 conceptualization，不自动构建 ontology"
+    rationale:
+      summary: "有些文章可以作为概念系统读取，但不是所有文章都有概念系统。Datafication 的职责首先是还原作者实际表达的结构，而不是替作者建立一个被认为正确的 ontology。"
+      待补全: false
+    evidence:
+      - type: explicit_statement
+        source: "Datafication / Ontology 设计讨论"
+        excerpt: "有些文章时可以当作‘概念系统’来读取，但不是所有的文章都是这样。"
+      - type: explicit_statement
+        source: "Datafication / Ontology 设计讨论"
+        excerpt: "Ontology可以就是还原作者的表述的一种结构。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "datafication"
+      - type: concept
+        ref: "ontology"
+    planned_follow_ups: []
+    supersedes: null
+    superseded_by: null
+    confidence: explicit
+    source: "Datafication / Ontology 设计讨论"
+
+  - id: DEC-20260905-03
+    status: confirmed
+    created_at: "2026-09-05"
+    from_signal: null
+    trigger:
+      summary: "1.3/1.4 Datafication 测试发现，模型可以找到相关证据，但仍可能把证据所支持的事实升级为更强的结构性断言。"
+      source: "datafication-test-result / Mimo 2.5 测试"
+    change:
+      from: "结构化结果只需具有可追溯 evidence"
+      to: "每一个 structural claim 都必须检查 evidence 是否以相同语义强度支持该 claim；Evidence exists 不等于 Evidence supports claim"
+    rationale:
+      summary: "仅要求存在证据不足以阻止模型把‘A、B 都影响 X’升级为独立、加性或因果关系，也不足以阻止模型把两个端点升级为完整分类。1.4 因此引入 claim-level provenance 与语义强度验证。"
+      待补全: false
+    evidence:
+      - type: analysis
+        source: "datafication-test-result / Mimo 2.5"
+        excerpt: "DS-02 constraint 从‘五个条件是独立的，满足任一即可’降级为‘五个因素影响’；DS-03 的‘四个因素相互独立’被删除。"
+      - type: analysis
+        source: "datafication-test-result / Mimo 2.5"
+        excerpt: "关系 DS-01 evaluates DS-02 被删除，因为原文未明确支持。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "datafication"
+    planned_follow_ups: []
+    supersedes: null
+    superseded_by: null
+    confidence: inferred
+    source: "datafication-test-result / Mimo 2.5 测试"
+
+  - id: DEC-20260905-04
+    status: pending
+    created_at: "2026-09-05"
+    from_signal: null
+    trigger:
+      summary: "新的销售与营销文章测试发现：即使实施 claim-level provenance，模型仍可能从两个有证据支持的 elements 推导未经证实的 relation，并进一步赋予 causes/enables/leads_to 等语义强度。"
+      source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
+    change:
+      from: "claim-level provenance 被认为足以约束结构内部关系"
+      to: null
+    rationale:
+      summary: "测试显示 Evidence(A) 与 Evidence(B) 并不等于 Evidence(A → B)。需要进一步判断结构存在的证据、element 的证据、relation 的证据以及 relation semantic strength 的证据是否应独立验证。"
+      待补全: true
+    evidence:
+      - type: analysis
+        source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
+        excerpt: "模型将 multi-channel buyer journey 与 separate data systems 建立 creates_need_for 关系，但证据未明确支持该因果/功能关系。"
+      - type: analysis
+        source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
+        excerpt: "模型将 fragmented customer journey 与 supplier switching 建立 leads_to 关系，而原文实际明确关联的是 inconsistent information across teams。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "datafication"
+      - type: decision
+        ref: DEC-20260905-03
+    planned_follow_ups:
+      - action: "继续测试 relation-level semantic restraint，再决定是否修改 Datafication 规范"
+        status: open
+    supersedes: null
+    superseded_by: null
+    confidence: explicit
+    source: "datafication-test-result / ai-is-blurring-the-line-between-sales-and-marketing"
