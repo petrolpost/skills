@@ -1,0 +1,441 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.4-relation-schema-sanity-check",
+  "slug": "relation-schema-sanity-check",
+  "discovery_depth": "high",
+  "allow_reconstruction": false,
+  "inference_policy": "restricted",
+  "execution_time": "2026-09-05T11:10:00+08:00",
+  "experiment": "relation-schema-sanity-check",
+  "experimental_constraint": "Preserve source-level subject/object/predicate wording. Determine direction from sentence. Preserve modality/qualification. Only populate normalized_type when defensible.",
+  "candidate_model": {
+    "description": "relation with subject, predicate, object, direction, modality, qualification, evidence",
+    "fields": ["subject.text", "subject.normalized_ref", "predicate.text", "predicate.normalized_type", "object.text", "object.normalized_ref", "direction", "modality", "qualification", "evidence"]
+  },
+  "test_sentences": [
+    {
+      "id": "A1",
+      "family": "predicate_granularity",
+      "sentence": "A defines B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "defines",
+          "normalized_type": "defines"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["A1"]
+      }
+    },
+    {
+      "id": "A2",
+      "family": "predicate_granularity",
+      "sentence": "A helps define B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "helps define",
+          "normalized_type": "helps_define"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["A2"]
+      }
+    },
+    {
+      "id": "A3",
+      "family": "predicate_granularity",
+      "sentence": "A is used to define B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is used to define",
+          "normalized_type": "instrumental_for_defining"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["A3"]
+      }
+    },
+    {
+      "id": "A4",
+      "family": "predicate_granularity",
+      "sentence": "A is related to the definition of B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is related to the definition of",
+          "normalized_type": null
+        },
+        "object": {
+          "text": "the definition of B",
+          "normalized_ref": null
+        },
+        "direction": "undetermined",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["A4"]
+      }
+    },
+    {
+      "id": "B1",
+      "family": "argument_realization",
+      "sentence": "A affects B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "affects",
+          "normalized_type": "affects"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B1"]
+      }
+    },
+    {
+      "id": "B2",
+      "family": "argument_realization",
+      "sentence": "A affects the development of B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "affects",
+          "normalized_type": "affects"
+        },
+        "object": {
+          "text": "the development of B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B2"]
+      }
+    },
+    {
+      "id": "B3",
+      "family": "argument_realization",
+      "sentence": "A is related to the development of B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is related to",
+          "normalized_type": null
+        },
+        "object": {
+          "text": "the development of B",
+          "normalized_ref": null
+        },
+        "direction": "undetermined",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B3"]
+      }
+    },
+    {
+      "id": "B4",
+      "family": "argument_realization",
+      "sentence": "A depends on B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "depends on",
+          "normalized_type": "depends_on"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B4"]
+      }
+    },
+    {
+      "id": "B5",
+      "family": "argument_realization",
+      "sentence": "A depends on access to B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "depends on",
+          "normalized_type": "depends_on"
+        },
+        "object": {
+          "text": "access to B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B5"]
+      }
+    },
+    {
+      "id": "B6",
+      "family": "argument_realization",
+      "sentence": "A is associated with dependency on B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is associated with",
+          "normalized_type": null
+        },
+        "object": {
+          "text": "dependency on B",
+          "normalized_ref": null
+        },
+        "direction": "undetermined",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["B6"]
+      }
+    },
+    {
+      "id": "C1",
+      "family": "direction",
+      "sentence": "A causes B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "causes",
+          "normalized_type": "causes"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["C1"]
+      }
+    },
+    {
+      "id": "C2",
+      "family": "direction",
+      "sentence": "B is caused by A.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is caused by",
+          "normalized_type": "causes"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["C2"]
+      }
+    },
+    {
+      "id": "C3",
+      "family": "direction",
+      "sentence": "A precedes B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "precedes",
+          "normalized_type": "precedes"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["C3"]
+      }
+    },
+    {
+      "id": "C4",
+      "family": "direction",
+      "sentence": "B follows A.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "follows",
+          "normalized_type": "precedes"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": null,
+        "qualification": [],
+        "evidence": ["C4"]
+      }
+    },
+    {
+      "id": "D1",
+      "family": "modality_qualification",
+      "sentence": "A may depend on B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "may depend on",
+          "normalized_type": "depends_on"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": "epistemic",
+        "qualification": [],
+        "evidence": ["D1"]
+      }
+    },
+    {
+      "id": "D2",
+      "family": "modality_qualification",
+      "sentence": "A can depend on B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "can depend on",
+          "normalized_type": "depends_on"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": "dispositional",
+        "qualification": [],
+        "evidence": ["D2"]
+      }
+    },
+    {
+      "id": "D3",
+      "family": "modality_qualification",
+      "sentence": "A tends to precede B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "tends to precede",
+          "normalized_type": "precedes"
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "forward",
+        "modality": "dispositional",
+        "qualification": [],
+        "evidence": ["D3"]
+      }
+    },
+    {
+      "id": "D4",
+      "family": "modality_qualification",
+      "sentence": "A is often associated with B.",
+      "extraction": {
+        "subject": {
+          "text": "A",
+          "normalized_ref": null
+        },
+        "predicate": {
+          "text": "is often associated with",
+          "normalized_type": null
+        },
+        "object": {
+          "text": "B",
+          "normalized_ref": null
+        },
+        "direction": "undetermined",
+        "modality": "dispositional",
+        "qualification": [],
+        "evidence": ["D4"]
+      }
+    }
+  ],
+  "summary": {
+    "total_sentences": 18,
+    "extractions": 18,
+    "families": {
+      "predicate_granularity": 4,
+      "argument_realization": 6,
+      "direction": 4,
+      "modality_qualification": 4
+    }
+  }
+}

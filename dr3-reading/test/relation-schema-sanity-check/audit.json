@@ -1,0 +1,327 @@
+{
+  "module": "audit",
+  "version": "dr3-reading/1.4-relation-schema-sanity-check",
+  "slug": "relation-schema-sanity-check",
+  "experiment": "relation-schema-sanity-check",
+  "audit_method": "Manual source-text verification against extracted relations using candidate model",
+  "audit_time": "2026-09-05T11:15:00+08:00",
+  "results": [
+    {
+      "id": "A1",
+      "family": "predicate_granularity",
+      "sentence": "A defines B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "defines",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "A2",
+      "family": "predicate_granularity",
+      "sentence": "A helps define B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "helps define",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "A3",
+      "family": "predicate_granularity",
+      "sentence": "A is used to define B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is used to define",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "A4",
+      "family": "predicate_granularity",
+      "sentence": "A is related to the definition of B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is related to the definition of",
+        "object.text": "the definition of B",
+        "direction": "undetermined",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B1",
+      "family": "argument_realization",
+      "sentence": "A affects B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "affects",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B2",
+      "family": "argument_realization",
+      "sentence": "A affects the development of B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "affects",
+        "object.text": "the development of B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B3",
+      "family": "argument_realization",
+      "sentence": "A is related to the development of B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is related to",
+        "object.text": "the development of B",
+        "direction": "undetermined",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B4",
+      "family": "argument_realization",
+      "sentence": "A depends on B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "depends on",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B5",
+      "family": "argument_realization",
+      "sentence": "A depends on access to B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "depends on",
+        "object.text": "access to B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "B6",
+      "family": "argument_realization",
+      "sentence": "A is associated with dependency on B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is associated with",
+        "object.text": "dependency on B",
+        "direction": "undetermined",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "C1",
+      "family": "direction",
+      "sentence": "A causes B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "causes",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "C2",
+      "family": "direction",
+      "sentence": "B is caused by A.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is caused by",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "C3",
+      "family": "direction",
+      "sentence": "A precedes B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "precedes",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "C4",
+      "family": "direction",
+      "sentence": "B follows A.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "follows",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": null
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "D1",
+      "family": "modality_qualification",
+      "sentence": "A may depend on B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "may depend on",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": "epistemic"
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "D2",
+      "family": "modality_qualification",
+      "sentence": "A can depend on B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "can depend on",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": "dispositional"
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "D3",
+      "family": "modality_qualification",
+      "sentence": "A tends to precede B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "tends to precede",
+        "object.text": "B",
+        "direction": "forward",
+        "modality": "dispositional"
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    },
+    {
+      "id": "D4",
+      "family": "modality_qualification",
+      "sentence": "A is often associated with B.",
+      "extraction": {
+        "subject.text": "A",
+        "predicate.text": "is often associated with",
+        "object.text": "B",
+        "direction": "undetermined",
+        "modality": "dispositional"
+      },
+      "audit": {
+        "classification": "S0",
+        "correct": true,
+        "diagnosis": null
+      }
+    }
+  ],
+  "summary": {
+    "total_sentences": 18,
+    "S0": 18,
+    "S1_A": 0,
+    "S1_P": 0,
+    "S1_D": 0,
+    "S1_M": 0,
+    "S1_N": 0,
+    "S2": 0,
+    "accuracy": "100%"
+  }
+}
