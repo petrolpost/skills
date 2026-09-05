@@ -1,103 +1,156 @@
-# Relation Extraction 1.5 — Post-Implementation Validation
+# Relation Extraction 1.5 — Validation Repair
 
 ## Status
 
-Production implementation is present on branch `dr3-reading-1.5`.
+The first post-implementation validation exposed two methodological defects before 1.5 can be accepted as a production baseline:
 
-This document defines the first post-implementation validation. It is deliberately separate from the synthetic Experiments 5–7 and uses a new real article.
+1. The A condition did not actually execute the historical 1.4 relation-generation path; it used `relation_extraction=disabled`, so it was not a valid A/B test of the former over-generation behavior.
+2. The independent audit contained at least one apparent clause-composition error (`the customer journey is broken and experience suffers` was represented as one binary relation), showing that relation audit fidelity itself needs a stricter proposition-boundary check.
 
-## Test article
+This repair validates the validation procedure. It does **not** modify the production 1.5 implementation.
 
-- Title: `Philosophy tool kit`
-- Author: Alan Hájek
-- URL: https://aeon.co/essays/with-the-use-of-heuristics-anybody-can-think-like-a-philosopher
-- Source: Aeon Essays
+## Source Article
 
-The article is suitable because it contains explicit relational expressions such as `depends on`, `leads to`, `supports`, `resembles`, `requires`, and contrastive formulations, while also containing substantial non-relational exposition. This makes it possible to test whether 1.5 extracts source-grounded relations without turning ordinary co-occurrence into relations.
+Use a new real English professional article. Do not use the Victorian diary article.
 
-## Comparison
+The previous validation article may be reused only if necessary to reproduce the audit defect; otherwise prefer another article with explicit relational language and coordinated clauses.
 
-Run the same article through:
+## A — Historical 1.4 Baseline
 
-### A — Production 1.4 baseline
+Run the actual 1.4 Relation Generation behavior, including the generation behavior tested in Experiment 3.
 
-- existing Structure Discovery behavior;
-- historical relation generation behavior;
-- independent relation audit.
+Do **not** substitute `relation_extraction=disabled` for the historical baseline.
 
-### B — Production 1.5
+Then independently audit the generated relations using the established R0/R1/R2/R3 classification.
 
-- Structure Discovery with `relation_extraction=optional`;
-- source-first Relation Extraction;
-- optional normalization only after source-level extraction;
-- independent relation audit.
+Purpose:
+- establish a genuine baseline for relation over-generation;
+- verify that the observed 1.4 behavior is comparable to the earlier experiments.
 
-### C — Structure-only control
+## B — 1.5 Candidate
 
-- `relation_extraction=disabled`;
-- verifies that removing relations does not materially alter Structure / Element discovery.
+Run current `dr3-reading-1.5` with source-first Relation Extraction.
 
-## Required observations
+Do not change production files during this validation.
 
-### Structure stability
+Audit every extracted relation independently against the original article.
 
-Compare A/B/C:
+## C — Structure-Only Control
 
-- structure count;
-- structure scope;
-- structure origin;
-- element count and identity;
-- rejected candidates.
+Run the same article with Relation Extraction disabled.
 
-Expected result: B and C should remain materially equivalent to the established Structure Discovery behavior. Relation count is not part of this criterion.
+C is a control for Structure / Element stability, not a relation-quality baseline.
 
-### Relation fidelity
+## Revised Relation Audit Rules
 
-For B, classify every retained relation:
+For every B relation, check the following in order:
 
-- R0: source relation correctly extracted;
-- R1-A: argument realization/scope error;
-- R1-P: predicate/type error;
-- R1-D: direction error;
-- R1-M: modality/qualification error;
-- R1-N: normalization error;
-- R2: endpoint evidence exists but relation evidence is insufficient;
-- R3: model-generated relation with no source support.
+### 1. Proposition boundary
 
-The default action for R2/R3 is deletion.
+Verify that the subject, predicate, and object belong to the **same source proposition**.
 
-### Source preservation
+Reject relations that are formed by combining:
+- coordinated clauses;
+- separate clauses sharing a subject;
+- separate clauses sharing a predicate;
+- adjacent propositions;
+- subordinate clauses whose arguments do not form the claimed relation.
 
-For each B relation verify:
+In particular:
 
-- `subject.text` preserves source argument realization;
-- `predicate.text` preserves the source relational expression;
-- `object.text` preserves source argument realization;
-- `direction` is independently represented;
-- modality and qualification are not silently strengthened;
-- evidence directly supports the relation.
+> Evidence for proposition A + evidence for proposition B does not establish relation A → B.
 
-### Coverage
+### 2. Argument realization
 
-Construct the explicit relation reference set from the article independently of the extractor before judging recall. Do not use the extractor's own output as the gold set.
+Verify that `subject.text` and `object.text` preserve the actual source-level argument realization.
 
-If an independently constructed gold set is not available, report only:
+Do not silently collapse:
+- pronouns or demonstratives;
+- derived noun phrases;
+- prepositional complements;
+- modifiers or qualifiers.
+
+### 3. Predicate fidelity
+
+`predicate.text` must correspond to the relational expression actually connecting the extracted arguments.
+
+Do not construct a predicate by combining predicates from separate clauses.
+
+### 4. Direction
+
+Check direction independently from argument identification.
+
+### 5. Modality / qualification
+
+Preserve modal and qualifying language. Do not strengthen `can`, `may`, `often`, `sometimes`, etc. into unconditional claims.
+
+### 6. Evidence
+
+The cited evidence must directly support the complete relation, not merely its endpoints or separate propositions.
+
+## Classification
+
+- R0: faithful source-grounded relation
+- R1-A: argument realization/scope error
+- R1-P: predicate error
+- R1-D: direction error
+- R1-M: modality/qualification error
+- R1-N: normalization error
+- R2: endpoint evidence exists but relation evidence is insufficient
+- R3: fabricated/model-generated relation with no source support
+
+A relation assembled from multiple independent clauses without a source proposition connecting its arguments should be classified as **R2 or R3**, depending on whether any relation claim is actually supported.
+
+## Coverage
+
+If recall is assessed, construct the explicit relation reference set independently **before** examining B's extracted relations.
+
+If no independent gold set is available, report only:
 
 > explicit relation instances identified during coverage review
 
-and do not call the number a measured recall rate.
+Do not report extractor-output agreement as measured recall.
 
-## Pass criteria
+## Required Comparison
 
-1. B does not degrade Structure / Element discovery relative to C.
-2. B does not reproduce the systematic relation over-generation observed in Experiment 3.
-3. R0 is the dominant relation class.
-4. R2/R3 are removed rather than retained as knowledge.
-5. Source-level predicate and arguments remain recoverable even when normalization is uncertain.
+Report:
+- A/B/C structure count;
+- structure scope and origin;
+- element count and identity;
+- rejected candidates;
+- A relation-generation count and post-audit count;
+- B relation count and post-audit count;
+- B R0/R1/R2/R3 distribution;
+- proposition-boundary failures;
+- source-preservation failures;
+- coverage observations.
+
+## Acceptance
+
+1. A genuinely exercises the historical 1.4 relation-generation path.
+2. B does not degrade Structure / Element discovery relative to C.
+3. B does not reproduce the systematic 1.4 relation over-generation pattern.
+4. B relations have independently supported proposition boundaries.
+5. Source-level arguments and predicates remain recoverable.
 6. Direction and modality remain independently inspectable.
-7. A relation is never required merely to make a structure appear complete.
-8. If B materially changes Structure Discovery, the change is investigated before accepting 1.5 as stable.
+7. R2/R3 are not retained as knowledge.
+8. No relation is required to make a structure appear complete.
 
-## What this test does not establish
+## Non-goals
 
-This test does not establish a universal relation ontology, general recall, or general semantic normalization accuracy. It only tests whether the 1.5 architectural boundary works on a real article without degrading the already-stable Structure / Element path.
+This repair does not establish:
+- a universal relation ontology;
+- general recall;
+- universal semantic normalization accuracy;
+- performance across all article genres.
+
+It only establishes whether the validation procedure is sound enough to support a production decision on 1.5.
+
+## Execution Rule
+
+If a defect is found:
+
+1. record the defect and evidence;
+2. do not modify production 1.5 to explain it away;
+3. distinguish implementation defects from audit/protocol defects;
+4. only after the validation is methodologically sound decide whether 1.5 should be promoted to `main`.
