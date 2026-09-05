@@ -1,0 +1,325 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.5",
+  "slug": "ai-is-blurring-the-line-between-sales-and-marketing",
+  "discovery_depth": "high",
+  "allow_reconstruction": true,
+  "inference_policy": "restricted",
+  "relation_extraction": "disabled",
+  "execution_time": "2026-09-06T02:15:00+08:00",
+  "experiment": "validation-repair-C-control",
+  "structures": [
+    {
+      "id": "DS-01",
+      "name": "Customer Experience Fragmentation Problem",
+      "scope": {
+        "type": "section",
+        "paragraphs": [3, 4, 5, 6]
+      },
+      "importance": {
+        "role": "central"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "Marketing and sales separation leads to fragmented customer experience",
+      "structure": {
+        "elements": [
+          {
+            "id": "E1-1",
+            "name": "Customers do not fragment experience",
+            "type": "customer_reality",
+            "description": "Customers do not distinguish between marketing and sales, viewing all touchpoints as part of a single relationship",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "Customers do not distinguish between the two."
+              }
+            ]
+          },
+          {
+            "id": "E1-2",
+            "name": "Org chart driven design",
+            "type": "organizational_design",
+            "description": "Companies design processes around org charts rather than customer reality",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "The organizations that design around that reality, rather than around their own organizational charts"
+              }
+            ]
+          },
+          {
+            "id": "E1-3",
+            "name": "Separate data sets",
+            "type": "data_silo",
+            "description": "Marketing and sales operate on separate data sets and systems",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [5],
+                "quote": "When marketing and sales operate on separate data sets and disconnected systems"
+              }
+            ]
+          },
+          {
+            "id": "E1-4",
+            "name": "Fragmentation cost",
+            "type": "business_impact",
+            "description": "Inconsistent information across teams is the top reason customers switch suppliers",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [6],
+                "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "Customer experience is a single continuum",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "Every touchpoint...is experienced as a part of a single relationship."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    },
+    {
+      "id": "DS-02",
+      "name": "AI-Driven Integration Transformation",
+      "scope": {
+        "type": "section",
+        "paragraphs": [7, 8, 9, 10]
+      },
+      "importance": {
+        "role": "central"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "How Agentic AI drives marketing-sales integration",
+      "structure": {
+        "elements": [
+          {
+            "id": "E2-1",
+            "name": "Revenue growth concentration",
+            "type": "ai_impact",
+            "description": "Most consistent AI revenue gains concentrated in marketing and sales",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [7],
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales"
+              }
+            ]
+          },
+          {
+            "id": "E2-2",
+            "name": "Execution convergence",
+            "type": "operational_change",
+            "description": "Execution increasingly spans previously distinct marketing and sales activities",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [7],
+                "quote": "execution increasingly spanning what were once distinct marketing and sales activities"
+              }
+            ]
+          },
+          {
+            "id": "E2-3",
+            "name": "Continuous loops",
+            "type": "operational_model",
+            "description": "Activities shift from sequential execution to continuous loops",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
+              }
+            ]
+          },
+          {
+            "id": "E2-4",
+            "name": "Shared responsibility",
+            "type": "organizational_change",
+            "description": "Marketing and sales share responsibility for pipeline quality, conversion, and customer value",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "Advantage compounds only when both functions use the same data system",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "The advantage compounds only when both functions contribute to and draw from the same data system."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    },
+    {
+      "id": "DS-03",
+      "name": "Closed-Loop Operating Model",
+      "scope": {
+        "type": "section",
+        "paragraphs": [15, 16, 17]
+      },
+      "importance": {
+        "role": "supporting"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "How leading organizations design closed-loop marketing-sales systems",
+      "structure": {
+        "elements": [
+          {
+            "id": "E3-1",
+            "name": "Single system design",
+            "type": "organizational_design",
+            "description": "Leading organizations redesign marketing and sales as a single system",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [15],
+                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system"
+              }
+            ]
+          },
+          {
+            "id": "E3-2",
+            "name": "Rethink the work itself",
+            "type": "process_redesign",
+            "description": "Not layering AI onto existing processes, but rethinking the work itself",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [15],
+                "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
+              }
+            ]
+          },
+          {
+            "id": "E3-3",
+            "name": "Technology shift",
+            "type": "technology_requirement",
+            "description": "Shared customer data foundation and coordinated systems",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "a shared customer data foundation and coordinated systems"
+              }
+            ]
+          },
+          {
+            "id": "E3-4",
+            "name": "Organizational shift",
+            "type": "organizational_requirement",
+            "description": "Shared incentives and metrics measuring full customer journey outcomes",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "shared incentives and metrics that measure outcomes across the full customer journey"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "Success requires both technology and organizational shifts",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "Success requires two shifts."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    }
+  ],
+  "relations": [],
+  "inter_structure_relations": [],
+  "conceptualization": {
+    "detected": true,
+    "scope": "article",
+    "coherence": "high",
+    "description": "Article constructs conceptual system around AI-driven marketing-sales integration, from problem (fragmentation) to solution (closed-loop model)"
+  },
+  "rejected_candidates": [
+    {
+      "description": "Linear customer journey model",
+      "reason": "Article explicitly rejects linear journeys, stating customer journeys are cyclical and non-linear",
+      "evidence": [
+        {
+          "paragraphs": [4],
+          "quote": "Buying journeys no longer follow a linear path."
+        }
+      ]
+    },
+    {
+      "description": "AI replacing human sales",
+      "reason": "Article emphasizes human-AI collaboration, not replacement",
+      "evidence": [
+        {
+          "paragraphs": [17],
+          "quote": "Humans and AI agents work together in a closed loop"
+        }
+      ]
+    },
+    {
+      "description": "Technology is the only constraint",
+      "reason": "Article explicitly states technology is no longer the constraint; organization and process are",
+      "evidence": [
+        {
+          "paragraphs": [19],
+          "quote": "The technology to build a closed-loop go-to-market system is no longer the constraint."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_structures": 3,
+    "explicit_structures": 3,
+    "reconstructed_structures": 0,
+    "inferred_structures": 0,
+    "rejected_candidates": 3,
+    "scope_distribution": {
+      "local": 0,
+      "section": 3,
+      "article": 0
+    },
+    "importance_distribution": {
+      "central": 2,
+      "supporting": 1
+    },
+    "total_relations": 0
+  }
+}

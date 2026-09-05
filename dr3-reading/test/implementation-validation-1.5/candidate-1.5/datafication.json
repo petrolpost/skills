@@ -1,0 +1,1251 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.5",
+  "slug": "ai-is-blurring-the-line-between-sales-and-marketing",
+  "discovery_depth": "high",
+  "allow_reconstruction": true,
+  "inference_policy": "restricted",
+  "relation_extraction": "optional",
+  "execution_time": "2026-09-06T02:10:00+08:00",
+  "experiment": "validation-repair-B-candidate",
+  "structures": [
+    {
+      "id": "DS-01",
+      "name": "客户体验碎片化问题",
+      "scope": {
+        "type": "section",
+        "paragraphs": [3, 4, 5, 6]
+      },
+      "importance": {
+        "role": "central"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "营销与销售分离导致客户体验碎片化",
+      "structure": {
+        "elements": [
+          {
+            "id": "E1-1",
+            "name": "客户不分割体验",
+            "type": "customer_reality",
+            "description": "客户不区分营销和销售，将所有触点视为单一关系的一部分",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "Customers do not distinguish between the two."
+              }
+            ]
+          },
+          {
+            "id": "E1-2",
+            "name": "组织图表驱动设计",
+            "type": "organizational_design",
+            "description": "公司围绕组织图表而非客户现实设计流程",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "The organizations that design around that reality, rather than around their own organizational charts"
+              }
+            ]
+          },
+          {
+            "id": "E1-3",
+            "name": "分离数据集",
+            "type": "data_silo",
+            "description": "营销和销售运营在分离的数据集和系统上",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [5],
+                "quote": "When marketing and sales operate on separate data sets and disconnected systems"
+              }
+            ]
+          },
+          {
+            "id": "E1-4",
+            "name": "碎片化成本",
+            "type": "business_impact",
+            "description": "跨团队信息不一致是客户更换供应商的首要原因",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [6],
+                "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "客户体验是单一连续体",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "Every touchpoint...is experienced as a part of a single relationship."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    },
+    {
+      "id": "DS-02",
+      "name": "AI驱动的整合转型",
+      "scope": {
+        "type": "section",
+        "paragraphs": [7, 8, 9, 10]
+      },
+      "importance": {
+        "role": "central"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "Agentic AI如何推动营销与销售的整合",
+      "structure": {
+        "elements": [
+          {
+            "id": "E2-1",
+            "name": "收入增长集中",
+            "type": "ai_impact",
+            "description": "AI带来的最一致收入增长集中在营销和销售领域",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [7],
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales"
+              }
+            ]
+          },
+          {
+            "id": "E2-2",
+            "name": "执行收敛",
+            "type": "operational_change",
+            "description": "执行日益跨越曾经不同的营销和销售活动",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [7],
+                "quote": "execution increasingly spanning what were once distinct marketing and sales activities"
+              }
+            ]
+          },
+          {
+            "id": "E2-3",
+            "name": "持续循环",
+            "type": "operational_model",
+            "description": "活动从顺序执行转变为持续循环",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
+              }
+            ]
+          },
+          {
+            "id": "E2-4",
+            "name": "共享责任",
+            "type": "organizational_change",
+            "description": "营销和销售共同负责管道质量、转化和客户价值",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "优势只有在两个函数贡献并使用相同数据系统时才会复合",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "The advantage compounds only when both functions contribute to and draw from the same data system."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    },
+    {
+      "id": "DS-03",
+      "name": "闭环运营模型",
+      "scope": {
+        "type": "section",
+        "paragraphs": [15, 16, 17]
+      },
+      "importance": {
+        "role": "supporting"
+      },
+      "origin": "explicit",
+      "status": "author_asserted",
+      "subject": "领先组织如何设计闭环营销-销售系统",
+      "structure": {
+        "elements": [
+          {
+            "id": "E3-1",
+            "name": "单一系统设计",
+            "type": "organizational_design",
+            "description": "领先组织将营销和销售重新设计为单一系统",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [15],
+                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system"
+              }
+            ]
+          },
+          {
+            "id": "E3-2",
+            "name": "工作本身重新思考",
+            "type": "process_redesign",
+            "description": "不是在现有流程上叠加AI，而是重新思考工作本身",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [15],
+                "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
+              }
+            ]
+          },
+          {
+            "id": "E3-3",
+            "name": "技术转变",
+            "type": "technology_requirement",
+            "description": "共享客户数据基础和协调系统",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "a shared customer data foundation and coordinated systems"
+              }
+            ]
+          },
+          {
+            "id": "E3-4",
+            "name": "组织转变",
+            "type": "organizational_requirement",
+            "description": "共享激励和衡量整个客户旅程的指标",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "shared incentives and metrics that measure outcomes across the full customer journey"
+              }
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "statement": "成功需要技术和组织双重转变",
+            "origin": "explicit",
+            "evidence": [
+              {
+                "paragraphs": [16],
+                "quote": "Success requires two shifts."
+              }
+            ]
+          }
+        ]
+      },
+      "interpretation": {
+        "suggested_kind": null
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "R-01",
+      "subject": {
+        "text": "Agentic AI",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "is changing",
+        "normalized_type": "transforming"
+      },
+      "object": {
+        "text": "that",
+        "normalized_ref": "aligning marketing and sales"
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [2],
+          "quote": "Agentic AI is changing that."
+        }
+      ]
+    },
+    {
+      "id": "R-02",
+      "subject": {
+        "text": "Customers",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "do not distinguish between",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "the two",
+        "normalized_ref": "marketing and sales"
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [3],
+          "quote": "Customers do not distinguish between the two."
+        }
+      ]
+    },
+    {
+      "id": "R-03",
+      "subject": {
+        "text": "Every touchpoint",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "is experienced as",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "a part of a single relationship",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["regardless of which function owns it internally"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [3],
+          "quote": "Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+        }
+      ]
+    },
+    {
+      "id": "R-04",
+      "subject": {
+        "text": "B2B buyers",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "engage across",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "ten interaction channels",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["during a typical journey"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [4],
+          "quote": "B2B buyers now engage across ten interaction channels during a typical journey"
+        }
+      ]
+    },
+    {
+      "id": "R-05",
+      "subject": {
+        "text": "marketing and sales",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "operate on",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "separate data sets and disconnected systems",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [5],
+          "quote": "When marketing and sales operate on separate data sets and disconnected systems"
+        }
+      ]
+    },
+    {
+      "id": "R-06",
+      "subject": {
+        "text": "the customer journey",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "is broken",
+        "normalized_type": null
+      },
+      "object": {
+        "text": null,
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [5],
+          "quote": "the customer journey is broken"
+        }
+      ]
+    },
+    {
+      "id": "R-07",
+      "subject": {
+        "text": "experience",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "suffers",
+        "normalized_type": null
+      },
+      "object": {
+        "text": null,
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [5],
+          "quote": "experience suffers"
+        }
+      ]
+    },
+    {
+      "id": "R-08",
+      "subject": {
+        "text": "buyers",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "cite",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "inconsistent information across teams",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["as the top reason for switching suppliers"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [6],
+          "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers."
+        }
+      ]
+    },
+    {
+      "id": "R-09",
+      "subject": {
+        "text": "market leaders",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "are four times more likely to deploy",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "true one-to-one personalization",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [6],
+          "quote": "market leaders are four times more likely to deploy true one-to-one personalization"
+        }
+      ]
+    },
+    {
+      "id": "R-10",
+      "subject": {
+        "text": "Agentic AI",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "is accelerating",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "a convergence already underway",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [7],
+          "quote": "Agentic AI is accelerating a convergence already underway"
+        }
+      ]
+    },
+    {
+      "id": "R-11",
+      "subject": {
+        "text": "the most consistent revenue gains from AI",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "are concentrated in",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "marketing and sales",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [7],
+          "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales."
+        }
+      ]
+    },
+    {
+      "id": "R-12",
+      "subject": {
+        "text": "Activities that once moved sequentially across teams",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "increasingly operate in",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "continuous loops",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [8],
+          "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
+        }
+      ]
+    },
+    {
+      "id": "R-13",
+      "subject": {
+        "text": "Marketing and sales",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "increasingly share responsibility for",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "pipeline quality, conversion, and customer value",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [8],
+          "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value."
+        }
+      ]
+    },
+    {
+      "id": "R-14",
+      "subject": {
+        "text": "The advantage",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "compounds only when",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "both functions contribute to and draw from the same data system",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [8],
+          "quote": "The advantage compounds only when both functions contribute to and draw from the same data system."
+        }
+      ]
+    },
+    {
+      "id": "R-15",
+      "subject": {
+        "text": "Cycle times",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "compress as",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "campaign creation and outreach development shrink from weeks to minutes",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [9],
+          "quote": "Cycle times compress as campaign creation and outreach development shrink from weeks to minutes."
+        }
+      ]
+    },
+    {
+      "id": "R-16",
+      "subject": {
+        "text": "Conversion rates",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "improve as",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "interactions become more relevant to customer intent",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [9],
+          "quote": "Conversion rates improve as interactions become more relevant to customer intent."
+        }
+      ]
+    },
+    {
+      "id": "R-17",
+      "subject": {
+        "text": "AI-augmented sellers",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "were sending",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "five times the number of messages to leads",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["while maintaining pre-AI open rates, response rates, and meeting scheduling rates"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [10],
+          "quote": "AI-augmented sellers were sending five times the number of messages to leads while maintaining pre-AI open rates, response rates, and meeting scheduling rates."
+        }
+      ]
+    },
+    {
+      "id": "R-18",
+      "subject": {
+        "text": "AI-augmented seller prep time for initial calls",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "dropped from",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "1–2 hours to 10–15 minutes",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [10],
+          "quote": "AI-augmented seller prep time for initial calls dropped from 1–2 hours to 10–15 minutes."
+        }
+      ]
+    },
+    {
+      "id": "R-19",
+      "subject": {
+        "text": "The company",
+        "normalized_ref": "global job search platform"
+      },
+      "predicate": {
+        "text": "expects",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "its AI-enabled sales model to generate $30–$60 million in incremental annual revenue",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [11],
+          "quote": "The company expects its AI-enabled sales model to generate $30–$60 million in incremental annual revenue"
+        }
+      ]
+    },
+    {
+      "id": "R-20",
+      "subject": {
+        "text": "The system",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "deploys",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "an AI sales development representative (SDR)",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["that identifies prospects, generates personalized outreach, nurtures early conversations, and hands off qualified leads to sellers with complete context and next actions"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [11],
+          "quote": "The system deploys an AI sales development representative (SDR) that identifies prospects, generates personalized outreach, nurtures early conversations, and hands off qualified leads to sellers with complete context and next actions."
+        }
+      ]
+    },
+    {
+      "id": "R-21",
+      "subject": {
+        "text": "What makes the model work",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "is not",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "the agent alone",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["but the shared data and coordinated handoffs behind it"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [11],
+          "quote": "What makes the model work is not the agent alone but the shared data and coordinated handoffs behind it."
+        }
+      ]
+    },
+    {
+      "id": "R-22",
+      "subject": {
+        "text": "These results",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "are reshaping",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "how teams are structured",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [12],
+          "quote": "These results are reshaping how teams are structured."
+        }
+      ]
+    },
+    {
+      "id": "R-23",
+      "subject": {
+        "text": "A new role",
+        "normalized_ref": "go-to-market engineer"
+      },
+      "predicate": {
+        "text": "is emerging",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "the go-to-market engineer",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["who is increasingly responsible for designing and managing agentic workflows that span functions"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [12],
+          "quote": "A new roles is emerging: the go-to-market engineer, who is increasingly responsible for designing and managing agentic workflows that span functions"
+        }
+      ]
+    },
+    {
+      "id": "R-24",
+      "subject": {
+        "text": "different functions",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "build and deploy",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "customer-facing agents independently",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "When different functions build and deploy customer-facing agents independently"
+        }
+      ]
+    },
+    {
+      "id": "R-25",
+      "subject": {
+        "text": "that coherence",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "can erode",
+        "normalized_type": null
+      },
+      "object": {
+        "text": null,
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": "dispositional",
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "that coherence can erode."
+        }
+      ]
+    },
+    {
+      "id": "R-26",
+      "subject": {
+        "text": "AI",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "can scale",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "inconsistency as easily as it scales efficiency",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": "dispositional",
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "AI can scale inconsistency as easily as it scales efficiency."
+        }
+      ]
+    },
+    {
+      "id": "R-27",
+      "subject": {
+        "text": "The agent",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "continuously interprets",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "intent",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["adapts outreach, and advances conversations until human involvement creates the most value"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "The agent continuously interprets intent, adapts outreach, and advances conversations until human involvement creates the most value."
+        }
+      ]
+    },
+    {
+      "id": "R-28",
+      "subject": {
+        "text": "the role",
+        "normalized_ref": "SDR in agentic model"
+      },
+      "predicate": {
+        "text": "spans",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "both marketing and sales",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["combining demand generation, personalization, and early-stage engagement into a single, continuous workflow"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "the role spans both marketing and sales, combining demand generation, personalization, and early-stage engagement into a single, continuous workflow."
+        }
+      ]
+    },
+    {
+      "id": "R-29",
+      "subject": {
+        "text": "Brand standards and customer context",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "travel with",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "the agent",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["across every step"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [14],
+          "quote": "Brand standards and customer context travel with the agent across every step."
+        }
+      ]
+    },
+    {
+      "id": "R-30",
+      "subject": {
+        "text": "the organizations pulling ahead",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "are redesigning",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "marketing and sales as a single system",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [15],
+          "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system."
+        }
+      ]
+    },
+    {
+      "id": "R-31",
+      "subject": {
+        "text": "they",
+        "normalized_ref": "leading organizations"
+      },
+      "predicate": {
+        "text": "rethink",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "the work itself",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["Rather than layering AI onto existing processes"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [15],
+          "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
+        }
+      ]
+    },
+    {
+      "id": "R-32",
+      "subject": {
+        "text": "Success",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "requires",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "two shifts",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [16],
+          "quote": "Success requires two shifts."
+        }
+      ]
+    },
+    {
+      "id": "R-33",
+      "subject": {
+        "text": "Traditional distinctions of marketing-qualified leads versus sales-qualified leads",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "give way to",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "measures of pipeline quality, conversion, and customer lifetime value",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [16],
+          "quote": "Traditional distinctions of marketing-qualified leads versus sales-qualified leads give way to measures of pipeline quality, conversion, and customer lifetime value."
+        }
+      ]
+    },
+    {
+      "id": "R-34",
+      "subject": {
+        "text": "Interactions",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "become",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "continuous rather than fragmented",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [17],
+          "quote": "Interactions become continuous rather than fragmented."
+        }
+      ]
+    },
+    {
+      "id": "R-35",
+      "subject": {
+        "text": "Context",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "carries forward instead of",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "resetting at every stage",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [17],
+          "quote": "Context carries forward instead of resetting at every stage."
+        }
+      ]
+    },
+    {
+      "id": "R-36",
+      "subject": {
+        "text": "Humans and AI agents",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "work together in",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "a closed loop",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": ["where segmentation evolves in real time, outreach is coordinated across channels, human judgment shapes the moments that matter most, and every insight feeds forward rather than resetting with each campaign or deal"],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [17],
+          "quote": "Humans and AI agents work together in a closed loop where segmentation evolves in real time, outreach is coordinated across channels, human judgment shapes the moments that matter most, and every insight feeds forward rather than resetting with each campaign or deal."
+        }
+      ]
+    },
+    {
+      "id": "R-37",
+      "subject": {
+        "text": "The advantage",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "will belong to",
+        "normalized_type": null
+      },
+      "object": {
+        "text": "organizations whose leaders have the mandate and discipline to design around the customer rather than around the organizational chart",
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [19],
+          "quote": "The advantage will belong to organizations whose leaders have the mandate and discipline to design around the customer rather than around the organizational chart."
+        }
+      ]
+    }
+  ],
+  "inter_structure_relations": [],
+  "conceptualization": {
+    "detected": true,
+    "scope": "article",
+    "coherence": "high",
+    "description": "文章围绕'AI驱动的营销-销售整合'构建概念体系，从问题（碎片化）到解决方案（闭环模型）形成完整论证链"
+  },
+  "rejected_candidates": [
+    {
+      "description": "线性客户旅程模型",
+      "reason": "文章明确否定线性旅程，指出客户旅程是循环的、非线性的",
+      "evidence": [
+        {
+          "paragraphs": [4],
+          "quote": "Buying journeys no longer follow a linear path."
+        }
+      ]
+    },
+    {
+      "description": "AI替代人类销售",
+      "reason": "文章强调人机协作，而非替代",
+      "evidence": [
+        {
+          "paragraphs": [17],
+          "quote": "Humans and AI agents work together in a closed loop"
+        }
+      ]
+    },
+    {
+      "description": "技术是唯一约束",
+      "reason": "文章明确指出技术不再是约束，组织和流程才是",
+      "evidence": [
+        {
+          "paragraphs": [19],
+          "quote": "The technology to build a closed-loop go-to-market system is no longer the constraint."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_structures": 3,
+    "explicit_structures": 3,
+    "reconstructed_structures": 0,
+    "inferred_structures": 0,
+    "rejected_candidates": 3,
+    "scope_distribution": {
+      "local": 0,
+      "section": 3,
+      "article": 0
+    },
+    "importance_distribution": {
+      "central": 2,
+      "supporting": 1
+    },
+    "total_relations": 37
+  }
+}
