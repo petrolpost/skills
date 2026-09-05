@@ -2,7 +2,9 @@
 
 ## Status
 
-Candidate architecture supported by Experiments 3–8. This document defines the smallest implementation change before post-implementation validation.
+**Implemented on branch `dr3-reading-1.5`; post-implementation validation is pending.**
+
+Candidate architecture is supported by Experiments 3–8. The implementation deliberately uses the smallest boundary change that can preserve the existing Datafication lifecycle.
 
 ## Evidence Basis
 
@@ -34,26 +36,31 @@ Datafication
     └── optional normalization
 ```
 
-## Minimal Changes
+## Implemented Changes
 
 ### 1. Structure Discovery
 
-Keep the current 1.4 discovery behavior unchanged.
+The production template keeps 1.4 discovery behavior and explicitly removes `relations` from the required `structure` shape.
 
-Do not require Relations for a Structure to be considered complete.
-
-Do not add relations merely to connect existing elements or make a structure look complete.
+A Structure is complete without Relations. Relations must not be generated merely to connect existing elements or make a structure look complete.
 
 ### 2. Relation Extraction
 
-Make Relation Extraction an explicit optional operation rather than an implicit completion step of Structure Discovery.
+Relation Extraction is now an explicit optional operation inside Datafication, controlled by `relation_extraction`:
 
-When enabled, extract only relations independently supported by source text.
+- `disabled`: Structure Discovery only;
+- `optional`: Structure Discovery + independent Relation Extraction;
+- `relations_only`: Relation Extraction without constructing Structures merely to host Relations.
 
-Use source-first representation:
+This keeps the global `datafication` artifact and lifecycle unchanged while allowing Relation Extraction to be invoked independently from Structure Discovery.
+
+When enabled, only relations independently supported by source text are retained.
+
+### 3. Source-first representation
 
 ```yaml
 relation:
+  id: R-01
   subject:
     text: "source-level argument"
     normalized_ref: null
@@ -66,30 +73,29 @@ relation:
   direction: forward | reverse | undetermined
   modality: null
   qualification: []
+  origin: explicit | reconstructed | inferred
   evidence: []
 ```
 
-### 3. Normalization
+### 4. Normalization
 
 Normalization is optional and must never replace source expression.
 
 If normalization loses a material distinction, preserve the source expression and leave the normalized field null.
 
-Do not introduce a canonical relation ontology in 1.5.
+No canonical relation ontology is introduced in 1.5.
 
-### 4. Provenance
+### 5. Provenance
 
 Every extracted relation must have relation-level evidence. The evidence must support the relation itself, not merely its endpoints.
 
-Preserve the existing 1.4 claim-level provenance discipline for Structures, Elements, Relations, and Constraints.
+The existing 1.4 claim-level provenance discipline remains in force for Structures, Elements, Relations, and Constraints.
 
-### 5. State / Trace
+### 6. State / Trace
 
-Do not change the global state model unless implementation inspection shows that the current datafication lifecycle assumes relation generation is mandatory.
+The global state model is unchanged. Relation Extraction remains a non-blocking Datafication operation and does not create a new hard dependency.
 
-If Relation Extraction becomes a separately invokable operation, its lifecycle should remain non-blocking and should not invalidate Structure Discovery merely because no relations were extracted.
-
-Any state/trace change must be the minimum required to represent this optional operation.
+`produced_by.version` and trace configuration now record `dr3-reading/1.5` and the relation-extraction mode.
 
 ## Explicit Non-Goals
 
@@ -102,19 +108,17 @@ Any state/trace change must be the minimum required to represent this optional o
 
 ## Implementation Review Checklist
 
-Before changing production files:
-
-- [ ] Locate every instruction that makes `structure.relations` mandatory.
-- [ ] Locate every instruction that generates relations as part of Structure Discovery.
-- [ ] Locate every consumer that assumes relations exist.
-- [ ] Check state/trace assumptions about datafication completion.
-- [ ] Check output schema examples and prompt text for 1.4 relation-generation assumptions.
-- [ ] Preserve all unrelated 1.4 behavior.
+- [x] Locate every instruction that makes `structure.relations` mandatory: production schema updated; no downstream dependency found in inspected production files.
+- [x] Locate every instruction that generates relations as part of Structure Discovery: generation boundary removed from the production template.
+- [x] Locate every consumer that assumes relations exist: no such consumer found in inspected production templates; synthesis does not directly consume Datafication relations.
+- [x] Check state/trace assumptions about datafication completion: global artifact remains `datafication`; no new dependency introduced.
+- [x] Check output schema examples and prompt text for 1.4 relation-generation assumptions: production template updated to source-first 1.5 representation.
+- [x] Preserve all unrelated 1.4 behavior.
 
 ## Acceptance Criteria
 
 1. Structure discovery remains behaviorally equivalent to 1.4.
-2. Relation extraction can be invoked independently.
+2. Relation extraction can be invoked independently through `relation_extraction=relations_only`.
 3. No relation is required merely for structural completeness.
 4. Source-level subject/object/predicate survive extraction.
 5. Direction and modality/qualification are independent fields.
@@ -124,17 +128,10 @@ Before changing production files:
 
 ## Validation After Implementation
 
-After implementation, run a new article as post-implementation validation.
+A new real article is now selected for post-implementation validation:
 
-The validation article should not be the Victorian diary article used in Experiment 8. The goal is to test whether the architecture generalizes beyond the case that motivated it.
+`Philosophy tool kit` — Alan Hájek, Aeon Essays.
 
-Record:
-
-- Structure/Element stability
-- number of Relations extracted
-- source-fidelity audit
-- unsupported relations
-- missed explicit relations where an independently reviewable reference set can be established
-- any regression in existing Datafication behavior
+See `dr3-reading/test/implementation-validation-1.5.md` for the controlled A/B/C comparison and pass criteria.
 
 Do not convert the validation result into a permanent design decision automatically.
