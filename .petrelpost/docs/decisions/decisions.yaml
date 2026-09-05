@@ -99,21 +99,21 @@ decisions:
     created_at: "2026-09-05"
     from_signal: null
     trigger:
-      summary: "Relation Audit 发现 Experiment 3 生成的 11 条 relation 均缺乏独立文本支持；随后 Experiment 4 在关闭 relation generation 的条件下，Structure、Elements、Scope、Importance、Origin 与 Rejected candidates 均保持不变。"
-      source: "datafication-test-result / Experiment 3 Relation Audit + Experiment 4 No Relation Generation"
+      summary: "Relation Audit 发现 Experiment 3 生成的 11 条 relation 均缺乏独立文本支持；Experiment 4 在关闭 relation generation 的条件下，Structure、Elements、Scope、Importance、Origin 与 Rejected candidates 均保持不变。"
+      source: "datafication-test-result / Experiment 3 + Experiment 4"
     change:
       from: "将 Relation 作为 Structure 构建过程中的默认生成结果"
       to: "Relation 不是 Datafication Structure 的必需组成部分；仅当原文对关系本身提供独立且足够强的证据时才建立 Relation"
     rationale:
-      summary: "Experiment 3 的 11 条 relation 经独立 relation-level audit 后全部删除，而 Experiment 4 直接关闭 relation generation 后，4 个 structures、16 个 elements、section scope、1 central + 3 supporting importance、4 explicit origins 以及 5 个 rejected candidates 均保持不变。这表明 relation generation 并非 Structure Discovery 的必要中间步骤，并支持将 relation 从结构发现的必需输出中分离出来。"
+      summary: "Relation generation 并非 Structure Discovery 的必要中间步骤；共同出现的元素不能被自动连接为关系。"
       待补全: false
     evidence:
       - type: analysis
-        source: "datafication-test-result / Experiment 3 Relation Audit"
-        excerpt: "Relation 审查完成 — 11 条 relation 全部删除；原因包括 endpoint-only evidence、关系语义强度不受支持、关系方向错误以及将独立描述拼接为 relation。"
+        source: "Experiment 3 Relation Audit"
+        excerpt: "11 条 relation 全部删除。"
       - type: analysis
-        source: "datafication-test-result / Experiment 4 No Relation Generation"
-        excerpt: "关闭 relation generation 后，Structures 4→4、Elements 16→16、Scope 全部 section→全部 section、Importance 1 central + 3 supporting→不变、Origin 4 explicit→不变、Rejected 5→5。"
+        source: "Experiment 4 No Relation Generation"
+        excerpt: "关闭 relation generation 后，Structures 4→4、Elements 16→16，其他核心结构发现结果保持不变。"
     related_elements:
       - type: skill
         ref: "dr3-reading"
@@ -122,11 +122,115 @@ decisions:
       - type: decision
         ref: DEC-20260905-03
     planned_follow_ups:
-      - action: "保持当前 1.4 canonical specification 不立即修改；观察后续实验是否需要形成 1.5 规范变更"
-        status: open
-      - action: "继续验证：对于原文明确表达关系的文章，是否需要独立的 Relation Extraction 阶段，以及其证据阈值如何定义"
-        status: open
+      - action: "验证原文明确关系的独立 Relation Extraction 路径"
+        status: done
     supersedes: null
     superseded_by: null
     confidence: inferred
-    source: "datafication-test-result / Experiment 3 Relation Audit + Experiment 4 No Relation Generation"
+    source: "datafication-test-result / Experiment 3 + Experiment 4"
+
+  - id: DEC-20260906-01
+    status: confirmed
+    created_at: "2026-09-06"
+    from_signal: null
+    trigger:
+      summary: "Relation Extraction 继续实验显示，问题不只是关系类型，而涉及关系生成、命题边界、论元范围、谓词忠实度、方向和语义强度等不同层次。"
+      source: "Experiments 5–7 + Relation Schema Review/Sanity Check"
+    change:
+      from: "将 relation 抽取与 normalization 视为一个连续过程，并允许紧凑的 canonical relation 表示"
+      to: "采用 source-first Relation Extraction：先保留 source-level subject/predicate/object、direction、modality、qualification 与 evidence，再可选 normalization"
+    rationale:
+      summary: "实验区分了 generation bias 与 extraction/normalization error。Source-level expression 能保留原文语义并避免 canonical relation type 在抽取阶段无意强化或压缩原文。"
+      待补全: false
+    evidence:
+      - type: analysis
+        source: "Experiment 5 Explicit Relation Test"
+        excerpt: "明确关系可以被恢复，但问题集中在语义强度、类型、方向和表示方式。"
+      - type: analysis
+        source: "Experiment 7 Relation Semantic Calibration Test"
+        excerpt: "主要错误来自 scope/subject，而非 direction 或 modality。"
+      - type: analysis
+        source: "Relation Schema Sanity Check"
+        excerpt: "18/18 representation sanity cases passed。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "relation-extraction"
+      - type: concept
+        ref: "source-first"
+    planned_follow_ups: []
+    supersedes: null
+    superseded_by: null
+    confidence: inferred
+    source: "Experiments 5–7 + Relation Schema Review/Sanity Check"
+
+  - id: DEC-20260906-02
+    status: confirmed
+    created_at: "2026-09-06"
+    from_signal: null
+    trigger:
+      summary: "1.5 初次实现验证中发现：历史 1.4 baseline 实际关闭了 relation generation，因此无法作为有效对照；同时独立 relation audit 出现把协调分句拼接成单一命题的审计方法错误。"
+      source: "implementation-validation-1.5 / validation repair"
+    change:
+      from: "把实现验证视为实现代码的单向检查"
+      to: "把 validation protocol 本身也作为待验证的工程对象；baseline、对照条件、命题边界与 coverage reference set 必须先成立"
+    rationale:
+      summary: "否则即使最终数字看起来全部通过，也可能只是验证方法没有真正测试目标。验证发现的问题必须区分 implementation defect 与 validation/protocol defect，并允许先修复验证方法再重新验证实现。"
+      待补全: false
+    evidence:
+      - type: analysis
+        source: "implementation-validation-1.5 initial review"
+        excerpt: "A 的 0 relations 并非有效的历史 1.4 relation-generation baseline。"
+      - type: analysis
+        source: "implementation-validation-1.5 validation repair"
+        excerpt: "修复后 A 真正生成 11 条关系，B 保留 37 条 source-grounded relations，8 项 acceptance criteria 全部通过。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: concept
+        ref: "validation-protocol"
+      - type: concept
+        ref: "engineering-loop"
+    planned_follow_ups:
+      - action: "将 validation protocol 自身视为一等工程对象，在后续重要变更中复核其有效性"
+        status: open
+    supersedes: null
+    superseded_by: null
+    confidence: explicit
+    source: "implementation-validation-1.5 validation repair"
+
+  - id: DEC-20260906-03
+    status: confirmed
+    created_at: "2026-09-06"
+    from_signal: null
+    trigger:
+      summary: "1.5 候选架构在修复后的严格验证中保持 Structure/Element 结果稳定，并消除了 1.4 的 relation over-generation；随后正式进入 main。"
+      source: "implementation-validation-1.5 / PR #2"
+    change:
+      from: "1.4 中 relation generation 与 Structure Discovery 的操作耦合"
+      to: "1.5 中 Structure Discovery 独立完成，Relation Extraction 作为 optional / relations_only 操作存在"
+    rationale:
+      summary: "结构发现与关系抽取的职责边界已经获得实验和实现验证支持；继续在没有新证据的情况下扩展设计会把工程从验证驱动重新带回过度设计。"
+      待补全: false
+    evidence:
+      - type: analysis
+        source: "validation repair"
+        excerpt: "A: 3 structures/12 elements/11 generated relations/0 retained；B: 3 structures/12 elements/37 retained relations；C: 3 structures/12 elements/0 relations。8 项 acceptance criteria 全部 PASS。"
+      - type: acceptance
+        source: "PR #2 merged to main"
+        excerpt: "dr3-reading 1.5 已正式进入 main。"
+    related_elements:
+      - type: skill
+        ref: "dr3-reading"
+      - type: decision
+        ref: DEC-20260906-01
+      - type: concept
+        ref: "observation-phase"
+    planned_follow_ups:
+      - action: "进入 observation/usage 阶段，只有真实使用产生新证据时再推进下一轮修改"
+        status: open
+    supersedes: null
+    superseded_by: null
+    confidence: explicit
+    source: "implementation-validation-1.5 / PR #2"
