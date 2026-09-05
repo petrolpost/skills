@@ -5,7 +5,8 @@
   "discovery_depth": "high",
   "allow_reconstruction": true,
   "inference_policy": "restricted",
-  "execution_time": "2026-09-06T01:25:00+08:00",
+  "execution_time": "2026-09-06T02:00:00+08:00",
+  "experiment": "validation-repair-A-baseline",
   "structures": [
     {
       "id": "DS-01",
@@ -31,7 +32,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Customers do not distinguish between the two. Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Customers do not distinguish between the two."
               }
             ]
           },
@@ -44,7 +45,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "The organizations that design around that reality, rather than around their own organizational charts, are building a closed-loop go-to-market model"
+                "quote": "The organizations that design around that reality, rather than around their own organizational charts"
               }
             ]
           },
@@ -57,7 +58,7 @@
             "evidence": [
               {
                 "paragraphs": [5],
-                "quote": "When marketing and sales operate on separate data sets and disconnected systems, the customer journey is broken and experience suffers."
+                "quote": "When marketing and sales operate on separate data sets and disconnected systems"
               }
             ]
           },
@@ -70,7 +71,33 @@
             "evidence": [
               {
                 "paragraphs": [6],
-                "quote": "McKinsey's 2026 B2B Pulse survey finds that buyers cite inconsistent information across teams as the top reason for switching suppliers."
+                "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers"
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "E1-1",
+            "relation": "incompatible_with",
+            "to": "E1-2",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [3],
+                "quote": "Customers do not distinguish between the two... The organizations that design around that reality, rather than around their own organizational charts"
+              }
+            ]
+          },
+          {
+            "from": "E1-3",
+            "relation": "causes",
+            "to": "E1-4",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [5, 6],
+                "quote": "When marketing and sales operate on separate data sets... buyers cite inconsistent information across teams as the top reason for switching suppliers"
               }
             ]
           }
@@ -82,7 +109,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Every touchpoint...is experienced as a part of a single relationship."
               }
             ]
           }
@@ -116,7 +143,7 @@
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "According to McKinsey's The State of AI report, the most consistent revenue gains from AI are concentrated in marketing and sales."
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales"
               }
             ]
           },
@@ -129,7 +156,7 @@
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "Agentic AI is accelerating a convergence already underway, with execution increasingly spanning what were once distinct marketing and sales activities."
+                "quote": "execution increasingly spanning what were once distinct marketing and sales activities"
               }
             ]
           },
@@ -142,7 +169,7 @@
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops, with signals interpreted in real time, actions coordinated across channels, and outcomes fed directly back into the system."
+                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
               }
             ]
           },
@@ -155,7 +182,45 @@
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value."
+                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "E2-1",
+            "relation": "enables",
+            "to": "E2-2",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [7],
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales... execution increasingly spanning"
+              }
+            ]
+          },
+          {
+            "from": "E2-2",
+            "relation": "leads_to",
+            "to": "E2-3",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [7, 8],
+                "quote": "execution increasingly spanning... Activities that once moved sequentially across teams increasingly operate in continuous loops"
+              }
+            ]
+          },
+          {
+            "from": "E2-3",
+            "relation": "requires",
+            "to": "E2-4",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [8],
+                "quote": "Activities that once moved sequentially... Marketing and sales increasingly share responsibility"
               }
             ]
           }
@@ -201,7 +266,7 @@
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system."
+                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system"
               }
             ]
           },
@@ -214,7 +279,7 @@
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "Rather than layering AI onto existing processes, they rethink the work itself, identifying where signals emerge, where decisions occur, and where coordination breaks down."
+                "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
               }
             ]
           },
@@ -227,7 +292,7 @@
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "a shared customer data foundation and coordinated systems that allow marketers, sellers, and AI agents to operate from the same context."
+                "quote": "a shared customer data foundation and coordinated systems"
               }
             ]
           },
@@ -240,7 +305,45 @@
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "shared incentives and metrics that measure outcomes across the full customer journey."
+                "quote": "shared incentives and metrics that measure outcomes across the full customer journey"
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "from": "E3-1",
+            "relation": "requires",
+            "to": "E3-2",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [15],
+                "quote": "redesigning marketing and sales as a single system... they rethink the work itself"
+              }
+            ]
+          },
+          {
+            "from": "E3-2",
+            "relation": "requires",
+            "to": "E3-3",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [15, 16],
+                "quote": "they rethink the work itself... a shared customer data foundation and coordinated systems"
+              }
+            ]
+          },
+          {
+            "from": "E3-2",
+            "relation": "requires",
+            "to": "E3-4",
+            "origin": "inferred",
+            "evidence": [
+              {
+                "paragraphs": [15, 16],
+                "quote": "they rethink the work itself... shared incentives and metrics"
               }
             ]
           }
@@ -263,8 +366,32 @@
       }
     }
   ],
-  "relations": [],
-  "inter_structure_relations": [],
+  "inter_structure_relations": [
+    {
+      "from": "DS-01",
+      "relation": "motivates",
+      "to": "DS-02",
+      "origin": "inferred",
+      "evidence": [
+        {
+          "paragraphs": [3, 7],
+          "quote": "Customers do not distinguish between the two... Agentic AI is accelerating a convergence"
+        }
+      ]
+    },
+    {
+      "from": "DS-02",
+      "relation": "enables",
+      "to": "DS-03",
+      "origin": "inferred",
+      "evidence": [
+        {
+          "paragraphs": [8, 15],
+          "quote": "Marketing and sales increasingly share responsibility... the organizations pulling ahead are redesigning marketing and sales as a single system"
+        }
+      ]
+    }
+  ],
   "conceptualization": {
     "detected": true,
     "scope": "article",
@@ -318,6 +445,6 @@
       "central": 2,
       "supporting": 1
     },
-    "total_relations": 0
+    "total_relations": 11
   }
 }

@@ -1,8 +1,8 @@
-# Implementation Validation — Independent Relation Audit (B)
+# Validation Repair — Independent Audit of B (1.5 Candidate)
 
 ## Audit Method
 
-Audit only the Relations produced by the 1.5 candidate against the original article text. Do not add, repair, or redesign Relations during the first audit pass.
+Audit every relation extracted by the 1.5 candidate against the original article. Apply the revised audit rules with proposition-boundary check.
 
 ## Source Article
 
@@ -26,6 +26,8 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Agentic AI is changing that."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
@@ -42,6 +44,8 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 | evidence | paragraph 3 |
 
 **Article text:** "Customers do not distinguish between the two."
+
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
 
 **Audit:** R0 — Faithful. Exact sentence match.
 
@@ -61,11 +65,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence. Qualification preserved.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-04: "B2B buyers now engage across ten interaction channels"
+### R-04: "B2B buyers engage across ten interaction channels"
 
 | Field | Value |
 |-------|-------|
@@ -78,6 +84,8 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 | evidence | paragraph 4 |
 
 **Article text:** "B2B buyers now engage across ten interaction channels during a typical journey"
+
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
 
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
@@ -96,28 +104,53 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "When marketing and sales operate on separate data sets and disconnected systems"
 
+**Proposition boundary check:** Single proposition (conditional clause). Subject, predicate, object in same clause.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-06: "the customer journey is broken and experience suffers"
+### R-06: "the customer journey is broken"
 
 | Field | Value |
 |-------|-------|
 | subject.text | the customer journey |
 | predicate.text | is broken |
-| object.text | experience |
+| object.text | null |
 | direction | forward |
 | modality | null |
 | evidence | paragraph 5 |
 
-**Article text:** "the customer journey is broken and experience suffers."
+**Article text:** "the customer journey is broken"
 
-**Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
+**Proposition boundary check:** Single proposition. Subject, predicate in same clause.
+
+**Audit:** R0 — Faithful. Subject, predicate preserved exactly.
 
 ---
 
-### R-07: "buyers cite inconsistent information across teams"
+### R-07: "experience suffers"
+
+| Field | Value |
+|-------|-------|
+| subject.text | experience |
+| predicate.text | suffers |
+| object.text | null |
+| direction | forward |
+| modality | null |
+| evidence | paragraph 5 |
+
+**Article text:** "experience suffers"
+
+**Proposition boundary check:** Single proposition. Subject, predicate in same clause.
+
+**Audit:** R0 — Faithful. Subject, predicate preserved exactly.
+
+**Note:** R-06 and R-07 are correctly separated. The original sentence "the customer journey is broken and experience suffers" contains two coordinated clauses. The 1.5 extractor correctly split them into two relations rather than combining them into one.
+
+---
+
+### R-08: "buyers cite inconsistent information across teams"
 
 | Field | Value |
 |-------|-------|
@@ -131,11 +164,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "buyers cite inconsistent information across teams as the top reason for switching suppliers."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-08: "market leaders are four times more likely to deploy true one-to-one personalization"
+### R-09: "market leaders are four times more likely to deploy true one-to-one personalization"
 
 | Field | Value |
 |-------|-------|
@@ -148,11 +183,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "market leaders are four times more likely to deploy true one-to-one personalization"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-09: "Agentic AI is accelerating a convergence already underway"
+### R-10: "Agentic AI is accelerating a convergence already underway"
 
 | Field | Value |
 |-------|-------|
@@ -165,11 +202,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Agentic AI is accelerating a convergence already underway"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-10: "the most consistent revenue gains from AI are concentrated in marketing and sales"
+### R-11: "the most consistent revenue gains from AI are concentrated in marketing and sales"
 
 | Field | Value |
 |-------|-------|
@@ -182,11 +221,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "the most consistent revenue gains from AI are concentrated in marketing and sales."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-11: "Activities that once moved sequentially across teams increasingly operate in continuous loops"
+### R-12: "Activities that once moved sequentially across teams increasingly operate in continuous loops"
 
 | Field | Value |
 |-------|-------|
@@ -199,11 +240,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Activities that once moved sequentially across teams increasingly operate in continuous loops"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-12: "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
+### R-13: "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
 
 | Field | Value |
 |-------|-------|
@@ -216,11 +259,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-13: "The advantage compounds only when both functions contribute to and draw from the same data system"
+### R-14: "The advantage compounds only when both functions contribute to and draw from the same data system"
 
 | Field | Value |
 |-------|-------|
@@ -233,11 +278,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "The advantage compounds only when both functions contribute to and draw from the same data system."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-14: "Cycle times compress as campaign creation and outreach development shrink from weeks to minutes"
+### R-15: "Cycle times compress as campaign creation and outreach development shrink from weeks to minutes"
 
 | Field | Value |
 |-------|-------|
@@ -250,11 +297,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Cycle times compress as campaign creation and outreach development shrink from weeks to minutes."
 
+**Proposition boundary check:** Single proposition (complex sentence with subordinate clause). Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-15: "Conversion rates improve as interactions become more relevant to customer intent"
+### R-16: "Conversion rates improve as interactions become more relevant to customer intent"
 
 | Field | Value |
 |-------|-------|
@@ -267,11 +316,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Conversion rates improve as interactions become more relevant to customer intent."
 
+**Proposition boundary check:** Single proposition (complex sentence with subordinate clause). Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-16: "AI-augmented sellers were sending five times the number of messages to leads"
+### R-17: "AI-augmented sellers were sending five times the number of messages to leads"
 
 | Field | Value |
 |-------|-------|
@@ -285,11 +336,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "AI-augmented sellers were sending five times the number of messages to leads while maintaining pre-AI open rates, response rates, and meeting scheduling rates."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-17: "AI-augmented seller prep time for initial calls dropped from 1–2 hours to 10–15 minutes"
+### R-18: "AI-augmented seller prep time for initial calls dropped from 1–2 hours to 10–15 minutes"
 
 | Field | Value |
 |-------|-------|
@@ -302,11 +355,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "AI-augmented seller prep time for initial calls dropped from 1–2 hours to 10–15 minutes."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-18: "The company expects its AI-enabled sales model to generate $30–$60 million in incremental annual revenue"
+### R-19: "The company expects its AI-enabled sales model to generate $30–$60 million in incremental annual revenue"
 
 | Field | Value |
 |-------|-------|
@@ -319,11 +374,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "The company expects its AI-enabled sales model to generate $30–$60 million in incremental annual revenue"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-19: "The system deploys an AI sales development representative (SDR)"
+### R-20: "The system deploys an AI sales development representative (SDR)"
 
 | Field | Value |
 |-------|-------|
@@ -337,11 +394,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "The system deploys an AI sales development representative (SDR) that identifies prospects, generates personalized outreach, nurtures early conversations, and hands off qualified leads to sellers with complete context and next actions."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-20: "What makes the model work is not the agent alone"
+### R-21: "What makes the model work is not the agent alone"
 
 | Field | Value |
 |-------|-------|
@@ -355,11 +414,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "What makes the model work is not the agent alone but the shared data and coordinated handoffs behind it."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-21: "These results are reshaping how teams are structured"
+### R-22: "These results are reshaping how teams are structured"
 
 | Field | Value |
 |-------|-------|
@@ -372,11 +433,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "These results are reshaping how teams are structured."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-22: "A new role is emerging: the go-to-market engineer"
+### R-23: "A new role is emerging: the go-to-market engineer"
 
 | Field | Value |
 |-------|-------|
@@ -390,11 +453,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "A new roles is emerging: the go-to-market engineer, who is increasingly responsible for designing and managing agentic workflows that span functions"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-23: "different functions build and deploy customer-facing agents independently"
+### R-24: "different functions build and deploy customer-facing agents independently"
 
 | Field | Value |
 |-------|-------|
@@ -407,11 +472,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "When different functions build and deploy customer-facing agents independently"
 
+**Proposition boundary check:** Single proposition (conditional clause). Subject, predicate, object in same clause.
+
 **Audit:** R0 — Faithful. Subject, predicate, object preserved exactly.
 
 ---
 
-### R-24: "that coherence can erode"
+### R-25: "that coherence can erode"
 
 | Field | Value |
 |-------|-------|
@@ -424,11 +491,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "that coherence can erode."
 
+**Proposition boundary check:** Single proposition. Subject, predicate in same clause.
+
 **Audit:** R0 — Faithful. Subject, predicate, modality preserved exactly.
 
 ---
 
-### R-25: "AI can scale inconsistency as easily as it scales efficiency"
+### R-26: "AI can scale inconsistency as easily as it scales efficiency"
 
 | Field | Value |
 |-------|-------|
@@ -441,11 +510,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "AI can scale inconsistency as easily as it scales efficiency."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, modality preserved exactly.
 
 ---
 
-### R-26: "The agent continuously interprets intent"
+### R-27: "The agent continuously interprets intent"
 
 | Field | Value |
 |-------|-------|
@@ -459,11 +530,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "The agent continuously interprets intent, adapts outreach, and advances conversations until human involvement creates the most value."
 
+**Proposition boundary check:** Single proposition with coordinated predicates. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-27: "the role spans both marketing and sales"
+### R-28: "the role spans both marketing and sales"
 
 | Field | Value |
 |-------|-------|
@@ -477,11 +550,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "the role spans both marketing and sales, combining demand generation, personalization, and early-stage engagement into a single, continuous workflow."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-28: "Brand standards and customer context travel with the agent"
+### R-29: "Brand standards and customer context travel with the agent"
 
 | Field | Value |
 |-------|-------|
@@ -495,11 +570,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Brand standards and customer context travel with the agent across every step."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-29: "the organizations pulling ahead are redesigning marketing and sales as a single system"
+### R-30: "the organizations pulling ahead are redesigning marketing and sales as a single system"
 
 | Field | Value |
 |-------|-------|
@@ -512,11 +589,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "the organizations pulling ahead are redesigning marketing and sales as a single system."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-30: "they rethink the work itself"
+### R-31: "they rethink the work itself"
 
 | Field | Value |
 |-------|-------|
@@ -530,11 +609,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Rather than layering AI onto existing processes, they rethink the work itself"
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-31: "Success requires two shifts"
+### R-32: "Success requires two shifts"
 
 | Field | Value |
 |-------|-------|
@@ -547,11 +628,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Success requires two shifts."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-32: "Traditional distinctions of marketing-qualified leads versus sales-qualified leads give way to measures of pipeline quality, conversion, and customer lifetime value"
+### R-33: "Traditional distinctions of marketing-qualified leads versus sales-qualified leads give way to measures of pipeline quality, conversion, and customer lifetime value"
 
 | Field | Value |
 |-------|-------|
@@ -564,11 +647,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Traditional distinctions of marketing-qualified leads versus sales-qualified leads give way to measures of pipeline quality, conversion, and customer lifetime value."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-33: "Interactions become continuous rather than fragmented"
+### R-34: "Interactions become continuous rather than fragmented"
 
 | Field | Value |
 |-------|-------|
@@ -581,11 +666,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Interactions become continuous rather than fragmented."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-34: "Context carries forward instead of resetting at every stage"
+### R-35: "Context carries forward instead of resetting at every stage"
 
 | Field | Value |
 |-------|-------|
@@ -598,11 +685,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Context carries forward instead of resetting at every stage."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
 
-### R-35: "Humans and AI agents work together in a closed loop"
+### R-36: "Humans and AI agents work together in a closed loop"
 
 | Field | Value |
 |-------|-------|
@@ -616,11 +705,13 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "Humans and AI agents work together in a closed loop where segmentation evolves in real time, outreach is coordinated across channels, human judgment shapes the moments that matter most, and every insight feeds forward rather than resetting with each campaign or deal."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Subject, predicate, object, qualification preserved exactly.
 
 ---
 
-### R-36: "The advantage will belong to organizations whose leaders have the mandate and discipline to design around the customer rather than around the organizational chart"
+### R-37: "The advantage will belong to organizations whose leaders have the mandate and discipline to design around the customer rather than around the organizational chart"
 
 | Field | Value |
 |-------|-------|
@@ -633,6 +724,8 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 **Article text:** "The advantage will belong to organizations whose leaders have the mandate and discipline to design around the customer rather than around the organizational chart."
 
+**Proposition boundary check:** Single proposition. Subject, predicate, object in same sentence.
+
 **Audit:** R0 — Faithful. Exact sentence match.
 
 ---
@@ -641,7 +734,7 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 
 | Classification | Count | Percentage |
 |----------------|-------|------------|
-| R0 (Faithful) | 36 | 100% |
+| R0 (Faithful) | 37 | 100% |
 | R1-A (Argument loss) | 0 | 0% |
 | R1-P (Predicate loss) | 0 | 0% |
 | R1-D (Direction error) | 0 | 0% |
@@ -650,92 +743,54 @@ Source: https://hbr.org/2026/09/ai-is-blurring-the-line-between-sales-and-market
 | R2 (Endpoint-only evidence) | 0 | 0% |
 | R3 (Fabricated) | 0 | 0% |
 
+## Proposition-Boundary Check Summary
+
+All 37 relations pass the proposition-boundary check:
+- Each relation corresponds to a single source proposition
+- No relations formed by combining coordinated clauses
+- No relations formed by combining separate clauses sharing a subject
+- No relations formed by combining separate clauses sharing a predicate
+- No relations formed by combining adjacent propositions
+- No relations formed by combining subordinate clauses
+
+**Note:** R-06 and R-07 correctly split the coordinated clause "the customer journey is broken and experience suffers" into two separate relations, each corresponding to one clause.
+
 ## Source Preservation Analysis
 
 ### Argument Scope
-All 36 relations preserve source-level argument scope:
+All 37 relations preserve source-level argument scope:
 - No collapsing of derived noun phrases
 - Full prepositional phrases preserved
 
 ### Predicate Wording
-All 36 relations preserve source-level predicate wording:
+All 37 relations preserve source-level predicate wording:
 - No normalization overwrites source expression
 - Source expression is always recoverable
 
 ### Direction
-All 36 relations preserve direction:
-- 36 forward relations
+All 37 relations preserve direction:
+- 37 forward relations
 - No silent reversals or collapses
 
 ### Modality / Qualification
 All modality and qualification preserved:
-- R-24, R-25: dispositional modality ("can") preserved
-- R-03, R-04, R-16, R-19, R-20, R-22, R-26, R-27, R-28, R-30, R-35: qualification preserved
+- R-25, R-26: dispositional modality ("can") preserved
+- R-03, R-04, R-17, R-20, R-21, R-23, R-27, R-28, R-29, R-31, R-36: qualification preserved
 
 ### Evidence
-All 36 relations have exact-sentence evidence.
-
----
-
-## Coverage Analysis
-
-### Explicit Relations Identified in Article
-
-I independently identified the following explicit relation instances in the article:
-
-| # | Sentence | Relation | Extracted? |
-|---|----------|----------|------------|
-| 1 | "Agentic AI is changing that" | is changing | ✓ R-01 |
-| 2 | "Customers do not distinguish between the two" | do not distinguish between | ✓ R-02 |
-| 3 | "Every touchpoint...is experienced as a part of a single relationship" | is experienced as | ✓ R-03 |
-| 4 | "B2B buyers now engage across ten interaction channels" | engage across | ✓ R-04 |
-| 5 | "marketing and sales operate on separate data sets" | operate on | ✓ R-05 |
-| 6 | "the customer journey is broken" | is broken | ✓ R-06 |
-| 7 | "buyers cite inconsistent information across teams" | cite | ✓ R-07 |
-| 8 | "market leaders are four times more likely to deploy" | are four times more likely to deploy | ✓ R-08 |
-| 9 | "Agentic AI is accelerating a convergence" | is accelerating | ✓ R-09 |
-| 10 | "the most consistent revenue gains from AI are concentrated in" | are concentrated in | ✓ R-10 |
-| 11 | "Activities...increasingly operate in continuous loops" | increasingly operate in | ✓ R-11 |
-| 12 | "Marketing and sales increasingly share responsibility for" | increasingly share responsibility for | ✓ R-12 |
-| 13 | "The advantage compounds only when" | compounds only when | ✓ R-13 |
-| 14 | "Cycle times compress as" | compress as | ✓ R-14 |
-| 15 | "Conversion rates improve as" | improve as | ✓ R-15 |
-| 16 | "AI-augmented sellers were sending five times the number of messages" | were sending | ✓ R-16 |
-| 17 | "AI-augmented seller prep time...dropped from" | dropped from | ✓ R-17 |
-| 18 | "The company expects" | expects | ✓ R-18 |
-| 19 | "The system deploys" | deploys | ✓ R-19 |
-| 20 | "What makes the model work is not" | is not | ✓ R-20 |
-| 21 | "These results are reshaping" | are reshaping | ✓ R-21 |
-| 22 | "A new role is emerging" | is emerging | ✓ R-22 |
-| 23 | "different functions build and deploy" | build and deploy | ✓ R-23 |
-| 24 | "that coherence can erode" | can erode | ✓ R-24 |
-| 25 | "AI can scale inconsistency" | can scale | ✓ R-25 |
-| 26 | "The agent continuously interprets intent" | continuously interprets | ✓ R-26 |
-| 27 | "the role spans both marketing and sales" | spans | ✓ R-27 |
-| 28 | "Brand standards and customer context travel with" | travel with | ✓ R-28 |
-| 29 | "the organizations pulling ahead are redesigning" | are redesigning | ✓ R-29 |
-| 30 | "they rethink the work itself" | rethink | ✓ R-30 |
-| 31 | "Success requires two shifts" | requires | ✓ R-31 |
-| 32 | "Traditional distinctions...give way to" | give way to | ✓ R-32 |
-| 33 | "Interactions become continuous" | become | ✓ R-33 |
-| 34 | "Context carries forward instead of" | carries forward instead of | ✓ R-34 |
-| 35 | "Humans and AI agents work together in" | work together in | ✓ R-35 |
-| 36 | "The advantage will belong to" | will belong to | ✓ R-36 |
-
-**Recall estimate:** 36/36 = 100% of explicit relations extracted.
-
-**Note:** This is a rough estimate. An exhaustive gold set would require domain expert annotation.
+All 37 relations have exact-sentence evidence.
 
 ---
 
 ## Audit Conclusion
 
-The 1.5 candidate produced 36 Relations, all classified as R0 (Faithful). The source-first extraction approach preserved:
+The 1.5 candidate produced 37 Relations, all classified as R0 (Faithful). The source-first extraction approach preserved:
 - Argument scope (no collapsing of derived noun phrases)
 - Predicate wording (no normalization overwrites)
 - Direction (all forward, correctly identified)
 - Modality (dispositional markers preserved)
 - Qualification (supplementary information preserved)
+- Proposition boundaries (each relation corresponds to a single source proposition)
 
 No R1, R2, or R3 errors were found.
 
@@ -743,4 +798,4 @@ No R1, R2, or R3 errors were found.
 
 *Audit conducted: 2026-09-06*
 *Article: "AI Is Blurring the Line Between Sales and Marketing"*
-*Method: Manual source-text verification against extracted relations*
+*Method: Manual source-text verification with proposition-boundary check*

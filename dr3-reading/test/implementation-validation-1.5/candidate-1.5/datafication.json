@@ -6,7 +6,8 @@
   "allow_reconstruction": true,
   "inference_policy": "restricted",
   "relation_extraction": "optional",
-  "execution_time": "2026-09-06T01:25:00+08:00",
+  "execution_time": "2026-09-06T02:10:00+08:00",
+  "experiment": "validation-repair-B-candidate",
   "structures": [
     {
       "id": "DS-01",
@@ -32,7 +33,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Customers do not distinguish between the two. Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Customers do not distinguish between the two."
               }
             ]
           },
@@ -45,7 +46,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "The organizations that design around that reality, rather than around their own organizational charts, are building a closed-loop go-to-market model"
+                "quote": "The organizations that design around that reality, rather than around their own organizational charts"
               }
             ]
           },
@@ -58,7 +59,7 @@
             "evidence": [
               {
                 "paragraphs": [5],
-                "quote": "When marketing and sales operate on separate data sets and disconnected systems, the customer journey is broken and experience suffers."
+                "quote": "When marketing and sales operate on separate data sets and disconnected systems"
               }
             ]
           },
@@ -71,7 +72,7 @@
             "evidence": [
               {
                 "paragraphs": [6],
-                "quote": "McKinsey's 2026 B2B Pulse survey finds that buyers cite inconsistent information across teams as the top reason for switching suppliers."
+                "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers"
               }
             ]
           }
@@ -83,7 +84,7 @@
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Every touchpoint...is experienced as a part of a single relationship."
               }
             ]
           }
@@ -117,7 +118,7 @@
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "According to McKinsey's The State of AI report, the most consistent revenue gains from AI are concentrated in marketing and sales."
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales"
               }
             ]
           },
@@ -130,7 +131,7 @@
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "Agentic AI is accelerating a convergence already underway, with execution increasingly spanning what were once distinct marketing and sales activities."
+                "quote": "execution increasingly spanning what were once distinct marketing and sales activities"
               }
             ]
           },
@@ -143,7 +144,7 @@
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops, with signals interpreted in real time, actions coordinated across channels, and outcomes fed directly back into the system."
+                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
               }
             ]
           },
@@ -156,7 +157,7 @@
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value."
+                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
               }
             ]
           }
@@ -202,7 +203,7 @@
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system."
+                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system"
               }
             ]
           },
@@ -215,7 +216,7 @@
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "Rather than layering AI onto existing processes, they rethink the work itself, identifying where signals emerge, where decisions occur, and where coordination breaks down."
+                "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
               }
             ]
           },
@@ -228,7 +229,7 @@
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "a shared customer data foundation and coordinated systems that allow marketers, sellers, and AI agents to operate from the same context."
+                "quote": "a shared customer data foundation and coordinated systems"
               }
             ]
           },
@@ -241,7 +242,7 @@
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "shared incentives and metrics that measure outcomes across the full customer journey."
+                "quote": "shared incentives and metrics that measure outcomes across the full customer journey"
               }
             ]
           }
@@ -401,7 +402,7 @@
         "normalized_type": null
       },
       "object": {
-        "text": "experience",
+        "text": null,
         "normalized_ref": null
       },
       "direction": "forward",
@@ -411,12 +412,37 @@
       "evidence": [
         {
           "paragraphs": [5],
-          "quote": "the customer journey is broken and experience suffers."
+          "quote": "the customer journey is broken"
         }
       ]
     },
     {
       "id": "R-07",
+      "subject": {
+        "text": "experience",
+        "normalized_ref": null
+      },
+      "predicate": {
+        "text": "suffers",
+        "normalized_type": null
+      },
+      "object": {
+        "text": null,
+        "normalized_ref": null
+      },
+      "direction": "forward",
+      "modality": null,
+      "qualification": [],
+      "origin": "explicit",
+      "evidence": [
+        {
+          "paragraphs": [5],
+          "quote": "experience suffers"
+        }
+      ]
+    },
+    {
+      "id": "R-08",
       "subject": {
         "text": "buyers",
         "normalized_ref": null
@@ -441,7 +467,7 @@
       ]
     },
     {
-      "id": "R-08",
+      "id": "R-09",
       "subject": {
         "text": "market leaders",
         "normalized_ref": null
@@ -466,7 +492,7 @@
       ]
     },
     {
-      "id": "R-09",
+      "id": "R-10",
       "subject": {
         "text": "Agentic AI",
         "normalized_ref": null
@@ -491,7 +517,7 @@
       ]
     },
     {
-      "id": "R-10",
+      "id": "R-11",
       "subject": {
         "text": "the most consistent revenue gains from AI",
         "normalized_ref": null
@@ -516,7 +542,7 @@
       ]
     },
     {
-      "id": "R-11",
+      "id": "R-12",
       "subject": {
         "text": "Activities that once moved sequentially across teams",
         "normalized_ref": null
@@ -541,7 +567,7 @@
       ]
     },
     {
-      "id": "R-12",
+      "id": "R-13",
       "subject": {
         "text": "Marketing and sales",
         "normalized_ref": null
@@ -566,7 +592,7 @@
       ]
     },
     {
-      "id": "R-13",
+      "id": "R-14",
       "subject": {
         "text": "The advantage",
         "normalized_ref": null
@@ -591,7 +617,7 @@
       ]
     },
     {
-      "id": "R-14",
+      "id": "R-15",
       "subject": {
         "text": "Cycle times",
         "normalized_ref": null
@@ -616,7 +642,7 @@
       ]
     },
     {
-      "id": "R-15",
+      "id": "R-16",
       "subject": {
         "text": "Conversion rates",
         "normalized_ref": null
@@ -641,7 +667,7 @@
       ]
     },
     {
-      "id": "R-16",
+      "id": "R-17",
       "subject": {
         "text": "AI-augmented sellers",
         "normalized_ref": null
@@ -666,7 +692,7 @@
       ]
     },
     {
-      "id": "R-17",
+      "id": "R-18",
       "subject": {
         "text": "AI-augmented seller prep time for initial calls",
         "normalized_ref": null
@@ -691,7 +717,7 @@
       ]
     },
     {
-      "id": "R-18",
+      "id": "R-19",
       "subject": {
         "text": "The company",
         "normalized_ref": "global job search platform"
@@ -716,7 +742,7 @@
       ]
     },
     {
-      "id": "R-19",
+      "id": "R-20",
       "subject": {
         "text": "The system",
         "normalized_ref": null
@@ -741,7 +767,7 @@
       ]
     },
     {
-      "id": "R-20",
+      "id": "R-21",
       "subject": {
         "text": "What makes the model work",
         "normalized_ref": null
@@ -766,7 +792,7 @@
       ]
     },
     {
-      "id": "R-21",
+      "id": "R-22",
       "subject": {
         "text": "These results",
         "normalized_ref": null
@@ -791,7 +817,7 @@
       ]
     },
     {
-      "id": "R-22",
+      "id": "R-23",
       "subject": {
         "text": "A new role",
         "normalized_ref": "go-to-market engineer"
@@ -816,7 +842,7 @@
       ]
     },
     {
-      "id": "R-23",
+      "id": "R-24",
       "subject": {
         "text": "different functions",
         "normalized_ref": null
@@ -841,7 +867,7 @@
       ]
     },
     {
-      "id": "R-24",
+      "id": "R-25",
       "subject": {
         "text": "that coherence",
         "normalized_ref": null
@@ -866,7 +892,7 @@
       ]
     },
     {
-      "id": "R-25",
+      "id": "R-26",
       "subject": {
         "text": "AI",
         "normalized_ref": null
@@ -891,7 +917,7 @@
       ]
     },
     {
-      "id": "R-26",
+      "id": "R-27",
       "subject": {
         "text": "The agent",
         "normalized_ref": null
@@ -916,7 +942,7 @@
       ]
     },
     {
-      "id": "R-27",
+      "id": "R-28",
       "subject": {
         "text": "the role",
         "normalized_ref": "SDR in agentic model"
@@ -941,7 +967,7 @@
       ]
     },
     {
-      "id": "R-28",
+      "id": "R-29",
       "subject": {
         "text": "Brand standards and customer context",
         "normalized_ref": null
@@ -966,7 +992,7 @@
       ]
     },
     {
-      "id": "R-29",
+      "id": "R-30",
       "subject": {
         "text": "the organizations pulling ahead",
         "normalized_ref": null
@@ -991,7 +1017,7 @@
       ]
     },
     {
-      "id": "R-30",
+      "id": "R-31",
       "subject": {
         "text": "they",
         "normalized_ref": "leading organizations"
@@ -1016,7 +1042,7 @@
       ]
     },
     {
-      "id": "R-31",
+      "id": "R-32",
       "subject": {
         "text": "Success",
         "normalized_ref": null
@@ -1041,7 +1067,7 @@
       ]
     },
     {
-      "id": "R-32",
+      "id": "R-33",
       "subject": {
         "text": "Traditional distinctions of marketing-qualified leads versus sales-qualified leads",
         "normalized_ref": null
@@ -1066,7 +1092,7 @@
       ]
     },
     {
-      "id": "R-33",
+      "id": "R-34",
       "subject": {
         "text": "Interactions",
         "normalized_ref": null
@@ -1091,7 +1117,7 @@
       ]
     },
     {
-      "id": "R-34",
+      "id": "R-35",
       "subject": {
         "text": "Context",
         "normalized_ref": null
@@ -1116,7 +1142,7 @@
       ]
     },
     {
-      "id": "R-35",
+      "id": "R-36",
       "subject": {
         "text": "Humans and AI agents",
         "normalized_ref": null
@@ -1141,7 +1167,7 @@
       ]
     },
     {
-      "id": "R-36",
+      "id": "R-37",
       "subject": {
         "text": "The advantage",
         "normalized_ref": null
@@ -1220,6 +1246,6 @@
       "central": 2,
       "supporting": 1
     },
-    "total_relations": 36
+    "total_relations": 37
   }
 }

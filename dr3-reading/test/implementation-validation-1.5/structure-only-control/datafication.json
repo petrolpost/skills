@@ -1,15 +1,17 @@
 {
   "module": "datafication",
-  "version": "dr3-reading/1.4",
+  "version": "dr3-reading/1.5",
   "slug": "ai-is-blurring-the-line-between-sales-and-marketing",
   "discovery_depth": "high",
   "allow_reconstruction": true,
   "inference_policy": "restricted",
-  "execution_time": "2026-09-06T01:25:00+08:00",
+  "relation_extraction": "disabled",
+  "execution_time": "2026-09-06T02:15:00+08:00",
+  "experiment": "validation-repair-C-control",
   "structures": [
     {
       "id": "DS-01",
-      "name": "客户体验碎片化问题",
+      "name": "Customer Experience Fragmentation Problem",
       "scope": {
         "type": "section",
         "paragraphs": [3, 4, 5, 6]
@@ -19,70 +21,70 @@
       },
       "origin": "explicit",
       "status": "author_asserted",
-      "subject": "营销与销售分离导致客户体验碎片化",
+      "subject": "Marketing and sales separation leads to fragmented customer experience",
       "structure": {
         "elements": [
           {
             "id": "E1-1",
-            "name": "客户不分割体验",
+            "name": "Customers do not fragment experience",
             "type": "customer_reality",
-            "description": "客户不区分营销和销售，将所有触点视为单一关系的一部分",
+            "description": "Customers do not distinguish between marketing and sales, viewing all touchpoints as part of a single relationship",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Customers do not distinguish between the two. Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Customers do not distinguish between the two."
               }
             ]
           },
           {
             "id": "E1-2",
-            "name": "组织图表驱动设计",
+            "name": "Org chart driven design",
             "type": "organizational_design",
-            "description": "公司围绕组织图表而非客户现实设计流程",
+            "description": "Companies design processes around org charts rather than customer reality",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "The organizations that design around that reality, rather than around their own organizational charts, are building a closed-loop go-to-market model"
+                "quote": "The organizations that design around that reality, rather than around their own organizational charts"
               }
             ]
           },
           {
             "id": "E1-3",
-            "name": "分离数据集",
+            "name": "Separate data sets",
             "type": "data_silo",
-            "description": "营销和销售运营在分离的数据集和系统上",
+            "description": "Marketing and sales operate on separate data sets and systems",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [5],
-                "quote": "When marketing and sales operate on separate data sets and disconnected systems, the customer journey is broken and experience suffers."
+                "quote": "When marketing and sales operate on separate data sets and disconnected systems"
               }
             ]
           },
           {
             "id": "E1-4",
-            "name": "碎片化成本",
+            "name": "Fragmentation cost",
             "type": "business_impact",
-            "description": "跨团队信息不一致是客户更换供应商的首要原因",
+            "description": "Inconsistent information across teams is the top reason customers switch suppliers",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [6],
-                "quote": "McKinsey's 2026 B2B Pulse survey finds that buyers cite inconsistent information across teams as the top reason for switching suppliers."
+                "quote": "buyers cite inconsistent information across teams as the top reason for switching suppliers"
               }
             ]
           }
         ],
         "constraints": [
           {
-            "statement": "客户体验是单一连续体",
+            "statement": "Customer experience is a single continuum",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [3],
-                "quote": "Every touchpoint, regardless of which function owns it internally, is experienced as a part of a single relationship."
+                "quote": "Every touchpoint...is experienced as a part of a single relationship."
               }
             ]
           }
@@ -94,7 +96,7 @@
     },
     {
       "id": "DS-02",
-      "name": "AI驱动的整合转型",
+      "name": "AI-Driven Integration Transformation",
       "scope": {
         "type": "section",
         "paragraphs": [7, 8, 9, 10]
@@ -104,65 +106,65 @@
       },
       "origin": "explicit",
       "status": "author_asserted",
-      "subject": "Agentic AI如何推动营销与销售的整合",
+      "subject": "How Agentic AI drives marketing-sales integration",
       "structure": {
         "elements": [
           {
             "id": "E2-1",
-            "name": "收入增长集中",
+            "name": "Revenue growth concentration",
             "type": "ai_impact",
-            "description": "AI带来的最一致收入增长集中在营销和销售领域",
+            "description": "Most consistent AI revenue gains concentrated in marketing and sales",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "According to McKinsey's The State of AI report, the most consistent revenue gains from AI are concentrated in marketing and sales."
+                "quote": "the most consistent revenue gains from AI are concentrated in marketing and sales"
               }
             ]
           },
           {
             "id": "E2-2",
-            "name": "执行收敛",
+            "name": "Execution convergence",
             "type": "operational_change",
-            "description": "执行日益跨越曾经不同的营销和销售活动",
+            "description": "Execution increasingly spans previously distinct marketing and sales activities",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [7],
-                "quote": "Agentic AI is accelerating a convergence already underway, with execution increasingly spanning what were once distinct marketing and sales activities."
+                "quote": "execution increasingly spanning what were once distinct marketing and sales activities"
               }
             ]
           },
           {
             "id": "E2-3",
-            "name": "持续循环",
+            "name": "Continuous loops",
             "type": "operational_model",
-            "description": "活动从顺序执行转变为持续循环",
+            "description": "Activities shift from sequential execution to continuous loops",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops, with signals interpreted in real time, actions coordinated across channels, and outcomes fed directly back into the system."
+                "quote": "Activities that once moved sequentially across teams increasingly operate in continuous loops"
               }
             ]
           },
           {
             "id": "E2-4",
-            "name": "共享责任",
+            "name": "Shared responsibility",
             "type": "organizational_change",
-            "description": "营销和销售共同负责管道质量、转化和客户价值",
+            "description": "Marketing and sales share responsibility for pipeline quality, conversion, and customer value",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [8],
-                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value."
+                "quote": "Marketing and sales increasingly share responsibility for pipeline quality, conversion, and customer value"
               }
             ]
           }
         ],
         "constraints": [
           {
-            "statement": "优势只有在两个函数贡献并使用相同数据系统时才会复合",
+            "statement": "Advantage compounds only when both functions use the same data system",
             "origin": "explicit",
             "evidence": [
               {
@@ -179,7 +181,7 @@
     },
     {
       "id": "DS-03",
-      "name": "闭环运营模型",
+      "name": "Closed-Loop Operating Model",
       "scope": {
         "type": "section",
         "paragraphs": [15, 16, 17]
@@ -189,65 +191,65 @@
       },
       "origin": "explicit",
       "status": "author_asserted",
-      "subject": "领先组织如何设计闭环营销-销售系统",
+      "subject": "How leading organizations design closed-loop marketing-sales systems",
       "structure": {
         "elements": [
           {
             "id": "E3-1",
-            "name": "单一系统设计",
+            "name": "Single system design",
             "type": "organizational_design",
-            "description": "领先组织将营销和销售重新设计为单一系统",
+            "description": "Leading organizations redesign marketing and sales as a single system",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system."
+                "quote": "the organizations pulling ahead are redesigning marketing and sales as a single system"
               }
             ]
           },
           {
             "id": "E3-2",
-            "name": "工作本身重新思考",
+            "name": "Rethink the work itself",
             "type": "process_redesign",
-            "description": "不是在现有流程上叠加AI，而是重新思考工作本身",
+            "description": "Not layering AI onto existing processes, but rethinking the work itself",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [15],
-                "quote": "Rather than layering AI onto existing processes, they rethink the work itself, identifying where signals emerge, where decisions occur, and where coordination breaks down."
+                "quote": "Rather than layering AI onto existing processes, they rethink the work itself"
               }
             ]
           },
           {
             "id": "E3-3",
-            "name": "技术转变",
+            "name": "Technology shift",
             "type": "technology_requirement",
-            "description": "共享客户数据基础和协调系统",
+            "description": "Shared customer data foundation and coordinated systems",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "a shared customer data foundation and coordinated systems that allow marketers, sellers, and AI agents to operate from the same context."
+                "quote": "a shared customer data foundation and coordinated systems"
               }
             ]
           },
           {
             "id": "E3-4",
-            "name": "组织转变",
+            "name": "Organizational shift",
             "type": "organizational_requirement",
-            "description": "共享激励和衡量整个客户旅程的指标",
+            "description": "Shared incentives and metrics measuring full customer journey outcomes",
             "origin": "explicit",
             "evidence": [
               {
                 "paragraphs": [16],
-                "quote": "shared incentives and metrics that measure outcomes across the full customer journey."
+                "quote": "shared incentives and metrics that measure outcomes across the full customer journey"
               }
             ]
           }
         ],
         "constraints": [
           {
-            "statement": "成功需要技术和组织双重转变",
+            "statement": "Success requires both technology and organizational shifts",
             "origin": "explicit",
             "evidence": [
               {
@@ -269,12 +271,12 @@
     "detected": true,
     "scope": "article",
     "coherence": "high",
-    "description": "文章围绕'AI驱动的营销-销售整合'构建概念体系，从问题（碎片化）到解决方案（闭环模型）形成完整论证链"
+    "description": "Article constructs conceptual system around AI-driven marketing-sales integration, from problem (fragmentation) to solution (closed-loop model)"
   },
   "rejected_candidates": [
     {
-      "description": "线性客户旅程模型",
-      "reason": "文章明确否定线性旅程，指出客户旅程是循环的、非线性的",
+      "description": "Linear customer journey model",
+      "reason": "Article explicitly rejects linear journeys, stating customer journeys are cyclical and non-linear",
       "evidence": [
         {
           "paragraphs": [4],
@@ -283,8 +285,8 @@
       ]
     },
     {
-      "description": "AI替代人类销售",
-      "reason": "文章强调人机协作，而非替代",
+      "description": "AI replacing human sales",
+      "reason": "Article emphasizes human-AI collaboration, not replacement",
       "evidence": [
         {
           "paragraphs": [17],
@@ -293,8 +295,8 @@
       ]
     },
     {
-      "description": "技术是唯一约束",
-      "reason": "文章明确指出技术不再是约束，组织和流程才是",
+      "description": "Technology is the only constraint",
+      "reason": "Article explicitly states technology is no longer the constraint; organization and process are",
       "evidence": [
         {
           "paragraphs": [19],
