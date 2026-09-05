@@ -1,0 +1,147 @@
+{
+  "module": "datafication",
+  "version": "dr3-reading/1.4-experiment-7",
+  "slug": "relation-semantic-calibration-test",
+  "discovery_depth": "high",
+  "allow_reconstruction": false,
+  "inference_policy": "restricted",
+  "execution_time": "2026-09-05T02:10:00+08:00",
+  "experiment": "7-relation-semantic-calibration-test",
+  "experimental_constraint": "Extract relations only when explicitly stated. Preserve weakest semantics. Do not upgrade.",
+  "test_sentences": [
+    {
+      "id": "A1",
+      "family": "defines",
+      "sentence": "A defines B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "defines",
+        "relation_label": "defines",
+        "semantic_strength": "defines",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "unconditional",
+        "evidence": "A defines B."
+      }
+    },
+    {
+      "id": "A2",
+      "family": "defines",
+      "sentence": "A helps define B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "contributes_to",
+        "relation_label": "helps_define",
+        "semantic_strength": "contributes",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "unconditional",
+        "evidence": "A helps define B."
+      }
+    },
+    {
+      "id": "A3",
+      "family": "defines",
+      "sentence": "A is used to define B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "instrumental",
+        "relation_label": "used_to_define",
+        "semantic_strength": "instrument",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "unconditional",
+        "evidence": "A is used to define B."
+      }
+    },
+    {
+      "id": "A4",
+      "family": "defines",
+      "sentence": "A is related to the definition of B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "associated",
+        "relation_label": "related_to_definition_of",
+        "semantic_strength": "association",
+        "object": "B",
+        "direction": "A ↔ B",
+        "modality": "unconditional",
+        "evidence": "A is related to the definition of B."
+      }
+    },
+    {
+      "id": "B1",
+      "family": "depends_on",
+      "sentence": "A depends on B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "depends_on",
+        "relation_label": "depends_on",
+        "semantic_strength": "necessary",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "unconditional",
+        "evidence": "A depends on B."
+      }
+    },
+    {
+      "id": "B2",
+      "family": "depends_on",
+      "sentence": "A may depend on B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "depends_on",
+        "relation_label": "may_depend_on",
+        "semantic_strength": "possible",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "epistemic",
+        "evidence": "A may depend on B."
+      }
+    },
+    {
+      "id": "B3",
+      "family": "depends_on",
+      "sentence": "A can depend on B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "depends_on",
+        "relation_label": "can_depend_on",
+        "semantic_strength": "capable",
+        "object": "B",
+        "direction": "A → B",
+        "modality": "dispositional",
+        "evidence": "A can depend on B."
+      }
+    },
+    {
+      "id": "B4",
+      "family": "depends_on",
+      "sentence": "A is associated with dependency on B.",
+      "extraction": {
+        "present": true,
+        "subject": "A",
+        "relation_type": "associated",
+        "relation_label": "associated_with_dependency_on",
+        "semantic_strength": "association",
+        "object": "B",
+        "direction": "A ↔ B",
+        "modality": "unconditional",
+        "evidence": "A is associated with dependency on B."
+      }
+    }
+  ],
+  "summary": {
+    "total_sentences": 8,
+    "relations_extracted": 8,
+    "defines_family": 4,
+    "depends_on_family": 4
+  }
+}
