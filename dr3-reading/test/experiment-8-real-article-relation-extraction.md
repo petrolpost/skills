@@ -20,9 +20,13 @@ The goal is **not** to maximize the number of relations. The goal is to determin
 
 ## Source Article
 
-Use the same Victorian diary article from Experiment 3:
+Use the exact article from Experiment 3:
 
 `Victorian diary-writers kicked off our age of self-optimisation`
+
+Canonical slug:
+
+`victorian-diary-writers-kicked-off-our-age-of-self-optimisation`
 
 Source:
 `https://aeon.co/essays/victorian-diary-writers-kicked-off-our-age-of-self-optimisation`
