@@ -14,7 +14,7 @@ artifact id 包括：
 
 `raw_content / structured_data / datafication / immersion_notes / synthesis_pkg / critique_report / reconstruction / note_final / optimization_report`
 
-Datafication 使用普通 `completed / failed` 状态，不需要 human confirmation。
+Datafication 使用普通 `completed / failed` 状态，不需要 human confirmation。Relation Extraction 1.5 仍属于 Datafication 的可选操作，不新增独立 artifact 或 hard dependency。
 
 ```json
 {
@@ -25,8 +25,8 @@ Datafication 使用普通 `completed / failed` 状态，不需要 human confirma
     "stale_soft": false,
     "blocking": false,
     "reason": "",
-    "produced_by": { "module": "datafication", "version": "dr3-reading/1.1" },
-    "preview": "3 structures: 1 process, 1 criteria, 1 decision_rule"
+    "produced_by": { "module": "datafication", "version": "dr3-reading/1.5" },
+    "preview": "3 structures, 8 relations"
   }
 }
 ```
@@ -118,7 +118,7 @@ Datafication 因 `raw_content` 是硬依赖而 `structured_data` 是软依赖：
 **路径**：`.petrelpost/articles/[slug]/trace.jsonl`（追加式）。
 
 ```json
-{"module":"datafication","timestamp":"2026-09-03T22:00:00+08:00","status":"success","input":".petrelpost/articles/[slug]/original/article.md","config":{"discovery_depth":"high","allow_reconstruction":true,"inference_policy":"restricted"},"stats":{"structures":3,"explicit":2,"reconstructed":1,"inferred":0}}
+{"module":"datafication","timestamp":"2026-09-03T22:00:00+08:00","status":"success","input":".petrelpost/articles/[slug]/original/article.md","config":{"discovery_depth":"high","allow_reconstruction":true,"inference_policy":"restricted","relation_extraction":"optional"},"stats":{"structures":3,"relations_extracted":8,"relations_retained":8}}
 ```
 
 `module` 可为：`importer / structured_extractor / datafication / immersion_reader / synthesis / critic / reconstructor / note_generator / evaluator`。
