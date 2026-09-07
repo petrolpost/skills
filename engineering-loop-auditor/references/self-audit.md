@@ -28,38 +28,52 @@ The core instructions require competing hypotheses and explicitly prioritize the
 
 ### 4. Evidence inflation
 
-**Finding: passes conceptually; runtime robustness not yet established.**
+**Finding: passes, with runtime limitations now explicit.**
 
-The Skill distinguishes evidence that endpoints exist from evidence that a claimed relationship or capability match is established. Case #002 independently reproduces this distinction for provider existence versus successful semantic discovery.
+The Skill distinguishes evidence that endpoints exist from evidence that a claimed relationship or capability match is established. Case #002 reproduces this distinction for provider existence versus successful semantic discovery. The runtime audit also rejected the stronger inference from T1 Registry use to Registry necessity.
 
 ### 5. Validation blindness
 
-**Finding: passes conceptually.**
+**Finding: passes conceptually and in the tested audit.**
 
-Validation Audit is a first-class operating mode. More importantly, the Case #002 audit detected that the historical Registry-removal evidence does not contain an independent runtime trace, preventing an unsupported stronger conclusion.
+Validation Audit is a first-class operating mode. Case #002's runtime audit detected self-report rewriting, name-semantic confounding, T3 declaration-form confounding, the absence of native Skill invocation, and the n=1/single-runtime limitation. None was hidden behind the successful outcome.
 
 ### 6. Over-formalization
 
 **Finding: watch.**
 
-The YAML record model is deliberately minimal, but the Skill currently names a fairly long sequence of concepts. A future revision should be justified only if actual use shows that the model is insufficient.
+The YAML record model is deliberately minimal, but the Skill currently names a fairly long sequence of concepts. No runtime evidence has shown that this model is insufficient or that more structure is required. Do not expand it without a concrete failure.
 
 ### 7. Closure failure
 
 **Finding: passes.**
 
-The current Closure Check explicitly asks whether evidence is stable enough to stop, and whether unresolved questions are being hidden by design changes.
+The current Closure Check explicitly asks whether evidence is stable enough to stop, and whether unresolved questions are being hidden by design changes. Case #002 was closed at the bounded claim rather than generalized to multi-provider, scale, versioning, or native Skill runtime.
 
-## Important self-audit finding
+## Post Case #002 Runtime Transfer Audit
 
-The strongest limitation discovered is not a missing rule. It is a **mode boundary**:
+The runtime experiment produced three strong-success cells and closed the original blocker: the auditor's reasoning loop can be instantiated on a materially different engineering problem and can distinguish necessity evidence from mere presence/use evidence.
 
-> The current Skill can audit reasoning represented in artifacts, but it does not itself provide reliable execution evidence.
+The strongest new limitation is more precise than the previous one:
 
-Therefore the next improvement should not be another abstract rule. The next test should be an actual Agent-run case where the auditor is applied to a live engineering loop and the resulting trace is preserved.
+> The auditor can audit a live Agent-engineering experiment when the execution trace and artifacts are supplied, but the current prototype does not itself capture authoritative runtime logs or enforce native Skill invocation.
+
+This is a boundary of the current experimental setup, not evidence that the auditor needs another abstract rule.
+
+The runtime audit therefore narrows the promoted claim rather than expanding the Skill:
+
+> The Engineering Loop Auditor transfers to the tested Capability Discovery case and successfully audits its reasoning and validation boundaries. The evidence does not establish that the same conclusions hold for native Skill invocation, multiple competing providers, dynamic registration, or scale.
 
 ## Decision
 
-Do **not** expand the Skill yet.
+**Do not expand the Skill yet.**
 
-Keep the prototype small and run one real runtime transfer experiment. If the auditor fails repeatedly on a concrete auditing task, then change the Skill based on that evidence.
+Case #002 provides sufficient evidence for transfer of the reasoning loop to a second engineering domain, and the audit process itself successfully detected validation limitations without invalidating the bounded result.
+
+Keep the prototype small. The next change should be triggered by a concrete repeatable defect, not by the existence of unresolved research questions.
+
+Potential future experiments are separate questions, not pending fixes:
+
+1. native OpenCode Skill registration/invocation;
+2. multi-provider selection when several Skills declare the same capability;
+3. discovery behavior as the number of visible Skills grows.
