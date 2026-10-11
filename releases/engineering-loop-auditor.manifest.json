@@ -1,0 +1,71 @@
+﻿{
+    "skill_name":  "engineering-loop-auditor",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "02da31124cba1c23b755cf9cb15edb2baf24fd0395541713790e7c57024f6d4e",
+    "files":  [
+                  {
+                      "path":  "README.md",
+                      "hash":  "99bee05c007cbcb630c03c28a11e25692e619ec15af7bd4f2f7a10e31c434246",
+                      "size":  10509
+                  },
+                  {
+                      "path":  "README.zh-CN.md",
+                      "hash":  "3dccc0e523f57223f3862dc1caf68d85619953863af680ea24b9fa1b0624c0be",
+                      "size":  10106
+                  },
+                  {
+                      "path":  "references/audit-checklist.md",
+                      "hash":  "25f9b4cf1bc8c3ffc9e4f73a9cc990238e74d017e5e2b8708b66823bb4497ce1",
+                      "size":  1725
+                  },
+                  {
+                      "path":  "references/capability-discovery-case.md",
+                      "hash":  "44c9cd505163ee3afda5a3d1d0012a6717f4c4d5c508f1f4738ee9607484dbad",
+                      "size":  5871
+                  },
+                  {
+                      "path":  "references/case-002-historical-audit.md",
+                      "hash":  "ca48907c62e162006d71167891265f49298ffdd5af0dda96706b5a2e8e33269a",
+                      "size":  6010
+                  },
+                  {
+                      "path":  "references/case-002-runtime-audit.md",
+                      "hash":  "9658d17074bd9919316a580eabb2eb8cb2c389a6c49cd06e02fe3f976e6fea1a",
+                      "size":  11053
+                  },
+                  {
+                      "path":  "references/case-002-runtime-execution.md",
+                      "hash":  "73c9842e55ef69d2f25a40d5f428e801add794d455e6fa4c9d488d7b333a408f",
+                      "size":  3007
+                  },
+                  {
+                      "path":  "references/case-002-runtime-execution-result.md",
+                      "hash":  "af66c3dc82791f3383530ceddd7084125e81d52091110dd384724149301148f7",
+                      "size":  32629
+                  },
+                  {
+                      "path":  "references/dr3-reading-case.md",
+                      "hash":  "163c3dca9374e9396b88d6f06acdb05aaba92dac7ce250dac264895b6e6b1dc6",
+                      "size":  3524
+                  },
+                  {
+                      "path":  "references/self-audit.md",
+                      "hash":  "e3cbccdc2ed794d8c559081e43d89035f726ca988ae4b73b9cc9ef1e6afc39e6",
+                      "size":  4504
+                  },
+                  {
+                      "path":  "references/transfer-test-protocol.md",
+                      "hash":  "e6fb4d09b8d5520f63d16c4b900d622274ed84a0d91a25174a9c7925cf8c0cb2",
+                      "size":  2223
+                  },
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "d38eff9adf4074a2c861b2f57e6adbc8553b9ed939e4e7c8501534d02d5d991c",
+                      "size":  5814
+                  }
+              ],
+    "package":  "engineering-loop-auditor.skill",
+    "package_size":  38343,
+    "released_at":  "2026-10-11T21:45:27+08:00",
+    "skill_version":  null
+}
