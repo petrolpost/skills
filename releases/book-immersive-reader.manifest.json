@@ -1,0 +1,16 @@
+﻿{
+    "skill_name":  "book-immersive-reader",
+    "hash_algorithm":  "sha256",
+    "content_hash":  "31619a7b22065a2ba3a1f4f9ab4d65f7f430607dd69361ba8cefcf3adec2419a",
+    "files":  [
+                  {
+                      "path":  "SKILL.md",
+                      "hash":  "abc5938aacd83cae4fe5c5acb0a0ff29345acf338382b21fb94b3d0c71468b19",
+                      "size":  6543
+                  }
+              ],
+    "package":  "book-immersive-reader.skill",
+    "package_size":  3619,
+    "released_at":  "2026-10-11T21:45:27+08:00",
+    "skill_version":  null
+}
