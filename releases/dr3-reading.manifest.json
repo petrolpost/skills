@@ -1,141 +1,141 @@
 ﻿{
-    "skill_name":  "dr3-reading",
-    "hash_algorithm":  "sha256",
-    "content_hash":  "e5f63bd8d2fc0771dc9d8ed9d4cfe8619356fe53294dc67a31e6685589a26f40",
-    "files":  [
-                  {
-                      "path":  "README.md",
-                      "hash":  "e2e2e750214e01b7260ceedc2d8d109a50106e97ff1b41e54b10e1bca7727230",
-                      "size":  6236
-                  },
-                  {
-                      "path":  "references/datafication-schema.json",
-                      "hash":  "8b94ba427bb2a73a1168af63fd12d5bd9e336bc8e76b5f8b7b9c8b76750755cd",
-                      "size":  627
-                  },
-                  {
-                      "path":  "references/functions/critic.md",
-                      "hash":  "1c84e94a081c40f1f65f6e7b7335297995719585241170d52fba91b49c4e3fcb",
-                      "size":  10704
-                  },
-                  {
-                      "path":  "references/functions/datafication.md",
-                      "hash":  "ff16f5d21360c53d0a397ae322d99c130f1da059f713b6530044ac85e1fe1159",
-                      "size":  13473
-                  },
-                  {
-                      "path":  "references/functions/evaluator.md",
-                      "hash":  "c15df61b72a06cd3773400a861dbcea0039a78dfef0e1ecc1e0f8406a4478e6b",
-                      "size":  15452
-                  },
-                  {
-                      "path":  "references/functions/immersion_reader.md",
-                      "hash":  "b2ffc9acb9715c3f93ddb5507e45d80be659def41ef9d0792599943471556d22",
-                      "size":  9948
-                  },
-                  {
-                      "path":  "references/functions/importer.md",
-                      "hash":  "0c81e68d7fadab18dd3e78d18058f3d4b89e7550b5b5af18effde19d889ae29f",
-                      "size":  9574
-                  },
-                  {
-                      "path":  "references/functions/note_generator.md",
-                      "hash":  "f2b51a770ed6dc4bafa3d220540af80b67b11b47c582e4804d48bdf77ad4e31e",
-                      "size":  11701
-                  },
-                  {
-                      "path":  "references/functions/reconstructor.md",
-                      "hash":  "efa07fab1c9d4823d48ab8e83ca475dcbc748cad4672b86d2eead77918b450ef",
-                      "size":  17469
-                  },
-                  {
-                      "path":  "references/functions/structured_extractor.md",
-                      "hash":  "bb11033361d3d8aa4693fc1f9cc264b6f4677b0261e259e25d7d3fa8545c8605",
-                      "size":  9806
-                  },
-                  {
-                      "path":  "references/functions/synthesis.md",
-                      "hash":  "46173e294c58e42b90790bd4f72044b369c41e1a3966b752e8c1d5027cef13e6",
-                      "size":  10622
-                  },
-                  {
-                      "path":  "references/protocol.md",
-                      "hash":  "c59dc4c057eac4ecdd617fedbda9f36bd6ebcbab9c445368a6b5e6c6a5a09c09",
-                      "size":  5570
-                  },
-                  {
-                      "path":  "SKILL.md",
-                      "hash":  "1b02953e91b8cc71d3dc337ee9fba91493d3de53544707fd02c248e7035437a3",
-                      "size":  9114
-                  },
-                  {
-                      "path":  "test/engineering-loop-retrospective.md",
-                      "hash":  "732ab673ff83454b114f031e9efc45a7c43b2d10f3bef5b89e1b6e8cdca3706c",
-                      "size":  12340
-                  },
-                  {
-                      "path":  "test/implementation-plan-1.5.md",
-                      "hash":  "d2600284f768e0bae1cad3094e8b7aa0b8387aab5e233fb5ed92d5f935261682",
-                      "size":  5962
-                  },
-                  {
-                      "path":  "test/implementation-review-1.5.md",
-                      "hash":  "ea758495c822534f1888ec96fca509b1a60e682089d1e031f34c9b286a058342",
-                      "size":  3559
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5.md",
-                      "hash":  "b319bacd860b3c30f50f724c119d5156331ce047f7dc46fd0388467150f33b2e",
-                      "size":  5865
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/audit/audit-A-baseline.md",
-                      "hash":  "e47fed99293a994b8e7fb72292a759e84884050f0ce14b33b7bf29bcae94358e",
-                      "size":  9335
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/audit/audit-B-candidate.md",
-                      "hash":  "c9b5828e649d5a32ffaaac6cbfe40f1d827847690c0de6df3833d7b24a4c8589",
-                      "size":  26915
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/baseline-1.4/datafication.json",
-                      "hash":  "0caa6357ef132d11a575a3ddfe4327ea2ebd8d5a2460abf78b8b4f426c2ec75f",
-                      "size":  14095
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/baseline-1.4/original/article.md",
-                      "hash":  "6b8805bb859f54ce80d4bfcf6d4a0430c28a8c7a841ac12602b1e49c10b0866d",
-                      "size":  10610
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/candidate-1.5/datafication.json",
-                      "hash":  "e44548f32eedf6f3715719e54ded6fdd12d37f18789138fffcc049ca45bde685",
-                      "size":  35065
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/candidate-1.5/original/article.md",
-                      "hash":  "6b8805bb859f54ce80d4bfcf6d4a0430c28a8c7a841ac12602b1e49c10b0866d",
-                      "size":  10610
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/comparison-report.md",
-                      "hash":  "be03a778a946c26c88792b536930c2f90eb254e893814c1f06314e4661a6f6e9",
-                      "size":  8829
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/structure-only-control/datafication.json",
-                      "hash":  "ed1c54ab0a771b46ab097ab567d95fa292eab157698fbcb498a11d781714ce0d",
-                      "size":  10694
-                  },
-                  {
-                      "path":  "test/implementation-validation-1.5/structure-only-control/original/article.md",
-                      "hash":  "6b8805bb859f54ce80d4bfcf6d4a0430c28a8c7a841ac12602b1e49c10b0866d",
-                      "size":  10610
-                  }
-              ],
-    "package":  "dr3-reading.skill",
-    "package_size":  103168,
-    "released_at":  "2026-10-11T21:45:27+08:00",
-    "skill_version":  null
+  "skill_name": "dr3-reading",
+  "hash_algorithm": "sha256",
+  "content_hash": "9da00f8ae6cdb3329c461586598ec225bd64f057bf1adb96f99d3eeac22fbb1c",
+  "files": [
+    {
+      "path": "README.md",
+      "hash": "4caa0c5e1216a0698c4c7bd54cf261f4659a921c65e66b6bc9211a0020467dfa",
+      "size": 6746
+    },
+    {
+      "path": "references/datafication-schema.json",
+      "hash": "8b94ba427bb2a73a1168af63fd12d5bd9e336bc8e76b5f8b7b9c8b76750755cd",
+      "size": 627
+    },
+    {
+      "path": "references/functions/critic.md",
+      "hash": "1c84e94a081c40f1f65f6e7b7335297995719585241170d52fba91b49c4e3fcb",
+      "size": 10704
+    },
+    {
+      "path": "references/functions/datafication.md",
+      "hash": "ff16f5d21360c53d0a397ae322d99c130f1da059f713b6530044ac85e1fe1159",
+      "size": 13473
+    },
+    {
+      "path": "references/functions/evaluator.md",
+      "hash": "c15df61b72a06cd3773400a861dbcea0039a78dfef0e1ecc1e0f8406a4478e6b",
+      "size": 15452
+    },
+    {
+      "path": "references/functions/immersion_reader.md",
+      "hash": "b2ffc9acb9715c3f93ddb5507e45d80be659def41ef9d0792599943471556d22",
+      "size": 9948
+    },
+    {
+      "path": "references/functions/importer.md",
+      "hash": "0c81e68d7fadab18dd3e78d18058f3d4b89e7550b5b5af18effde19d889ae29f",
+      "size": 9574
+    },
+    {
+      "path": "references/functions/note_generator.md",
+      "hash": "f2b51a770ed6dc4bafa3d220540af80b67b11b47c582e4804d48bdf77ad4e31e",
+      "size": 11701
+    },
+    {
+      "path": "references/functions/reconstructor.md",
+      "hash": "efa07fab1c9d4823d48ab8e83ca475dcbc748cad4672b86d2eead77918b450ef",
+      "size": 17469
+    },
+    {
+      "path": "references/functions/structured_extractor.md",
+      "hash": "bb11033361d3d8aa4693fc1f9cc264b6f4677b0261e259e25d7d3fa8545c8605",
+      "size": 9806
+    },
+    {
+      "path": "references/functions/synthesis.md",
+      "hash": "46173e294c58e42b90790bd4f72044b369c41e1a3966b752e8c1d5027cef13e6",
+      "size": 10622
+    },
+    {
+      "path": "references/protocol.md",
+      "hash": "c59dc4c057eac4ecdd617fedbda9f36bd6ebcbab9c445368a6b5e6c6a5a09c09",
+      "size": 5570
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "8382f26622bc4e0a77fd11555326b7bd4b306f11a2718f5f83354e4291295521",
+      "size": 9978
+    },
+    {
+      "path": "test/engineering-loop-retrospective.md",
+      "hash": "732ab673ff83454b114f031e9efc45a7c43b2d10f3bef5b89e1b6e8cdca3706c",
+      "size": 12340
+    },
+    {
+      "path": "test/implementation-plan-1.5.md",
+      "hash": "d2600284f768e0bae1cad3094e8b7aa0b8387aab5e233fb5ed92d5f935261682",
+      "size": 5962
+    },
+    {
+      "path": "test/implementation-review-1.5.md",
+      "hash": "ea758495c822534f1888ec96fca509b1a60e682089d1e031f34c9b286a058342",
+      "size": 3559
+    },
+    {
+      "path": "test/implementation-validation-1.5.md",
+      "hash": "b319bacd860b3c30f50f724c119d5156331ce047f7dc46fd0388467150f33b2e",
+      "size": 5865
+    },
+    {
+      "path": "test/implementation-validation-1.5/audit/audit-A-baseline.md",
+      "hash": "e93f7701e35798dff57b51b2d150b8c21d2f6449fe87121ee4304118047314be",
+      "size": 9562
+    },
+    {
+      "path": "test/implementation-validation-1.5/audit/audit-B-candidate.md",
+      "hash": "ca94261e4024f38b920f0352687b8189e99b3de607dad7b67117586fc90cbb0e",
+      "size": 27716
+    },
+    {
+      "path": "test/implementation-validation-1.5/baseline-1.4/datafication.json",
+      "hash": "f4e186155f6d15dbc3bcb694ef94143a8f2646e1532215f3d9fc8a077ec64ace",
+      "size": 14545
+    },
+    {
+      "path": "test/implementation-validation-1.5/baseline-1.4/original/article.md",
+      "hash": "a40b1b2324c5a7d282c56acf3f5db2de3e461e2c8bed4907be763aa261d44ac5",
+      "size": 10620
+    },
+    {
+      "path": "test/implementation-validation-1.5/candidate-1.5/datafication.json",
+      "hash": "632b4f5dd72621df99f4215ce0f4ef39b3b4093546b142886970ad99f8a5ceab",
+      "size": 36316
+    },
+    {
+      "path": "test/implementation-validation-1.5/candidate-1.5/original/article.md",
+      "hash": "a40b1b2324c5a7d282c56acf3f5db2de3e461e2c8bed4907be763aa261d44ac5",
+      "size": 10620
+    },
+    {
+      "path": "test/implementation-validation-1.5/comparison-report.md",
+      "hash": "e64666b3b62c048c167a88515bf0bf62bdce635024da50ba8555c9e47f6fa59e",
+      "size": 9072
+    },
+    {
+      "path": "test/implementation-validation-1.5/structure-only-control/datafication.json",
+      "hash": "6bae9bb3664ac1c6a03bd8e7cc9ebdbbb925fead14e12c3876bb090f2287d54c",
+      "size": 11019
+    },
+    {
+      "path": "test/implementation-validation-1.5/structure-only-control/original/article.md",
+      "hash": "a40b1b2324c5a7d282c56acf3f5db2de3e461e2c8bed4907be763aa261d44ac5",
+      "size": 10620
+    }
+  ],
+  "package": "dr3-reading.skill",
+  "package_size": 105668,
+  "released_at": "2026-10-13T10:12:20+08:00",
+  "skill_version": null
 }

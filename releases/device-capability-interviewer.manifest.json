@@ -1,0 +1,16 @@
+﻿{
+  "skill_name": "device-capability-interviewer",
+  "hash_algorithm": "sha256",
+  "content_hash": "ef3ad1ff23df6501a388e73c3ff1b45096c73c0630e14570c35a85ec59c3217a",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "hash": "3d279c89a50195cf48750fd93b92a88161efd78c9905c2c4db3afbb99882a8a9",
+      "size": 11620
+    }
+  ],
+  "package": "device-capability-interviewer.skill",
+  "package_size": 5464,
+  "released_at": "2026-10-13T10:12:20+08:00",
+  "skill_version": null
+}

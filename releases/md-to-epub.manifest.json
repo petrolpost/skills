@@ -1,0 +1,21 @@
+﻿{
+  "skill_name": "md-to-epub",
+  "hash_algorithm": "sha256",
+  "content_hash": "350831ff4ad587496b30822e00c360f78120f6dc384064c3cced757c46d40f47",
+  "files": [
+    {
+      "path": "README.md",
+      "hash": "f3262612919954bbb5365c8993bc3eaa4f18dd805de9986afceae2f62daba314",
+      "size": 2468
+    },
+    {
+      "path": "SKILL.md",
+      "hash": "a2c2b31fad52b179a6098c88785660b9c1e635bf2234e60c53cadb2481c30991",
+      "size": 12565
+    }
+  ],
+  "package": "md-to-epub.skill",
+  "package_size": 6914,
+  "released_at": "2026-10-13T11:24:32+08:00",
+  "skill_version": null
+}
